@@ -1,9 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 
 function App() {
-  return <Sidebar></Sidebar>;
+  return (
+    <div className="main">
+      <Sidebar></Sidebar>
+      <div className="dashboard"></div>
+    </div>
+  );
 }
 
 export default App;
