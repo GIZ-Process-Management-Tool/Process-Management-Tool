@@ -1,11 +1,12 @@
 import "./App.css";
-import Sidebar from "./Sidebar/Sidebar";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Sidebar from "./pages/Sidebar/Sidebar";
 
 function App() {
   return (
     <div className="main">
       <Sidebar></Sidebar>
-      <div className="dashboard"></div>
+      <Dashboard></Dashboard>
     </div>
   );
 }

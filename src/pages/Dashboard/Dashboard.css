@@ -1,0 +1,56 @@
+.MainDashboardContainer {
+  display: grid;
+  grid-template-rows: 12vh auto auto;
+  /* grid-template-columns: repeat(3, 1fr) 80px; */
+
+  border: 1px solid blue;
+  box-sizing: border-box;
+  align-items: stretch;
+  width: 100%;
+}
+
+.HeaderRow_1 {
+  background-color: violet;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.PageHeader {
+  padding: 16px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.DBSearchBar {
+  width: 200px;
+  border: none;
+  padding: 20px;
+}
+
+.ProfileContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  font-size: 24px;
+  color: white;
+}
+.noticationIcon {
+  padding: 16px;
+}
+.ProfileIconContainer {
+  padding: 16px;
+}
+.profileName {
+  padding: 16px;
+}
+.QuickReviewRow_2 {
+  background-color: yellow;
+  /* grid-column: 1/-1; */
+}
+
+.MainGraphsRow_3 {
+  background-color: brown;
+  /* grid-column: 1/-1; */
+}

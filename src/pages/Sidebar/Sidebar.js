@@ -1,7 +1,7 @@
 import React from "react";
 import { SidebarData } from "./SidebarData";
 import "./Sidebar.css";
-import brandLogo from "../assets/brandIcon.png";
+import brandLogo from "./brandIcon.png";
 import { BiLogOut } from "react-icons/bi";
 
 // https://react-icons.github.io/react-icons/icons?name=bi
