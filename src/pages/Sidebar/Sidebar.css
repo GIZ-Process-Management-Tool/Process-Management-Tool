@@ -1,6 +1,6 @@
 .NavContainer {
   height: 100vh;
-  width: 16vw;
+  width: 18vw;
   background-color: #4054b2;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,7 @@
 }
 
 .LogoContainer {
-  padding: 10px 10px 10px 20px;
-
+  padding: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -32,7 +31,7 @@
 
 img {
   height: auto;
-  width: 90%;
+  width: 80%;
 }
 .Divider {
   background-color: white;

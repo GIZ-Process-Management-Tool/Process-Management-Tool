@@ -1,56 +1,108 @@
 .MainDashboardContainer {
   display: grid;
-  grid-template-rows: 12vh auto auto;
-  /* grid-template-columns: repeat(3, 1fr) 80px; */
-
-  border: 1px solid blue;
+  grid-template-rows: 80px 110px auto;
+  grid-row-gap: 8px;
   box-sizing: border-box;
   align-items: stretch;
   width: 100%;
+  background-color: #f4f6ff;
 }
 
 .HeaderRow_1 {
-  background-color: violet;
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
+  border-bottom: 1px solid #bdbdbd;
 }
 
 .PageHeader {
   padding: 16px;
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 900;
 }
 
-.DBSearchBar {
-  width: 200px;
+.DBSearchBar input {
+  width: 20vw;
   border: none;
-  padding: 20px;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 16px;
+  box-shadow: 1px 1px 2px #bdbdbd;
 }
 
 .ProfileContainer {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   color: white;
 }
+
 .noticationIcon {
-  padding: 16px;
-}
-.ProfileIconContainer {
-  padding: 16px;
-}
-.profileName {
-  padding: 16px;
-}
-.QuickReviewRow_2 {
-  background-color: yellow;
-  /* grid-column: 1/-1; */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #4054b2;
+  border-radius: 200px;
+  margin: 8px;
 }
 
-.MainGraphsRow_3 {
-  background-color: brown;
-  /* grid-column: 1/-1; */
+.ProfileIconContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #4054b2;
+  border-radius: 200px;
+}
+
+.profileName {
+  padding: 8px;
+  font-size: 1rem;
+  color: black;
+}
+
+.QuickReviewRow_2 {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.QRContainer {
+  padding: 8px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 2px #bdbdbd;
+  border-radius: 16px;
+}
+
+.HeaderContainer {
+}
+
+.QRHeading {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.QRSubheading {
+}
+
+.QRtrailingIcon {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #4054b2;
+  color: white;
+  border-radius: 200px;
+  margin: 20px;
+  font-size: 32px;
 }
