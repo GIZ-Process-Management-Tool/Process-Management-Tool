@@ -16,9 +16,9 @@
 }
 
 .PageHeader {
-  padding: 16px;
+  padding: 1.5rem;
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .DBSearchBar input {
@@ -74,10 +74,11 @@
 }
 
 .QRContainer {
-  padding: 8px;
+  padding: 8px 24px;
   background-color: white;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  grid-auto-rows: 8vh;
   justify-content: center;
   align-items: center;
   box-shadow: 1px 1px 2px #bdbdbd;
@@ -88,7 +89,7 @@
 }
 
 .QRHeading {
-  font-size: 32px;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -99,10 +100,25 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  padding: 8px;
+  padding: 12px;
   background-color: #4054b2;
   color: white;
   border-radius: 200px;
-  margin: 20px;
-  font-size: 32px;
+  margin: 10px;
+  font-size: 1.5rem;
 }
+.MainGraphsRow_3 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2vh;
+  padding: 2vh;
+}
+
+.chartContainer {
+  background-color: white;
+  box-shadow: 1px 1px 2px #bdbdbd;
+  border-radius: 16px;
+  padding: 2vh;
+}
+/*https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react*/
+/*https://apexcharts.com/react-chart-demos/bar-charts/*/

@@ -1,6 +1,6 @@
 .NavContainer {
   height: 100vh;
-  width: 18vw;
+  width: 14vw;
   background-color: #4054b2;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,13 @@
 }
 
 .BrandTitle {
-  font-size: 20px;
+  font-size: 1.3rem;
   padding-left: 10px;
   color: white;
   display: inline-block;
   vertical-align: middle;
 
-  font-weight: 700;
+  font-weight: 500;
   line-height: 31px;
   color: #ffffff;
 }
@@ -60,7 +60,7 @@ img {
 }
 
 .MenuTitle {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 500;
 }
 

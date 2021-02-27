@@ -3,6 +3,11 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { FaRupeeSign } from "react-icons/fa";
 import "./Dashboard.css";
+import BarChartModel from "./BarChart";
+import PieChartModel from "./PieChart";
+import LineGraphModel from "./LineGraph";
+import HorizontalBarChart from "./HorizontalBarChart";
+import HorizontalBar1 from "./HorizontalBar";
 
 export default function Dashboard() {
   return (
@@ -57,7 +62,23 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="MainGraphsRow_3"> </div>
+      <div className="MainGraphsRow_3">
+        <div className="chartContainer">
+          <BarChartModel />
+        </div>
+        <div className="chartContainer">
+          <PieChartModel />
+        </div>
+        <div className="chartContainer">
+          <LineGraphModel />
+        </div>
+        <div className="chartContainer">
+          <HorizontalBarChart />
+        </div>
+        <div className="chartContainer">
+          <HorizontalBar1 />
+        </div>
+      </div>
     </div>
   );
 }
