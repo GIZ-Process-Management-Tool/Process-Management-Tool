@@ -8,16 +8,6 @@
   position: sticky;
   left: 0;
   top: 0;
-  animation: fadein 0.3s ease-in-out;
-}
-
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .LogoContainer {

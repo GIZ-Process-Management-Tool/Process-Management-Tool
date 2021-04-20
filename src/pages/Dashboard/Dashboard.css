@@ -7,7 +7,7 @@
   width: 100%;
   background-color: #f4f6ff;
 }
-
+/* voice yet aahe ka maza */
 .HeaderRow_1 {
   display: flex;
   justify-content: space-between;
@@ -69,7 +69,6 @@
   padding: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   gap: 20px;
 }
 
@@ -85,15 +84,9 @@
   border-radius: 16px;
 }
 
-.HeaderContainer {
-}
-
 .QRHeading {
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-.QRSubheading {
 }
 
 .QRtrailingIcon {
@@ -107,6 +100,7 @@
   margin: 10px;
   font-size: 1.5rem;
 }
+
 .MainGraphsRow_3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -120,5 +114,10 @@
   border-radius: 16px;
   padding: 2vh;
 }
-/*https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react*/
+
+.progressBar {
+  grid-column-start: 1;
+  grid-column-end: 3;
+} /*https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react*/
+
 /*https://apexcharts.com/react-chart-demos/bar-charts/*/

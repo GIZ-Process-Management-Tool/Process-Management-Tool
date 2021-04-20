@@ -6,20 +6,21 @@ import { BiLogOut } from "react-icons/bi";
 
 // https://react-icons.github.io/react-icons/icons?name=bi
 
-function Sidebar({ Brandclick }) {
+function Sidebar() {
   return (
     <>
       <div className="NavContainer">
         <div className="FirstContainer">
-          <div className="LogoContainer" onClick={Brandclick}>
+          <div className="LogoContainer">
             <div className="BrandIcon">
               <img src={brandLogo} alt="Vatan Textiles" />
             </div>
-            <div className="BrandTitle">Vatan Textile</div>
+            <div className="BrandTitle"> Vatan Textile </div>
           </div>
           <hr className="Divider"></hr>
           <div className="AllMenuContainer">
             {SidebarData.map((menu, index) => {
+              console.log(index);
               return (
                 <>
                   <div className="MenuContainer" key={index}>
