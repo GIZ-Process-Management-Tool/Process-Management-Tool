@@ -36,14 +36,8 @@
     transform: rotate(360deg);
   }
 }
-
-.dashboard {
-  height: 100vh;
-  width: 100vw;
-  background-color: burlywood;
-}
-
 .main {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  display: grid;
+  grid-template-columns: 16% auto;
 }

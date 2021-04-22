@@ -2,14 +2,12 @@
   display: grid;
   grid-template-rows: 80px 110px auto;
   grid-row-gap: 8px;
-  box-sizing: border-box;
-  align-items: stretch;
-  width: 100%;
   background-color: #f4f6ff;
 }
-/* voice yet aahe ka maza */
+
 .HeaderRow_1 {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #bdbdbd;
@@ -119,6 +117,4 @@
   grid-column-start: 1;
   grid-column-end: 3;
   position: relative;
-} /*https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react*/
-
-/*https://apexcharts.com/react-chart-demos/bar-charts/*/
+}

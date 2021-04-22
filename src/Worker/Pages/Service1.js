@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Service1.css";
-import Service2 from "./Service2";
+// import Service2 from "./Service2";
 const Service1 = () => {
   return (
     <>

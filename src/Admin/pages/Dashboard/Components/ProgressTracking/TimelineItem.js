@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TimelineError from "./ErrorComponent";
 import "./timeline";
 
 export default function TimelineItem({ itemData }) {
@@ -12,13 +13,7 @@ export default function TimelineItem({ itemData }) {
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
-        {isShown && (
-          <div className="showError">
-            Hello
-            HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
-            HelloHelloHelloHelloHelloHelloHelloHelloHelloHello HelloHelloHello
-          </div>
-        )}
+        {isShown && <TimelineError />}
         <div className="timeline-content">{itemData.name}</div>
       </div>
     </>

@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import AdminPage from "./Admin/AdminPage";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import MainRoute from "./MainRoute";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AdminPage />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <MainRoute />
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

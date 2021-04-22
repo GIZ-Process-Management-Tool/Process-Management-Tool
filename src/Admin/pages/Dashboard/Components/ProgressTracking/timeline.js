@@ -6,47 +6,47 @@ export default function Timeline() {
   const items = [
     {
       i: 1,
-      name: "Step 1",
+      name: "Yarn Storage",
       active: true,
     },
     {
       i: 2,
-      name: "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloH",
+      name: "Winding",
       active: true,
     },
     {
       i: 3,
-      name: "Step 3",
+      name: "Warping",
       active: true,
     },
     {
       i: 4,
-      name: "Step 4",
+      name: "Looming",
       active: false,
     },
     {
       i: 5,
-      name: "Step 5",
+      name: "Weaving",
       active: false,
     },
     {
       i: 6,
-      name: "Step 6",
+      name: "Checking",
       active: false,
     },
     {
       i: 7,
-      name: "Step 7",
+      name: "Repairing",
       active: false,
     },
     {
       i: 8,
-      name: "Step 8",
+      name: "Packing",
       active: false,
     },
     {
       i: 9,
-      name: "Step 9",
+      name: "Dispatch",
       active: false,
     },
   ];

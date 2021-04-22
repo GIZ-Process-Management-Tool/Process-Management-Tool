@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Adminlogin.css";
+import { NavLink } from "react-router-dom";
 
 const Adminlogin = () => {
   return (
@@ -17,10 +18,16 @@ const Adminlogin = () => {
 
           <h5>Password</h5>
           <input type="password" />
-
-          <button type="submit" className="login__signInButton">
-            Sign In
-          </button>
+          <NavLink to="/admin">
+            <button type="submit" className="login__signInButton">
+              Admin
+            </button>
+          </NavLink>
+          <NavLink to="/worker1">
+            <button type="submit" className="login__signInButton">
+              Worker
+            </button>
+          </NavLink>
 
           <a href="#">Forgot Password ?</a>
 
