@@ -1,5 +1,5 @@
 import React from "react";
-import TimelineItem from "./itemComponent";
+import TimelineItem from "./TimelineItem";
 import "./timeline.css";
 
 export default function Timeline() {
@@ -11,7 +11,7 @@ export default function Timeline() {
     },
     {
       i: 2,
-      name: "Step 2",
+      name: "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloH",
       active: true,
     },
     {

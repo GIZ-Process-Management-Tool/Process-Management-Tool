@@ -4,10 +4,10 @@ import { CgProfile } from "react-icons/cg";
 import { FaRupeeSign } from "react-icons/fa";
 import "./Dashboard.css";
 // import BarChartModel from "./BarChart";
-import PieChartModel from "./PieChart";
-import LineGraphModel from "./LineGraph";
-import HorizontalBarChart from "./HorizontalBarChart";
-import HorizontalBar1 from "./HorizontalBar";
+import PieChartModel from "./AdminGraphs/PieChart";
+import LineGraphModel from "./AdminGraphs/LineGraph";
+import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
+import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
 import Timeline from "./Components/ProgressTracking/timeline";
 
 export default function Dashboard() {

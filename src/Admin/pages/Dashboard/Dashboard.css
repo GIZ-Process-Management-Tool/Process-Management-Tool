@@ -118,6 +118,7 @@
 .progressBar {
   grid-column-start: 1;
   grid-column-end: 3;
+  position: relative;
 } /*https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react*/
 
 /*https://apexcharts.com/react-chart-demos/bar-charts/*/

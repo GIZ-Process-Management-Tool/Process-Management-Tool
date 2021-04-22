@@ -1,4 +1,4 @@
-import "./App.css";
+import "./AdminPage.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Sidebar from "./pages/Sidebar/Sidebar";
 

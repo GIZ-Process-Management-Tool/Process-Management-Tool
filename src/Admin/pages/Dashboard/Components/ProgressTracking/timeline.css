@@ -2,7 +2,6 @@
   margin: 50px 60px;
   height: 4px;
   background-color: #ccc;
-  position: relative;
 }
 
 .timeline-progress {
@@ -71,11 +70,23 @@
   background-color: orange;
 }
 
-/* .timeline-content:hover + div {
+.showError {
   display: block;
-  width: 200px;
-  height: 200px;
-  color: violet;
   position: absolute;
-  content: "Hello";
-} */
+  top: 2vh;
+  background-color: red;
+  width: 40;
+}
+
+.showError::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  display: block;
+
+  bottom: 1px;
+  left: 2%;
+  transform: rotate(-45deg) translateX(-50%);
+  position: absolute;
+}
