@@ -21,9 +21,9 @@ function MainRoute() {
   return (
     <>
       <Switch>
-        <Route exact path="/login" component={Adminlogin} />
+        <Route exact path="/" component={Adminlogin} />
         <Route exact path="/worker1" component={Service1} />
-        <Route exact path="/" component={AdminPage} />
+        <Route exact path="/admin" component={AdminPage} />
         <Route exact path="/service2" component={Service2} />
 
         <Route exact path="/worker" component={Worker} />

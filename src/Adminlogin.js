@@ -13,23 +13,23 @@ const Adminlogin = () => {
         <h1>Admin Login</h1>
 
         <form>
-          <h5>E-mail</h5>
+          {/* <h5>E-mail</h5>
           <input type="text" />
 
           <h5>Password</h5>
-          <input type="password" />
-          <NavLink to="/admin">
+          <input type="password" /> */}
+          <NavLink exact to="/admin">
             <button type="submit" className="login__signInButton">
               Admin
             </button>
           </NavLink>
-          <NavLink to="/worker1">
+          <NavLink exact to="/worker1">
             <button type="submit" className="login__signInButton">
               Worker
             </button>
           </NavLink>
-
-          <a href="#">Forgot Password ?</a>
+          {/* 
+          <a href="#">Forgot Password ?</a> */}
 
           {/* <button className="login__registerButton">Worker Login</button> */}
         </form>

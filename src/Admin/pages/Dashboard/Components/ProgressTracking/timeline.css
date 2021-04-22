@@ -2,6 +2,7 @@
   margin: 50px 60px;
   height: 4px;
   background-color: #ccc;
+  position: relative;
 }
 
 .timeline-progress {

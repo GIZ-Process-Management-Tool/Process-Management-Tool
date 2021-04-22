@@ -113,8 +113,12 @@
   padding: 2vh;
 }
 
-.progressBar {
+.chartContainer.progressBar {
   grid-column-start: 1;
   grid-column-end: 3;
   position: relative;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2vh;
+  padding: 2vh;
 }
