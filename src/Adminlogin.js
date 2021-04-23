@@ -11,6 +11,7 @@ const Adminlogin = () => {
       /> */}
       <div className="login__container">
         <h1>Admin Login</h1>
+        <h2>hello admin</h2>
 
         <form>
           {/* <h5>E-mail</h5>
