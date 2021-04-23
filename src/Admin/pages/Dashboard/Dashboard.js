@@ -36,7 +36,7 @@ export default function Dashboard() {
       <div className="QuickReviewRow_2">
         <div className="QRContainer">
           <div className="HeaderContainer">
-            <div className="QRHeading"> Rs 20 Lack </div>
+            <div className="QRHeading"> Rs 20 Lakh </div>
             <div className="QRSubHeading"> Total Expenses </div>
           </div>
           <div className="QRtrailingIcon">
@@ -45,7 +45,7 @@ export default function Dashboard() {
         </div>
         <div className="QRContainer">
           <div className="HeaderContainer">
-            <div className="QRHeading"> Rs 30 Lack </div>
+            <div className="QRHeading"> Rs 30 Lakh </div>
             <div className="QRSubHeading"> Total Profit </div>
           </div>
           <div className="QRtrailingIcon">
@@ -54,7 +54,7 @@ export default function Dashboard() {
         </div>
         <div className="QRContainer">
           <div className="HeaderContainer">
-            <div className="QRHeading"> Rs 10 Lack </div>
+            <div className="QRHeading"> Rs 10 Lakh </div>
             <div className="QRSubHeading"> Total Revenue </div>
           </div>
           <div className="QRtrailingIcon">

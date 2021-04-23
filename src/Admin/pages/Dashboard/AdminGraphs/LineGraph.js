@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Line } from "react-chartjs-2";
 
@@ -5,7 +6,7 @@ const state = {
   labels: ["January", "February", "March", "April", "May"],
   datasets: [
     {
-      label: "Rainfall",
+      label: "Revenue",
       fill: false,
       lineTension: 0.5,
       backgroundColor: "rgba(75,192,192,1)",
@@ -24,7 +25,7 @@ export default function LineGraphModel() {
         options={{
           title: {
             display: true,
-            text: "Average Rainfall per month",
+            text: "Average Revenue per month",
             fontSize: 20,
           },
           legend: {
@@ -36,3 +37,4 @@ export default function LineGraphModel() {
     </div>
   );
 }
+

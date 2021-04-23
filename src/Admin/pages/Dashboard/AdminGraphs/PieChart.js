@@ -1,48 +1,73 @@
 import React from "react";
+import { useState, useEffect} from 'react';
 import { Doughnut } from "react-chartjs-2";
-
-const state = {
-  labels: ["January", "February", "March", "April", "May"],
-  datasets: [
-    {
-      label: "Rainfall",
-      backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
-      hoverBackgroundColor: [
-        "#501800",
-        "#4B5000",
-        "#175000",
-        "#003350",
-        "#35014F",
-      ],
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
+import Axios from 'axios';
 
 export default function PieChartModel() {
+  const [chartData, setChartData] = useState({});
+  // const [LoomNo, setLoomNo] = useState([]);
+  // const [TotalPicks, setTotalPicks] = useState([]);
+
+  const chart = () => {
+    let loom = [];
+    let totalpicks = [];
+
+    Axios
+      .get("http://localhost:3006/piechart")
+      .then(res => {
+        console.log(res);
+        for (const dataObj of res.data) {
+          loom.push("loom " + dataObj.loom_no);
+          totalpicks.push(parseInt(dataObj.total_picks));
+        }
+        setChartData({
+          labels: loom,
+          datasets: [
+            {
+              label: "Looming",
+              data: totalpicks,
+              backgroundColor: [
+              "#BB8FCE",
+              "#A9CCE3",
+              "#665191",
+              "#F9E79F",
+              "#CCD1D1 "
+            ],
+              hoverBackgroundColor: [
+                // "#A569BD",
+                // "#2b4775",
+                // "#624e8c",
+                // "#ffbb33",
+                // "#9999ff",
+                "#BB8FCE",
+                "#A9CCE3",
+                "#665191",
+                "#F9E79F",
+                "#CCD1D1 "
+              ]
+            }
+          ]
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // console.log(empSal, empAge);
+
+  };
+
+  useEffect(() => {
+    chart();
+  }, []);
+
   return (
     <div>
-      {/* <Pie
-        data={state}
-        options={{
-          title: {
-            display: true,
-            text: "Average Rainfall per month",
-            fontSize: 20,
-          },
-          legend: {
-            display: true,
-            position: "right",
-          },
-        }}
-      /> */}
-
       <Doughnut
-        data={state}
+        data={chartData}
         options={{
           title: {
             display: true,
-            text: "Average Rainfall per month",
+            text: "Total picks on each loom",
             fontSize: 20,
           },
           legend: {
