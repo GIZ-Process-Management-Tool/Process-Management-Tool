@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./InputFormStyle/formBGStyle.css";
+import "./InputFormStyle/formElementStyle.css";
 function DownTime() {
   const [form, setForm] = useState({
     date: "",
@@ -9,20 +10,19 @@ function DownTime() {
     shift: "",
     weaver: "",
     downtime: "",
-    remark: ""
-
+    remark: "",
   });
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
-    axios.post("http://localhost:3006/downtime", form)
-      .then(res => {
+    axios
+      .post("http://localhost:3006/downtime", form)
+      .then((res) => {
         console.log(res);
         alert("successful insert");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
@@ -32,42 +32,80 @@ function DownTime() {
       shift: "",
       weaver: "",
       downtime: "",
-      remark: ""
-
+      remark: "",
     });
-
-
   }
 
   function handleChange(event) {
-
     const { name, value } = event.target;
 
     setForm((prv) => {
       return {
         ...prv,
-        [name]: value
-      }
+        [name]: value,
+      };
     });
   }
   return (
     <form onSubmit={handleSubmit}>
-    <div class="login">
-      <div class="form">
-        <NavLink to="/">
-          <button>Back</button>
-        </NavLink>
-        <h2>Downtime Form</h2>
+      <div class="login">
+        <div class="form">
+          <NavLink to="/">
+            <button>Back</button>
+          </NavLink>
+          <h2>Downtime Form</h2>
 
-        <input type="date" vlaue={form.date} onChange={handleChange} name="date" placeholder="Date" required />
-        <input type="number" value={form.loom} onChange={handleChange} name="loom" placeholder="Loom" required />
-        <input type="number" value={form.shift} onChange={handleChange} name="shift" placeholder="Shift" required />
-        <input type="text" value={form.weaver} onChange={handleChange} name="weaver" placeholder="Weaver Name" required />
-        <input type="time" value={form.downtime} onChange={handleChange} name="downtime" placeholder="Downtime" required />
-        <input type="string" value={form.remark} onChange={handleChange} name="remark" placeholder="Remark" required />
-        <input type="submit" value="SUBMIT" class="submit" />
+          <input
+            type="date"
+            vlaue={form.date}
+            onChange={handleChange}
+            name="date"
+            placeholder="Date"
+            required
+          />
+          <input
+            type="number"
+            value={form.loom}
+            onChange={handleChange}
+            name="loom"
+            placeholder="Loom"
+            required
+          />
+          <input
+            type="number"
+            value={form.shift}
+            onChange={handleChange}
+            name="shift"
+            placeholder="Shift"
+            required
+          />
+          <input
+            type="text"
+            value={form.weaver}
+            onChange={handleChange}
+            name="weaver"
+            placeholder="Weaver Name"
+            required
+          />
+          <input
+            type="time"
+            value={form.downtime}
+            onChange={handleChange}
+            name="downtime"
+            placeholder="Downtime"
+            required
+          />
+          <input
+            type="string"
+            value={form.remark}
+            onChange={handleChange}
+            name="remark"
+            placeholder="Remark"
+            required
+          />
+          <input type="submit" value="SUBMIT" class="submit" />
+        </div>
       </div>
-    </div>
     </form>
   );
 }
