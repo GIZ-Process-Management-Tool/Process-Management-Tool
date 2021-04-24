@@ -2,8 +2,9 @@ import React from "react";
 import Axios from "axios";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./InputFormStyle/formBGStyle.css";
 import "./../ErrorMessages/Error.css";
-import "./Demo2.css";
+
 function Shift() {
   const [Date, setDate] = useState(0);
   const [TotalPicks, setTpicks] = useState(0);

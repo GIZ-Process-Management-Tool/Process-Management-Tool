@@ -22,12 +22,12 @@ export default function Timeline() {
     {
       i: 4,
       name: "Looming",
-      active: false,
+      active: true,
     },
     {
       i: 5,
       name: "Weaving",
-      active: false,
+      active: true,
     },
     {
       i: 6,

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Admin.css";
+import "../Worker/InputFormStyle/formBGStyle.css";
 function Admin() {
   return (
     <div class="login">

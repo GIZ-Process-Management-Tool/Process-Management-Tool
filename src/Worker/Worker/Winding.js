@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
-// import "./Demo2.css";
+import "./InputFormStyle/formBGStyle.css";
+
 function Winding() {
   const [form, setForm] = useState({
     yarn_received: "",

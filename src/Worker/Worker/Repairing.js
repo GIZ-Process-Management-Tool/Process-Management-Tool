@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
-import "./Demo2.css";
+import "./InputFormStyle/formBGStyle.css";
+
 function Repairing() {
   const [form, setForm] = useState({
     order_no: "",

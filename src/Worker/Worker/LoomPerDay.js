@@ -3,7 +3,8 @@ import Axios from "axios";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
-import "./Demo2.css";
+import "./InputFormStyle/formBGStyle.css";
+
 function LoomperDay() {
   const [Date, setDate] = useState(0);
   const [sometCharges, setSometCharges] = useState(0);

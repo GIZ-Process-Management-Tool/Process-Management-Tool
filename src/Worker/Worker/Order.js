@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
 import "./../ErrorMessages/Error.css";
+import "./InputFormStyle/formBGStyle.css";
 
 function Order() {
   const [form, setForm] = useState({
@@ -157,18 +157,6 @@ function Order() {
           </div>
         </div>
       </form>
-      {/* <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
-        </div>
-      </div> */}
       <div id="popup1" class="overlay">
         <div class="popup">
           <h2>Report Error</h2>

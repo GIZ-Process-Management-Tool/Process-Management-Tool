@@ -1,13 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// import "./App.css";
-// import Nav from "./Worker/Navbar/Nav";
 import Service1 from "./Worker/Pages/Service1";
 import Service2 from "./Worker/Pages/Service2";
 import Service3 from "./Worker/Pages/Service3";
 // import Demo from "./Worker/Pages/Demo";
+
 import Order from "./Worker/Worker/Order";
-// import Loomloadingchart from "./Worker/Worker/Loomloadingchart";
+
 import LoomperDay from "./Worker/Worker/LoomPerDay";
 import Shift from "./Worker/Worker/Shift";
 import GreyReport from "./Worker/Worker/GreyReport";
@@ -29,10 +28,10 @@ function MainRoute() {
     <>
       <Switch>
         <Route exact path="/" component={Adminlogin} />
-        {/* <Route exact path="/packing" component={Yarn} /> */}
-        {/* <Route exact path="/warping" component={Warping} /> */}
-        {/* <Route exact path="/winding" component={Winding} /> */}
-        {/* <Route exact path="/yarn_storage" component={YarnStorage} /> */}
+        <Route exact path="/packing" component={Yarn} />
+        <Route exact path="/warping" component={Warping} />
+        <Route exact path="/winding" component={Winding} />
+        <Route exact path="/yarn_storage" component={YarnStorage} />
         <Route exact path="/worker1" component={Service1} />
         <Route exact path="/admin" component={AdminPage} />
         <Route exact path="/service2" component={Service2} />

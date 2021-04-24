@@ -9,6 +9,7 @@ import LineGraphModel from "./AdminGraphs/LineGraph";
 import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
 import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
 import Timeline from "./Components/ProgressTracking/timeline";
+import HeaderProgressTrack from "./Components/ProgressTracking/HeaderProgressTrack";
 
 export default function Dashboard() {
   return (
@@ -64,8 +65,8 @@ export default function Dashboard() {
       </div>
       <div className="MainGraphsRow_3">
         <div className="chartContainer progressBar">
+          <HeaderProgressTrack />
           <Timeline />
-          {/* <div>HelloHelloHelloHelloHelloHelloHelloHelloHelloH</div> */}
         </div>
         <div className="chartContainer">
           <PieChartModel />
