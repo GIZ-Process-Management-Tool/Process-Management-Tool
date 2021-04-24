@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 
 function LoomperDay() {
@@ -22,43 +23,62 @@ function LoomperDay() {
   };
 
   return (
-    <div class="login">
-      <div class="form">
-        <NavLink to="/">
-          <button>Back</button>
-        </NavLink>
-        <h2>LoomperDay Form</h2>
-        <input
-          type="Date"
-          name=""
-          placeholder="enter date"
-          onChange={(e) => {
-            setDate(e.target.value);
-          }}
-        />
-        <input
-          type="number"
-          placeholder="Somet Charges"
-          required
-          onChange={(e) => {
-            setSometCharges(e.target.value);
-          }}
-        />
-        <input
-          type="number"
-          placeholder="Dorner Charges"
-          required
-          onChange={(e) => {
-            setDornierCharges(e.target.value);
-          }}
-        />
+    <div>
+      <div class="login">
+        <div class="form">
+          <div className="upperButtons">
+            <NavLink to="/worker1">
+              <button class="button">Back</button>
+            </NavLink>
+            <a class="button" href="#popup1">
+              Error
+            </a>
+          </div>
+          <h2>LoomperDay Form</h2>
+          <input
+            type="Date"
+            name=""
+            placeholder="enter date"
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
+          />
+          <input
+            type="number"
+            placeholder="Somet Charges"
+            required
+            onChange={(e) => {
+              setSometCharges(e.target.value);
+            }}
+          />
+          <input
+            type="number"
+            placeholder="Dorner Charges"
+            required
+            onChange={(e) => {
+              setDornierCharges(e.target.value);
+            }}
+          />
 
-        <input
-          type="submit"
-          value="Sign In"
-          class="submit"
-          onClick={submitLoomCharges}
-        />
+          <input
+            type="submit"
+            value="Sign In"
+            class="submit"
+            onClick={submitLoomCharges}
+          />
+        </div>
+      </div>
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Report Error</h2>
+          <a class="close" href="#">
+            &times;
+          </a>
+          <div class="content">
+            <input type="text" placeholder="error" />
+            <button className="MainButton">Submit</button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
+import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 
 function Yarn() {
@@ -40,42 +42,64 @@ function Yarn() {
     });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div class="login">
-        <div class="form">
-          <h2>Packing Form</h2>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div class="login">
+          <div class="form">
+            <div className="upperButtons">
+              <NavLink to="/worker1">
+                <button class="button">Back</button>
+              </NavLink>
+              <a class="button" href="#popup1">
+                Error
+              </a>
+            </div>
+            <h2>Packing Form</h2>
 
-          <input
-            type="number"
-            vlaue={form.order_no}
-            onChange={handleChange}
-            name="order_no"
-            placeholder="Order Number"
-            required
-          />
-          <br />
-          <input
-            type="number"
-            value={form.length}
-            onChange={handleChange}
-            name="length"
-            placeholder="Length"
-            required
-          />
-          <br />
-          <input
-            type="number"
-            value={form.weight}
-            onChange={handleChange}
-            name="weight"
-            placeholder="Weight"
-            required
-          />
-          <br />
-          <input type="submit" value="SUBMIT" class="submit" />
+            <input
+              type="number"
+              vlaue={form.order_no}
+              onChange={handleChange}
+              name="order_no"
+              placeholder="Order Number"
+              required
+            />
+            <br />
+            <input
+              type="number"
+              value={form.length}
+              onChange={handleChange}
+              name="length"
+              placeholder="Length"
+              required
+            />
+            <br />
+            <input
+              type="number"
+              value={form.weight}
+              onChange={handleChange}
+              name="weight"
+              placeholder="Weight"
+              required
+            />
+            <br />
+            <input type="submit" value="SUBMIT" class="submit" />
+          </div>
+        </div>
+      </form>
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Report Error</h2>
+          <a class="close" href="#">
+            &times;
+          </a>
+          <div class="content">
+            <input type="text" placeholder="error" />
+            <button className="MainButton">Submit</button>
+          </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 }
 export default Yarn;

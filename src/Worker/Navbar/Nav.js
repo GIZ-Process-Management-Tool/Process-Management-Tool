@@ -8,17 +8,17 @@ const Nav = () => {
         <ul>
           <li>
             <NavLink class="active" to="/">
-              Services
+              Service1
             </NavLink>
           </li>
           <li>
             <NavLink class="active" to="/service2">
-              Contact
+              Service2
             </NavLink>
           </li>
           <li>
-            <NavLink class="active" to="/service2">
-              About
+            <NavLink class="active" to="/service3">
+              Service3
             </NavLink>
           </li>
           {/* <li>
