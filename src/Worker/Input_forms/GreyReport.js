@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Loomloadingchart.css";
+import "./InputFormStyle/formBGstyle.css";
+import "./InputFormStyle/formElementStyle.css";
 function GreyReport() {
   return (
     <div class="login">

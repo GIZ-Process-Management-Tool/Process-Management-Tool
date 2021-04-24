@@ -1,5 +1,5 @@
 .timeline {
-  margin: 50px 60px;
+  margin: 90px 90px;
   height: 4px;
   background-color: #ccc;
   position: relative;
@@ -88,7 +88,6 @@
   position: absolute;
   bottom: 6vh;
   background: rgba(255, 0, 0, 0.15);
-  width: 40;
   /* text style */
   font-family: Inter;
   font-style: normal;

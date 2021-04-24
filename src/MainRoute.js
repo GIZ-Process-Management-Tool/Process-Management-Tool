@@ -12,7 +12,7 @@ import Shift from "./Worker/Input_forms/Shift";
 import GreyReport from "./Worker/Input_forms/GreyReport";
 import Repairing from "./Worker/Input_forms/Repairing";
 import DownTime from "./Worker/Input_forms/Dwontime";
-import Demo2 from "./Worker/Input_forms/Demo2";
+
 import Worker from "./Worker/loginForm/Worker";
 import AdminPage from "./Admin/AdminPage";
 import Adminlogin from "./Adminlogin";
@@ -27,7 +27,7 @@ function MainRoute() {
         <Route exact path="/service2" component={Service2} />
 
         <Route exact path="/worker" component={Worker} />
-        <Route exact path="/demo" component={Demo2} />
+
         <Route exact path="/order" component={Order} />
         <Route exact path="/loomloadingchart" component={Loomloadingchart} />
         <Route exact path="/loomperday" component={LoomperDay} />

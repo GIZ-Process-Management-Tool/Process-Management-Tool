@@ -22,7 +22,7 @@
 .DBSearchBar input {
   width: 20vw;
   border: none;
-  padding: 14px;
+  padding: 24px;
   font-size: 1rem;
   border-radius: 16px;
   box-shadow: 1px 1px 2px #bdbdbd;
@@ -118,7 +118,7 @@
   grid-column-end: 3;
   position: relative;
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 40px auto;
   grid-gap: 2vh;
   padding: 2vh;
 }

@@ -1,7 +1,7 @@
-/*Order Form in React js*/
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./InputFormStyle/formBGstyle.css";
+import "./InputFormStyle/formElementStyle.css";
 function Order() {
   return (
     <div class="login">

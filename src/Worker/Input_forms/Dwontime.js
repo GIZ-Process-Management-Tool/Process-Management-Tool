@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./InputFormStyle/formBGstyle.css";
+import "./InputFormStyle/formElementStyle.css";
 function DownTime() {
   return (
     <div class="login">
