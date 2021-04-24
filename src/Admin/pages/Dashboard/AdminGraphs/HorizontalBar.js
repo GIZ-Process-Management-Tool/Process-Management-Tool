@@ -1,13 +1,14 @@
+
 import React from "react";
 import { HorizontalBar } from "react-chartjs-2"; //import Horizontal Bar module from react-chart-js-2
 
 const mydata = {
-  labels: ["Red", "Green", "Yellow"],
+  labels: ["Shift1", "Shift2"],
   datasets: [
     {
-      data: [300, 50, 100],
-      backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-      hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+      data: [200, 150, 100],
+      backgroundColor: ["#BB8FCE", "#665191", "#FFCE56"],
+      hoverBackgroundColor: ["#A569BD", "#624e8c", "#FFCE56"],
     },
   ],
 };
@@ -15,7 +16,7 @@ const mydata = {
 export default function HorizontalBar1() {
   return (
     <div>
-      <h2>Horizontal Bar Example (custom size)</h2>
+      <h2>Shift wise production for yesterday</h2>
       <HorizontalBar
         data={mydata}
         width={100}

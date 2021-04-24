@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 .login {
   width: 350px;
   height: 950px;
@@ -49,4 +53,14 @@
   font-size: 15px;
   margin-top: 40px;
   font-weight: bold;
+}
+.checkBox {
+  font-size: 12px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.checkBox input {
+  height: 10px;
+  width: 10px;
 }
