@@ -3,7 +3,7 @@ import axios from "axios";
 // import { NavLink } from "react-router-dom";
 // import "./Demo2.css";
 import "./InputFormStyle/formBGStyle.css";
-import "./InputFormStyle/formElementStyle.css";
+
 function Winding() {
   const [form, setForm] = useState({
     yarn_received: "",

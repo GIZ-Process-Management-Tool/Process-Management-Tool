@@ -2,10 +2,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// import React from "react";
-// import { NavLink } from "react-router-dom";
 import "./InputFormStyle/formBGStyle.css";
-import "./InputFormStyle/formElementStyle.css";
+
 function Warping() {
   const [form, setForm] = useState({
     order_no: "",

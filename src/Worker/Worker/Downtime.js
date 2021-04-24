@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./InputFormStyle/formBGStyle.css";
-import "./InputFormStyle/formElementStyle.css";
+
 function DownTime() {
   const [form, setForm] = useState({
     date: "",

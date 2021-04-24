@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./InputFormStyle/formBGStyle.css";
-import "./InputFormStyle/formElementStyle.css";
 
 // import React from "react";
 import { NavLink } from "react-router-dom";
@@ -57,8 +56,8 @@ function Order() {
     });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div class="login">
+    <div class="login">
+      <form onSubmit={handleSubmit}>
         <div class="form">
           <NavLink to="/">
             <button>Back</button>
@@ -151,8 +150,8 @@ function Order() {
 
           <input type="submit" value="SUBMIT" class="submit" />
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 export default Order;

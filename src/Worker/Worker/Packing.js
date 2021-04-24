@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./InputFormStyle/formBGStyle.css";
-import "./InputFormStyle/formElementStyle.css";
+
 function Yarn() {
   const [form, setForm] = useState({
     order_no: "",
