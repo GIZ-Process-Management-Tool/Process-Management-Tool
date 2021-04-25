@@ -6,8 +6,10 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function GreyReport() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
-    date: "",
+    date: curDate,
     shift: "",
     loom_no: "",
     worker: "",
@@ -30,7 +32,7 @@ function GreyReport() {
       });
 
     setForm({
-      date: "",
+      date: curDate,
       shift: "",
       loom_no: "",
       worker: "",
@@ -59,14 +61,6 @@ function GreyReport() {
         <div class="login">
           <Appbar processName="GreyReport Form" />
           <div class="form">
-            <input
-              type="date"
-              value={form.date}
-              onChange={handleChange}
-              name="date"
-              placeholder="Date"
-              required
-            />
             <input
               type="number"
               value={form.shift}

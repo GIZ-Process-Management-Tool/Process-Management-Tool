@@ -6,8 +6,11 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function DownTime() {
+  var date = new Date();
+  // date.getDate();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
-    date: "",
+    date: curDate,
     loom: "",
     shift: "",
     weaver: "",
@@ -29,7 +32,7 @@ function DownTime() {
       });
 
     setForm({
-      date: "",
+      date: curDate,
       loom: "",
       shift: "",
       weaver: "",
@@ -55,14 +58,6 @@ function DownTime() {
           <div class="login">
             <Appbar processName="Downtime Form" />
             <div class="form">
-              <input
-                type="date"
-                vlaue={form.date}
-                onChange={handleChange}
-                name="date"
-                placeholder="Date"
-                required
-              />
               <input
                 type="number"
                 value={form.loom}
