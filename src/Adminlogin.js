@@ -13,11 +13,11 @@ const Adminlogin = () => {
         <h1>Admin Login</h1>
 
         <form>
-          {/* <h5>E-mail</h5>
+          <h5>E-mail</h5>
           <input type="text" />
 
           <h5>Password</h5>
-          <input type="password" /> */}
+          <input type="password" />
           <NavLink exact to="/admin">
             <button type="submit" className="login__signInButton">
               Admin

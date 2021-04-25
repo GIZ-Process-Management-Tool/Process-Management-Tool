@@ -19,7 +19,7 @@ import Yarn from "./Worker/Worker/Packing.js";
 import Warping from "./Worker/Worker/Warping.js";
 import Winding from "./Worker/Worker/Winding.js";
 import YarnStorage from "./Worker/Worker/Yarn_storage.js";
-import Error from "./Worker/ErrorMessages/Error";
+
 import LoomingMain from "./Worker/Worker/LoomingMain";
 import Packing from "./Worker/Worker/Packing";
 
@@ -47,7 +47,7 @@ function MainRoute() {
         <Route exact path="/warping" component={Warping} />
         <Route exact path="/winding" component={Winding} />
         <Route exact path="/yarnstorage" component={YarnStorage} />
-        <Route exact path="/error" component={Error} />
+
         <Route exact path="/loom" component={LoomingMain} />
       </Switch>
       {/* <Yarn />

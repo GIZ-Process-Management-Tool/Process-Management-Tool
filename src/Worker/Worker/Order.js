@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
+import { RiErrorWarningFill } from "react-icons/ri";
 
 function Order() {
   const [form, setForm] = useState({
@@ -136,16 +137,34 @@ function Order() {
             />
             <div className="checkBox">
               <h3>Yarn Inverting:</h3>
+
               <input type="checkbox" />
             </div>
+
             <div className="checkBox">
-              <h3>Warping proc:</h3>
+              <h3>Winding :</h3>
+
               <input type="checkbox" />
             </div>
+
             <div className="checkBox">
-              <h3>Creel proc :</h3>
+              <h3>Warping :</h3>
+
               <input type="checkbox" />
             </div>
+
+            <div className="checkBox">
+              <h3>Looming :</h3>
+
+              <input type="checkbox" />
+            </div>
+
+            <div className="checkBox">
+              <h3>Checking :</h3>
+
+              <input type="checkbox" />
+            </div>
+
             <input type="submit" value="SUBMIT" class="submit" />
           </div>
         </div>
