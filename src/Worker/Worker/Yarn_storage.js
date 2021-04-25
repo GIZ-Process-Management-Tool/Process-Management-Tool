@@ -6,12 +6,14 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function YarnStorage() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
     yarn_received: "",
     weight: "",
     quality: "",
     order_no: "",
-    date: "",
+    date: curDate,
     shift: "",
   });
 
@@ -33,7 +35,7 @@ function YarnStorage() {
       weight: "",
       quality: "",
       order_no: "",
-      date: "",
+      date: curDate,
       shift: "",
     });
   }
@@ -87,15 +89,6 @@ function YarnStorage() {
               onChange={handleChange}
               name="order_no"
               placeholder="Order Number"
-              required
-            />
-            <br />
-            <input
-              type="date"
-              value={form.date}
-              onChange={handleChange}
-              name="date"
-              placeholder="Date"
               required
             />
             <br />

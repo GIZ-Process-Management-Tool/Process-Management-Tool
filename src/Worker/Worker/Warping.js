@@ -7,9 +7,11 @@ import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
 
 function Warping() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
     order_no: "",
-    date: "",
+    date: curDate,
     shift: "",
     weight_o_w_y: "",
     waste_weight: "",
@@ -31,7 +33,7 @@ function Warping() {
 
     setForm({
       order_no: "",
-      date: "",
+      date: curDate,
       shift: "",
       weight_o_w_y: "",
       waste_weight: "",
@@ -61,15 +63,6 @@ function Warping() {
               onChange={handleChange}
               name="order_no"
               placeholder="Order NO"
-              required
-            />
-            <br />
-            <input
-              type="date"
-              value={form.date}
-              onChange={handleChange}
-              name="date"
-              placeholder="date"
               required
             />
             <br />
