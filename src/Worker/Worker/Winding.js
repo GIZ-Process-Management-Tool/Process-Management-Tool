@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function Winding() {
   const [form, setForm] = useState({
@@ -59,17 +60,8 @@ function Winding() {
     <div>
       <form onSubmit={handleSubmit}>
         <div className="login">
+          <Appbar processName="Winding" />
           <div className="form">
-            <div className="upperButtons">
-              <NavLink to="/worker1">
-                <button class="button">Back</button>
-              </NavLink>
-              <a class="button" href="#popup1">
-                Error
-              </a>
-            </div>
-            <h2>Winding Form</h2>
-
             <input
               type="number"
               vlaue={form.yarn_received}
@@ -164,18 +156,6 @@ function Winding() {
           </div>
         </div>
       </form>
-      <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

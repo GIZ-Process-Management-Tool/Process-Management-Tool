@@ -16,7 +16,7 @@ const Error = () => {
             &times;
           </a>
           <div class="content">
-            <input type="text" placeholder="error" />
+            <textarea type="text" placeholder="error" />
             <button>Submit</button>
           </div>
         </div>

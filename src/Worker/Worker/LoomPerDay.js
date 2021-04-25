@@ -4,6 +4,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function LoomperDay() {
   const [Date, setDate] = useState(0);
@@ -25,16 +26,8 @@ function LoomperDay() {
   return (
     <div>
       <div class="login">
+        <Appbar processName="LoomperDay Form" />
         <div class="form">
-          <div className="upperButtons">
-            <NavLink to="/worker1">
-              <button class="button">Back</button>
-            </NavLink>
-            <a class="button" href="#popup1">
-              Error
-            </a>
-          </div>
-          <h2>LoomperDay Form</h2>
           <input
             type="Date"
             name=""
@@ -66,18 +59,6 @@ function LoomperDay() {
             class="submit"
             onClick={submitLoomCharges}
           />
-        </div>
-      </div>
-      <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
         </div>
       </div>
     </div>

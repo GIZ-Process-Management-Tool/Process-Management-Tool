@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
-
+import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
 
 function Warping() {
@@ -53,17 +53,8 @@ function Warping() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
+          <Appbar processName="Warping Form" />
           <div class="form">
-            <div className="upperButtons">
-              <NavLink to="/worker1">
-                <button class="button">Back</button>
-              </NavLink>
-              <a class="button" href="#popup1">
-                Error
-              </a>
-            </div>
-
-            <h2>Warping Form</h2>
             <input
               type="number"
               value={form.order_no}
@@ -122,18 +113,6 @@ function Warping() {
           </div>
         </div>
       </form>
-      <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function YarnStorage() {
   const [form, setForm] = useState({
@@ -51,16 +52,8 @@ function YarnStorage() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
+          <Appbar processName="Yarn Storage Form" />
           <div class="form">
-            <div className="upperButtons">
-              <NavLink to="/worker1">
-                <button class="button">Back</button>
-              </NavLink>
-              <a class="button" href="#popup1">
-                Error
-              </a>
-            </div>
-            <h2>Yarn Storage Form</h2>
             <input
               type="number"
               vlaue={form.yarn_received}
@@ -119,18 +112,6 @@ function YarnStorage() {
           </div>
         </div>
       </form>
-      <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

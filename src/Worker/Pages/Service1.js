@@ -4,10 +4,13 @@ import "./Service1.css";
 // import Service2 from "./Service2";
 import Nav from "./../Navbar/Nav";
 import "./../Navbar/Nav.css";
+// import Appbar from "./../AppBar/Appbar";
+
 const Service1 = () => {
   return (
     <>
       <Nav />
+
       <div class="container">
         <div class="box p1">
           <div class="member">

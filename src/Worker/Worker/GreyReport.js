@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function GreyReport() {
   const [form, setForm] = useState({
@@ -56,17 +57,8 @@ function GreyReport() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
+          <Appbar processName="GreyReport Form" />
           <div class="form">
-            <div className="upperButtons">
-              <NavLink to="/worker1">
-                <button class="button">Back</button>
-              </NavLink>
-              <a class="button" href="#popup1">
-                Error
-              </a>
-            </div>
-            <h2>GreyReport Form</h2>
-
             <input
               type="date"
               value={form.date}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function Order() {
   const [form, setForm] = useState({
@@ -59,16 +60,8 @@ function Order() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
+          <Appbar processName="Order Form" />
           <div class="form">
-            <div className="upperButtons">
-              <NavLink to="/worker1">
-                <button class="button">Back</button>
-              </NavLink>
-              <a class="button" href="#popup1">
-                Error
-              </a>
-            </div>
-            <h2>Order Form</h2>
             <input
               type="Number"
               value={form.order_no}
@@ -157,18 +150,6 @@ function Order() {
           </div>
         </div>
       </form>
-      <div id="popup1" class="overlay">
-        <div class="popup">
-          <h2>Report Error</h2>
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <input type="text" placeholder="error" />
-            <button className="MainButton">Submit</button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
