@@ -6,9 +6,11 @@ import axios from "axios";
 // import { NavLink } from "react-router-dom";
 // import "./Demo2.css";
 function Warping() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
     order_no: "",
-    date: "",
+    date: curDate,
     shift: "",
     weight_o_w_y: "",
     waste_weight: "",
@@ -60,8 +62,6 @@ function Warping() {
 
           <h2>Warping Form</h2>
           <input type="number" value={form.order_no} onChange={handleChange} name="order_no" placeholder="Order NO" required />
-          <br />
-          <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="date" required />
           <br />
           <input type="number" name="shift" value={form.shift} onChange={handleChange} placeholder="Shift" required />
           <br />

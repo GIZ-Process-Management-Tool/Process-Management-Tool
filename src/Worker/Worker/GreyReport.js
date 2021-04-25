@@ -3,8 +3,10 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./Loomloadingchart.css";
 function GreyReport() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
-    date: "",
+    date: curDate,
     shift: "",
     loom_no: "",
     worker: "",
@@ -64,7 +66,7 @@ function GreyReport() {
           </NavLink>
           <h2>GreyReport Form</h2>
 
-          <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required />
+          {/* <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required /> */}
           <input type="number" value={form.shift} onChange={handleChange} name="shift" placeholder="Shift" required />
           <input type="number" value={form.loom_no} onChange={handleChange} name="loom_no" placeholder="Loom" required />
           <input type="text" value={form.worker} onChange={handleChange} name="worker" placeholder="Worker" required />
