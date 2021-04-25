@@ -3,9 +3,11 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "./Demo2.css";
 function Repairing() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
     order_no: "",
-    date : "",
+    date : curDate,
     machine: "",
     worker: "",
 
@@ -56,7 +58,7 @@ function Repairing() {
           <h2>Repairing Form</h2>
 
           <input type="number" value={form.order_no} onChange={handleChange} name="order_no" placeholder="Order Number" required />
-          <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required />
+          {/* <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required /> */}
           <input type="number" value={form.machine} onChange={handleChange} name="machine" placeholder="Repairing Machine" required />
           <input type="text" value={form.worker} onChange={handleChange} name="worker" placeholder="Worker" required />
 

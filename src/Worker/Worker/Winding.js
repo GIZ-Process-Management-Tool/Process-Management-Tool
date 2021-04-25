@@ -3,6 +3,8 @@ import axios from "axios";
 // import { NavLink } from "react-router-dom";
 // import "./Demo2.css";
 function Winding() {
+    var date = new Date();
+    var curDate = date.toISOString().slice(0, 10);
     const [form, setForm] = useState({
         yarn_received: "",
         no_of_cones: "",
@@ -11,7 +13,7 @@ function Winding() {
         weight_of_cones: "",
         weight_of_waste: "",
         order_no: "",
-        date: "",
+        date: curDate,
         shift: "",
         package_defect: "",
 
@@ -71,7 +73,6 @@ function Winding() {
                     <input type="number" value={form.weight_of_cones} onChange={handleChange} name="weight_of_cones" placeholder="Weight of cones" required /><br />
                     <input type="number" value={form.weight_of_waste} onChange={handleChange} name="weight_of_waste" placeholder="Weight of Waste" required /><br />
                     <input type="number" value={form.order_no} onChange={handleChange} name="order_no" placeholder="Order No" required /><br />
-                    <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required /><br />
                     <input type="number" value={form.shift} onChange={handleChange} name="shift" placeholder="Shift" required /><br />
                     <input type="text" value={form.package_defect} onChange={handleChange} name="package_defect" placeholder="Package Defect" required /><br />
                     <input type="submit" value="SUBMIT" class="submit" />
