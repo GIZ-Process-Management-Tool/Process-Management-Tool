@@ -1,30 +1,46 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 
 function YarnStorage() {
+	var date = new Date();
+	var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
 		yarn_received: "",
 		weight: "",
 		quality: "",
 		order_no: "",
-		date: "",
+		date: curDate,
 		shift: "",
 	});
-	const complete = () => {
-		axios
-			.put("http://localhost:3006/complete", { orderNo: form.order_no })
-			.then((res) => {
-				console.log(res);
-				alert("successful insert");
-			})
+	// const complete = () => {
+	// 	axios
+	// 		.put("http://localhost:3006/complete", { orderNo: form.order_no })
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 			alert("successful insert");
+	// 		})
 
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// };
+	// function handleSubmit(e) {
+	// 	e.preventDefault();
+	// 	var date = new Date();
+	// 	var curDate = date.toISOString().slice(0, 10);
+	// 	const [form, setForm] = useState({
+	// 		yarn_received: "",
+	// 		weight: "",
+	// 		quality: "",
+	// 		order_no: "",
+	// 		date: curDate,
+	// 		shift: "",
+	// 	});
+	// }
+
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -43,7 +59,7 @@ function YarnStorage() {
 			weight: "",
 			quality: "",
 			order_no: "",
-			date: "",
+			date: curDate,
 			shift: "",
 		});
 	}
@@ -62,19 +78,8 @@ function YarnStorage() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div class="login">
+					<Appbar processName="Yarn Storage Form" />
 					<div class="form">
-						<div className="upperButtons">
-							<NavLink to="/worker1">
-								<button class="button">Back</button>
-							</NavLink>
-							<button class="button" onClick={complete}>
-								Complete
-							</button>
-							<a class="button" href="#popup1">
-								Error
-							</a>
-						</div>
-						<h2>Yarn Storage Form</h2>
 						<input
 							type="number"
 							vlaue={form.yarn_received}
@@ -112,15 +117,6 @@ function YarnStorage() {
 						/>
 						<br />
 						<input
-							type="date"
-							value={form.date}
-							onChange={handleChange}
-							name="date"
-							placeholder="Date"
-							required
-						/>
-						<br />
-						<input
 							type="number"
 							value={form.shift}
 							onChange={handleChange}
@@ -133,19 +129,8 @@ function YarnStorage() {
 					</div>
 				</div>
 			</form>
-			<div id="popup1" className="overlay">
-				<div className="popup">
-					<h2>Report Error</h2>
-					<a className="close" href="#">
-						&times;
-					</a>
-					<div class="content">
-						<input type="text" placeholder="error" />
-						<button className="MainButton">Submit</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	);
 }
+
 export default YarnStorage;

@@ -15,15 +15,15 @@
   font-size: 1em;
   padding: 10px;
   color: #fff;
-  border: 2px solid #06d85f;
-  border-radius: 20px/50px;
+  /* border: 2px solid #06d85f;
+  border-radius: 20px/50px; */
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease-out;
-  background-color: red;
+  /* background-color: red; */
 }
 .button:hover {
-  background: #06d85f;
+  background: red;
 }
 h2 {
   align-items: center;
@@ -57,9 +57,19 @@ h2 {
   visibility: visible;
   opacity: 1;
 }
-.content {
-  margin-left: 30px;
-  font-size: 15px;
+.content input {
+  height: 40px;
+  /* margin: 10px 0px; */
+  background: white;
+  color: black;
+  font-size: 16;
+  font-weight: bold;
+  font-family: Inter;
+  border: none;
+  padding: 16px;
+  font-size: 1rem;
+  border-radius: 16px;
+  box-shadow: 1px 1px 2px #bdbdbd;
 }
 
 .popup {
