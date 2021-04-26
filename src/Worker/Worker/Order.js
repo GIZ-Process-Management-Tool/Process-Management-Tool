@@ -1,11 +1,9 @@
 /*Order Form in React js*/
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
-import { RiErrorWarningFill } from "react-icons/ri";
 
 function Order() {
 	const [process, setProcess] = useState([
@@ -85,15 +83,7 @@ function Order() {
 			<form onSubmit={handleSubmit}>
 				<div class="login">
 					<div class="form">
-						<div className="upperButtons">
-							<NavLink to="/worker1">
-								<button class="button">Back</button>
-							</NavLink>
-							<a class="button" href="#popup1">
-								<RiErrorWarningFill style={{ fontSize: "24px" }} /> Error
-							</a>
-						</div>
-						<h2>Order Form</h2>
+						<Appbar processName="Order Form" />
 						<input
 							type="Number"
 							value={form.order_no}
