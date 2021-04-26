@@ -25,10 +25,17 @@ function MainRoute() {
     <>
       <Switch>
         <Route exact path="/" component={Adminlogin} />
+<<<<<<< Updated upstream
         {/* <Route exact path="/packing" component={Yarn} /> */}
         {/* <Route exact path="/warping" component={Warping} /> */}
         {/* <Route exact path="/winding" component={Winding} /> */}
         {/* <Route exact path="/yarn_storage" component={YarnStorage} /> */}
+=======
+        <Route exact path="/packing" component={Yarn} />
+        <Route exact path="/winding" component={Winding} />
+        <Route exact path="/warping" component={Warping} />
+        <Route exact path="/yarn_storage" component={YarnStorage} />
+>>>>>>> Stashed changes
         <Route exact path="/worker1" component={Service1} />
         <Route exact path="/admin" component={AdminPage} />
         <Route exact path="/service2" component={Service2} />

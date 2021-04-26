@@ -4,25 +4,17 @@ var con = require('../config/database.js');
 app.use(express.json());
 var mysql = require('mysql');
 
-// const express = require("express");
 
-// const cors = require("cors");
-// var database = require('../config/database');
-// const app = express();
-// const port = 5000 || process.env.PORT;
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(
-//     cors({
-//         origin: 'http://localhost:3000',
-//         credentials: true,
-//     })
-// );
+app.get("/grey_report", (req, res) => {
 
-// app.get("/", (req, res) => {
-//     res.send("<h1>Hello world</h1>");
-// });
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-1", function(err, data, fields) {
+        if (err) throw err;
+        res.send(data);
+    });
+
+});
+
 app.post('/grey_report', (req, res) => {
 
         const params = req.body

@@ -38,6 +38,14 @@ app.use('/', [
 ]);
 
 app.use('/', [
+    require('./Admin/Graphs/loom_analysis.js')
+]);
+
+app.use('/', [
+    require('./Admin/Graphs/shift_analysis.js')
+]);
+
+app.use('/', [
     require('./Worker/downtime.js')
 ]);
 

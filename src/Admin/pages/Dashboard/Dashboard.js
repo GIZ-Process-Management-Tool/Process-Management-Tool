@@ -5,6 +5,8 @@ import { FaRupeeSign } from "react-icons/fa";
 import "./Dashboard.css";
 // import BarChartModel from "./BarChart";
 import PieChartModel from "./AdminGraphs/PieChart";
+import GroupedBar from "./AdminGraphs/Loom_analysis";
+import LineChart from "./AdminGraphs/shift_analysis";
 import LineGraphModel from "./AdminGraphs/LineGraph";
 import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
 import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
@@ -67,17 +69,23 @@ export default function Dashboard() {
           <Timeline />
           {/* <div>HelloHelloHelloHelloHelloHelloHelloHelloHelloH</div> */}
         </div>
+        {/* <div className="chartContainer">
+          <LineGraphModel />
+        </div> */}
+        {/* <div className="chartContainer">
+          <HorizontalBar1 />
+        </div> */}
+        <div className="chartContainer">
+          <GroupedBar />
+        </div>
+        <div className="chartContainer">
+          <LineChart />
+        </div>
         <div className="chartContainer">
           <PieChartModel />
         </div>
-        <div className="chartContainer">
-          <LineGraphModel />
-        </div>
-        <div className="chartContainer">
+      <div className="chartContainer">
           <HorizontalBarChart />
-        </div>
-        <div className="chartContainer">
-          <HorizontalBar1 />
         </div>
       </div>
     </div>

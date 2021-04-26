@@ -1,5 +1,5 @@
 /*Order Form in React js*/
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 
 // import React from "react";
@@ -8,6 +8,8 @@ import axios from "axios";
 function Warping() {
   var date = new Date();
   var curDate = date.toISOString().slice(0, 10);
+  const [data, setData] = useState([
+  ]);
   const [form, setForm] = useState({
     order_no: "",
     date: curDate,
@@ -17,6 +19,18 @@ function Warping() {
     package_defect: ""
 
   });
+
+  useEffect((e) => {
+    axios
+      .get("http://localhost:3006/warping")
+      .then((res) => {
+        setData(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
 
   function handleSubmit(e) {
 
@@ -55,7 +69,21 @@ function Warping() {
       }
     });
   }
+
+
+  function createSelectItems() {
+    let items = [];
+    for (let i = 0; i < data.length; i++) {
+      items.push(
+      <option key={data[i].order_no} value={data[i].order_no}>
+        {data[i].order_no+" - "+data[i].company}
+      </option>);
+    }
+    return items;
+  }
+
   return (
+<<<<<<< Updated upstream
     <form onSubmit={handleSubmit}>
       <div class="login">
         <div class="form">
@@ -72,6 +100,59 @@ function Warping() {
           <input type="text" name="package_defect" value={form.package_defect} onChange={handleChange} placeholder="Package Pefect" required />
           <br />
           <input type="submit" value="SUBMIT" class="submit" />
+=======
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div class="login">
+          <Appbar processName="Warping Form" />
+          <div class="form">
+          <select 
+            value={form.order_no}
+            name="order_no"
+            onChange={handleChange}
+            placeholder="Order no.">
+              {createSelectItems()}
+            </select>
+            <br />
+            <input
+              type="number"
+              name="shift"
+              value={form.shift}
+              onChange={handleChange}
+              placeholder="Shift"
+              required
+            />
+            <br />
+            <input
+              type="number"
+              name="weight_o_w_y"
+              value={form.weight_o_w_y}
+              onChange={handleChange}
+              placeholder="Weight of Waste Yarn"
+              required
+            />
+            <br />
+            <input
+              type="number"
+              name="waste_weight"
+              value={form.waste_weight}
+              onChange={handleChange}
+              placeholder="Waste Weight"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name="package_defect"
+              value={form.package_defect}
+              onChange={handleChange}
+              placeholder="Package Defect"
+              required
+            />
+            <br />
+            <input type="submit" value="SUBMIT" class="submit" />
+          </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </form>

@@ -3,17 +3,6 @@ var app = express();
 var con = require('../config/database.js');
 app.use(express.json());
 var mysql = require('mysql');
-
-// app.use(express.urlencoded({ extended: false }));
-// app.use(
-//     cors({
-//         origin: 'http://localhost:3000',
-//         credentials: true,
-//     })
-// );
-// app.get("/", (req, res) => {
-//     res.send("<h1>Hello world</h1>");
-// });
 app.post('/downtime', (req, res) => {
 
     const params = req.body
