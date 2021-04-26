@@ -9,7 +9,7 @@ function Shift() {
 	const [Date, setDate] = useState(0);
 	const [TotalPicks, setTpicks] = useState(0);
 	const [Loom, setLoom] = useState(0);
-
+	console.log();
 	const submitShiftData = () => {
 		Axios.post("http://localhost:3006/shiftInsert", {
 			Date: Date,

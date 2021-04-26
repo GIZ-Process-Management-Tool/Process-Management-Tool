@@ -13,7 +13,18 @@ function YarnStorage() {
 		date: "",
 		shift: "",
 	});
+	const complete = () => {
+		axios
+			.put("http://localhost:3006/complete", { orderNo: form.order_no })
+			.then((res) => {
+				console.log(res);
+				alert("successful insert");
+			})
 
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -56,7 +67,9 @@ function YarnStorage() {
 							<NavLink to="/worker1">
 								<button class="button">Back</button>
 							</NavLink>
-							<button class="button">Complete</button>
+							<button class="button" onClick={complete}>
+								Complete
+							</button>
 							<a class="button" href="#popup1">
 								Error
 							</a>

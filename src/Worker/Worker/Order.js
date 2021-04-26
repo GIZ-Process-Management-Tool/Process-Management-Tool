@@ -7,6 +7,14 @@ import "./InputFormStyle/formBGStyle.css";
 import { RiErrorWarningFill } from "react-icons/ri";
 
 function Order() {
+	const [process, setProcess] = useState([
+		{ id: 0, name: "Yarn Inverting", status: false },
+		{ id: 1, name: "Winding", status: false },
+		{ id: 2, name: "Warping", status: false },
+		{ id: 3, name: "Looming", status: false },
+		{ id: 4, name: "Checking", status: false },
+		{ id: 5, name: "Repairing", status: false },
+	]);
 	const [form, setForm] = useState({
 		order_no: "",
 		date: "",
@@ -19,11 +27,26 @@ function Order() {
 		target: "",
 	});
 
+	const toggleCheck = (e) => {
+		process.map(
+			(items) =>
+				items.id === parseInt(e.target.value) &&
+				(items.status = e.target.checked)
+		);
+		setProcess([...process], process);
+	};
+
 	function handleSubmit(e) {
 		e.preventDefault();
-
+		let allProc = [];
+		process.map((eachProc) => {
+			if (eachProc.status === true) {
+				allProc.push(eachProc.id);
+			}
+			return allProc;
+		});
 		axios
-			.post("http://localhost:3006/order", form)
+			.post("http://localhost:3006/order", { form: form, process: allProc })
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
@@ -142,26 +165,23 @@ function Order() {
 							placeholder="Target"
 							required
 						/>
-						<div className="checkBox">
-							<h3>Yarn Inverting:</h3>
-							<input type="checkbox" />
-						</div>
-						<div className="checkBox">
-							<h3>Winding :</h3>
-							<input type="checkbox" />
-						</div>
-						<div className="checkBox">
-							<h3>Warping :</h3>
-							<input type="checkbox" />
-						</div>
-						<div className="checkBox">
-							<h3>Looming :</h3>
-							<input type="checkbox" />
-						</div>
-						<div className="checkBox">
-							<h3>Checking :</h3>
-							<input type="checkbox" />
-						</div>
+						{/* process checkBoxes */}
+						{process.map((eachProc) => {
+							const { id, name, status } = eachProc;
+							return (
+								<>
+									<div key={id} className="checkBox">
+										<h3>{name}</h3>
+										<input
+											value={id}
+											type="checkbox"
+											checked={status}
+											onChange={toggleCheck}
+										/>
+									</div>
+								</>
+							);
+						})}
 						<input type="submit" value="SUBMIT" class="submit" />
 					</div>
 				</div>
