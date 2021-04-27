@@ -2,7 +2,7 @@
   margin: 90px 90px;
   height: 4px;
   background-color: #ccc;
-  position: relative;
+  /* position: relative; */
 }
 
 .timeline-progress {
@@ -63,10 +63,10 @@
   left: 50%;
   transform: rotate(-45deg) translateX(-50%);
 } */
-
+/* 
 .timeline-item.active::before {
   background-color: white;
-}
+} */
 
 .timeline-item.active::before {
   color: #fff;
@@ -81,6 +81,20 @@
 
 .timeline-item.active .timeline-content::before {
   background-color: #4054b2;
+}
+
+.done {
+  border: 14px solid #00ff00;
+  color: #fff;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  display: block;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -5px;
+  right: -2px;
 }
 
 .showError {

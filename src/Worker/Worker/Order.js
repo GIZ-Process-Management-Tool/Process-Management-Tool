@@ -165,7 +165,9 @@ function Order() {
               <input type="checkbox" />
             </div>
 
-            <input type="submit" value="SUBMIT" class="submit" />
+            <button type="submit" value="SUBMIT" class="submit">
+              SUBMIT
+            </button>
           </div>
         </div>
       </form>

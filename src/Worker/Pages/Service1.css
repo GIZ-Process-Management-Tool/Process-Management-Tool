@@ -12,31 +12,31 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  background-color: #f4f6ff;
 }
 /* All boxs position width and height  */
 .serviceBox {
-  width: 345px;
-  height: 540px;
+  width: 20em;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   -webkit-transition: 200ms ease-in-out;
   -o-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .serviceBox:hover {
-  font-size: 19px;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.7);
 }
 /* BOXES END */
 
 /* ACTORS | SINGERS |  */
 .member {
   width: 100%;
-  text-align: center;
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0px;
 }
 .member img {
   height: 200px;
@@ -54,25 +54,24 @@
 }
 .member h1 {
   color: #fff;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 29px;
   letter-spacing: 3px;
 }
 .member h2 {
   color: #fff;
   margin-top: 10px;
-  font-weight: 100;
+  font-weight: 300;
 }
 .member button {
   color: #fff;
-  width: 40%;
+
   border: none;
   padding: 13px;
   outline: none;
-  font-size: 15px;
-  margin-top: 10px;
+  font-size: 16px;
   letter-spacing: 2px;
-  border-radius: 4px;
+  border-radius: 8px;
   -webkit-transition: 300ms ease-in-out;
   -o-transition: 300ms ease-in-out;
   transition: 300ms ease-in-out;
@@ -89,35 +88,6 @@
 /* ACTORS | SINGERS | END  */
 
 /* FAVS START */
-.favs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 40px;
-  -ms-flex-item-align: center;
-  align-self: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.favs button {
-  margin: 10px;
-  width: 20%;
-  background: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.favs button:hover {
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
-}
-.favs .fas {
-  font-size: 17px;
-}
-/* FAVS end */
 
 /* background gradient */
 .p1 {
@@ -276,22 +246,6 @@
 }
 
 /*  FOLLOW*/
-.Follow {
-  background: url("https://pbs.twimg.com/profile_images/959092900708544512/v4Db9QRv_bigger.jpg")
-    no-repeat center / contain;
-  width: 50px;
-  height: 50px;
-  bottom: 9px;
-  right: 20px;
-  display: block;
-  position: fixed;
-  border-radius: 50%;
-  z-index: 999;
-  animation: rotation 10s infinite linear;
-}
-.checBox {
-  margin: 5px 50px;
-}
 
 @-webkit-keyframes rotation {
   from {

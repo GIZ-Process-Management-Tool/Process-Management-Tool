@@ -10,12 +10,12 @@ const Appbar = ({ processName }) => {
   return (
     <>
       <div className="Appbar-main">
-        <div className="firstIcon">
+        <div className="brandIconStyle">
           <img src={brandLogo} alt="Vatan Textiles" />
         </div>
 
         <div className="firstText">
-          <h4 style={{ fontSize: "24px", color: "#ffff", fontStyle: "bold" }}>
+          <h4 style={{ fontSize: "20px", color: "#ffff", fontStyle: "bold" }}>
             {processName}
           </h4>
         </div>
@@ -24,10 +24,10 @@ const Appbar = ({ processName }) => {
             style={{ fontSize: "44px", color: "#ffff", fontStyle: "bold" }}
           />
         </div>
-        <div className="firstIcon">
+        <div className="ErrorIcon">
           <a class="button" href="#popup1">
             <RiErrorWarningFill
-              style={{ fontSize: "44px", color: "#ffff", fontStyle: "bold" }}
+              style={{ fontSize: "32px", color: "#ffff", fontStyle: "bold" }}
             />
           </a>
           <div id="popup1" class="overlay">
