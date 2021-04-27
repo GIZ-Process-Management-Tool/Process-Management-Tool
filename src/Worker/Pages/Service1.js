@@ -40,30 +40,17 @@ const Service1 = () => {
           <div className="checBox">
             <input type="checkbox" />
           </div>
-<<<<<<< Updated upstream
-          <div class="member">
-=======
         </div>
         <div className="serviceBox p4">
           <div className="member">
->>>>>>> Stashed changes
             <img
               src="https://images.unsplash.com/photo-1517146783983-418c681b56c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGV4dGlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
-<<<<<<< Updated upstream
-            <h1>2)loadingchart(input)</h1>
-            <h2>Process-2</h2>
-            <NavLink to="/loomloadingchart">
-              <button>
-                <i class="fas fa-video"></i> loomloading
-              </button>
-=======
             <h1>Winding </h1>
             <h2>Process-2</h2>
             <NavLink to="/winding">
               <button>Winding</button>
->>>>>>> Stashed changes
             </NavLink>
             <div class="favs">
               <button class="mark">
@@ -78,34 +65,17 @@ const Service1 = () => {
             </div>
           </div>
         </div>
-<<<<<<< Updated upstream
-
-        <div class="box p4">
-          <div className="checBox">
-            <input type="checkbox" />
-          </div>
-          <div class="member">
-=======
         <div className="serviceBox p5">
           <div className="member">
->>>>>>> Stashed changes
             <img
               src="https://images.unsplash.com/photo-1611574557210-e18bc59fd02b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHRleHRpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
-<<<<<<< Updated upstream
-            <h1>3) Loom per day charges</h1>
-            <h2>Process-3</h2>
-            <NavLink to="/loomperday">
-              <button>
-                <i class="fas fa-video"></i> loomlperday
-=======
             <h1>Warping </h1>
             <h2>Process-3</h2>
             <NavLink to="/warping">
               <button>
                 <i className="fas fa-video"></i> Warping
->>>>>>> Stashed changes
               </button>
             </NavLink>
 

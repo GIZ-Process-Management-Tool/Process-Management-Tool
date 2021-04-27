@@ -1,13 +1,7 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 var express = require('express');
 var app = express();
 var con = require('../config/database.js');
 app.use(express.json());
-<<<<<<< Updated upstream
-=======
 var mysql = require('mysql');
 
 
@@ -20,7 +14,6 @@ app.get("/warping", (req, res) => {
 
 });
 
->>>>>>> Stashed changes
 app.post('/warping', (req, res) => {
 
     const params = req.body

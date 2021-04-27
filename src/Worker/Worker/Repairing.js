@@ -76,20 +76,6 @@ function Repairing() {
   }
 
   return (
-<<<<<<< Updated upstream
-    <form onSubmit={handleSubmit}>
-      <div class="login">
-        <div class="form">
-          <NavLink to="/">
-            <button>Back</button>
-          </NavLink>
-          <h2>Repairing Form</h2>
-
-          <input type="number" value={form.order_no} onChange={handleChange} name="order_no" placeholder="Order Number" required />
-          {/* <input type="date" value={form.date} onChange={handleChange} name="date" placeholder="Date" required /> */}
-          <input type="number" value={form.machine} onChange={handleChange} name="machine" placeholder="Repairing Machine" required />
-          <input type="text" value={form.worker} onChange={handleChange} name="worker" placeholder="Worker" required />
-=======
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
@@ -118,12 +104,12 @@ function Repairing() {
               placeholder="Worker"
               required
             />
->>>>>>> Stashed changes
 
           <input type="submit" value="Sign In" class="submit" />
         </div>
       </div>
-    </form>
+      </form>
+      </div>
   );
 }
 export default Repairing;

@@ -34,10 +34,7 @@ function DownTime() {
       });
 
     setForm({
-<<<<<<< Updated upstream
-=======
       // date: curDate,
->>>>>>> Stashed changes
       date: "",
       loom: "",
       shift: "",
@@ -67,25 +64,6 @@ function DownTime() {
   };
 
   return (
-<<<<<<< Updated upstream
-    <form onSubmit={handleSubmit}>
-      <div class="login">
-        <div class="form">
-          <NavLink to="/">
-            <button>Back</button>
-          </NavLink>
-          <h2>Downtime Form</h2>
-
-          {/* <input type="date" vlaue={form.date} onChange={handleChange} name="date" placeholder="Date" required /> */}
-          <input type="number" value={form.loom} onChange={handleChange} name="loom" placeholder="Loom" required />
-          <input type="number" value={form.shift} onChange={handleChange} name="shift" placeholder="Shift" required />
-          <input type="text" value={form.weaver} onChange={handleChange} name="weaver" placeholder="Weaver Name" required />
-          <input type="time" value={form.downtime} onChange={handleChange} name="downtime" placeholder="Downtime" required />
-          <input type="string" value={form.remark} onChange={handleChange} name="remark" placeholder="Remark" required />
-          <input type="submit" value="SUBMIT" class="submit" />
-        </div>
-=======
-    <>
       <div>
         <form onSubmit={handleSubmit}>
           <div class="login">
@@ -153,9 +131,7 @@ function DownTime() {
             </div>
           </div>
         </form>
->>>>>>> Stashed changes
       </div>
-    </form>
   );
 }
 export default DownTime;
