@@ -14,9 +14,13 @@ function AdminPage() {
         <Sidebar></Sidebar>
         <Switch>
           <Route exact path="/admin" component={Dashboard} />
-          <Route path="/orders" component={AdminOrder} />
+          <Route exact path="/admin/orders" component={AdminOrder} />
 
-          <Route path="/progresstracking" component={AdminProgressTracking} />
+          <Route
+            exact
+            path="/admin/progresstracking"
+            component={AdminProgressTracking}
+          />
         </Switch>
       </div>
     </BrowserRouter>

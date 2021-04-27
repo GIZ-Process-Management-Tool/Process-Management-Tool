@@ -57,9 +57,9 @@ function GreyReport() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="login">
-          <Appbar processName="GreyReport Form" />
-          <div className="form">
+        <div class="login">
+          <Appbar processName="Grey Report" />
+          <div class="form">
             <input
               type="number"
               value={form.shift}

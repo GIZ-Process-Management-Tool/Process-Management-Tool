@@ -8,11 +8,13 @@ const Appbar = ({ processName }) => {
   return (
     <>
       <div className="Appbar-main">
-        <div className="brandIconStyle">
-          <img src={brandLogo} alt="Vatan Textiles" />
-        </div>
+        <div className="appBarHeader">
+          <img
+            className="brandIconStyle"
+            src={brandLogo}
+            alt="Vatan Textiles"
+          />
 
-        <div className="firstText">
           <h4 style={{ fontSize: "20px", color: "#ffff", fontStyle: "bold" }}>
             {processName}
           </h4>
