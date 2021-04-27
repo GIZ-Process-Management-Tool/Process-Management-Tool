@@ -26,7 +26,7 @@ export default function GroupedBar() {
     Axios
       .get("http://localhost:3006/loom_analysis")
       .then(res => {
-        console.log(res);
+        // console.log(res);
         for (const dataObj of res.data) {
           loom.push("loom " + dataObj.loom_no);
           target.push(parseInt(dataObj.target_rs));

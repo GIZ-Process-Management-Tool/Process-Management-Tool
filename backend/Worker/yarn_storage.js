@@ -16,7 +16,9 @@ app.get("/yarn", (req, res) => {
 
 app.post('/yarn', (req, res) => {
 
-    const params = req.body
+    const params = req.body.form
+	params["yarn_received"] = req.body.received;
+	console.log(params);
     con.query('INSERT INTO yarn_storage SET ?', params, (err, rows) => {
         // connection.release()
         if (!err) {

@@ -14,7 +14,7 @@ export default function LineChart(){
     Axios
       .get("http://localhost:3006/shift_analysis")
       .then(res => {
-        // console.log(res);
+        console.log(res);
         for (const dataObj of res.data) {
           var d1 = dataObj.s_date
           var dt = new Date(d1);
@@ -78,8 +78,6 @@ export default function LineChart(){
       } />
     </div>
   )
-
-
 };
 
 
