@@ -24,7 +24,8 @@ app.use(express.json());
 var mysql = require("mysql");
 
 app.post("/yarn", (req, res) => {
-	const params = req.body;
+	const params = req.body.form;
+	const yarn_received = req.body.received;
 	con.query("INSERT INTO yarn_storage SET ?", params, (err, rows) => {
 		// connection.release()
 		if (!err) {
