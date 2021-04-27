@@ -22,9 +22,7 @@
   transition: all 0.3s ease-out;
   /* background-color: red; */
 }
-.button:hover {
-  background: red;
-}
+
 h2 {
   align-items: center;
 }

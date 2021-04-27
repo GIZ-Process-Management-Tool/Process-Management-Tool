@@ -91,7 +91,7 @@ function GreyReport() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
-          <Appbar processName="GreyReport Form" />
+          <Appbar processName="Grey Report" />
           <div class="form">
 
           <select 
@@ -251,7 +251,7 @@ function GreyReport() {
             placeholder="Grade"
             required
           />
-          <input type="submit" value="SUBMIT" class="submit" />
+          <input type="submit" value="SUBMIT" className="submit" />
         </div>
       </div>
     </div>
