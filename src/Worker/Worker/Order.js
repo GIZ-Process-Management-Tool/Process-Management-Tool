@@ -82,8 +82,8 @@ function Order() {
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
+          <Appbar processName="Order Form" />
           <div class="form">
-            <Appbar processName="Order Form" />
             <input
               type="Number"
               value={form.order_no}
@@ -173,7 +173,7 @@ function Order() {
                 </>
               );
             })}
-            <input type="submit" value="SUBMIT" class="submit" />
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>

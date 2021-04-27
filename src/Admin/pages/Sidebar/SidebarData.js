@@ -17,14 +17,14 @@ export const SidebarData = [
     path: "/reports",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
-    pathAd: "/orders",
+    pathAd: "/admin/orders",
   },
   {
     title: "Process Tracking",
     path: "/products",
     icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",
-    pathAd: "/progresstracking",
+    pathAd: "/admin/progresstracking",
   },
   {
     title: "Expenses",

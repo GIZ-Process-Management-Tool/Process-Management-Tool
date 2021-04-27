@@ -77,7 +77,7 @@ function Repairing() {
               required
             />
 
-            <input type="submit" value="Sign In" class="submit" />
+            <input type="submit" value="Sign In" className="submit" />
           </div>
         </div>
       </form>
