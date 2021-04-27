@@ -1,0 +1,6 @@
+.MainDashboardContainer {
+  display: grid;
+  grid-template-rows: 80px auto;
+  grid-row-gap: 8px;
+  background-color: #f4f6ff;
+}

@@ -22,6 +22,7 @@ import YarnStorage from "./Worker/Worker/Yarn_storage.js";
 
 import LoomingMain from "./Worker/Worker/LoomingMain";
 import Packing from "./Worker/Worker/Packing";
+import Dashboard from "./Admin/pages/Dashboard/Dashboard";
 
 function MainRoute() {
   return (
@@ -47,7 +48,6 @@ function MainRoute() {
         <Route exact path="/warping" component={Warping} />
         <Route exact path="/winding" component={Winding} />
         <Route exact path="/yarnstorage" component={YarnStorage} />
-
         <Route exact path="/loom" component={LoomingMain} />
       </Switch>
       {/* <Yarn />

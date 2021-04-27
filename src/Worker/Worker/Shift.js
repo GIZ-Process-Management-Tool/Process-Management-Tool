@@ -6,15 +6,19 @@ import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Shift() {
-  const [Date, setDate] = useState(0);
-  const [TotalPicks, setTpicks] = useState(0);
-  const [Loom, setLoom] = useState(0);
+  var date = new Date();
+  let dt = date.toISOString().slice(0, 10);
+  const [s_date, curDate] = useState(dt);
+  const [total_picks, setTpicks] = useState(0);
+  const [loom_no, setLoom] = useState(0);
 
   const submitShiftData = () => {
+    let dt1 = date.toISOString().slice(0, 10);
+    curDate(dt1);
     Axios.post("http://localhost:3006/shiftInsert", {
-      Date: Date,
-      TotalPicks: TotalPicks,
-      Loom: Loom,
+      s_date: s_date,
+      total_picks: total_picks,
+      loom_no: loom_no,
     }).then(() => {
       alert("successful insert");
     });
@@ -22,18 +26,9 @@ function Shift() {
 
   return (
     <div>
-      <div className="login">
+      <div class="login">
         <Appbar processName="Shift Form" />
-        <div className="form">
-          <input
-            type="date"
-            placeholder="Date"
-            required
-            onChange={(e) => {
-              setDate(e.target.value);
-            }}
-          />
-
+        <div class="form">
           <input
             type="number"
             placeholder="Loom"
@@ -53,7 +48,7 @@ function Shift() {
           <input
             type="submit"
             value="Sign In"
-            className="submit"
+            class="submit"
             onClick={submitShiftData}
           />
         </div>

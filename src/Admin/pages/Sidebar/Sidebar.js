@@ -3,6 +3,7 @@ import { SidebarData } from "./SidebarData";
 import "./Sidebar.css";
 import brandLogo from "./brandIcon.png";
 import { BiLogOut } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 // https://react-icons.github.io/react-icons/icons?name=bi
 
@@ -22,12 +23,14 @@ function Sidebar() {
             {SidebarData.map((menu, index) => {
               console.log(index);
               return (
-                <>
-                  <div className="MenuContainer" key={index}>
-                    <div className="MenuIcon">{menu.icon}</div>
-                    <div className="MenuTitle">{menu.title}</div>
+                <Link to={menu.pathAd}>
+                  <div>
+                    <div className="MenuContainer" key={index}>
+                      <div className="MenuIcon">{menu.icon}</div>
+                      <div className="MenuTitle">{menu.title}</div>
+                    </div>
                   </div>
-                </>
+                </Link>
               );
             })}
           </div>

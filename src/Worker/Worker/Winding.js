@@ -5,6 +5,8 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Winding() {
+  var date = new Date();
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
     yarn_received: "",
     no_of_cones: "",
@@ -13,7 +15,7 @@ function Winding() {
     weight_of_cones: "",
     weight_of_waste: "",
     order_no: "",
-    date: "",
+    date: curDate,
     shift: "",
     package_defect: "",
   });
@@ -39,7 +41,7 @@ function Winding() {
       weight_of_cones: "",
       weight_of_waste: "",
       order_no: "",
-      date: "",
+      date: curDate,
       shift: "",
       package_defect: "",
     });
@@ -121,15 +123,6 @@ function Winding() {
               onChange={handleChange}
               name="order_no"
               placeholder="Order No"
-              required
-            />
-            <br />
-            <input
-              type="date"
-              value={form.date}
-              onChange={handleChange}
-              name="date"
-              placeholder="Date"
               required
             />
             <br />
