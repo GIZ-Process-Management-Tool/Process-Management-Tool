@@ -29,12 +29,20 @@ app.use('/', [
     require('./Worker/warping.js')
 ]);
 
+// app.use('/', [
+//     require('./Admin/Graphs/piechart.js')
+// ]);
+
+// app.use('/', [
+//     require('./Admin/Graphs/horizontal_bar_chart.js')
+// ]);
+
 app.use('/', [
-    require('./Admin/Graphs/piechart.js')
+    require('./Admin/Graphs/Loom_analysis.js')
 ]);
 
 app.use('/', [
-    require('./Admin/Graphs/horizontal_bar_chart.js')
+    require('./Admin/Graphs/Shift_analysis.js')
 ]);
 
 app.use('/', [

@@ -34,11 +34,6 @@ export default function PieChartModel() {
               "#CCD1D1 "
             ],
               hoverBackgroundColor: [
-                // "#A569BD",
-                // "#2b4775",
-                // "#624e8c",
-                // "#ffbb33",
-                // "#9999ff",
                 "#BB8FCE",
                 "#A9CCE3",
                 "#665191",
