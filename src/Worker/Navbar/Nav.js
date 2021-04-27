@@ -7,17 +7,17 @@ const Nav = ({ processName }) => {
       <div className="Nav-main">
         <ul>
           <li>
-            <NavLink class="active" to="/">
+            <NavLink className="active" to="/">
               Service1
             </NavLink>
           </li>
           <li>
-            <NavLink class="active" to="/service2">
+            <NavLink className="active" to="/service2">
               Service2
             </NavLink>
           </li>
           <li>
-            <NavLink class="active" to="/service3">
+            <NavLink className="active" to="/service3">
               Service3
             </NavLink>
           </li>

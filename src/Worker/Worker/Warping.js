@@ -1,7 +1,6 @@
 /*Order Form in React js*/
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
@@ -52,9 +51,9 @@ function Warping() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="login">
+        <div className="login">
           <Appbar processName="Warping Form" />
-          <div class="form">
+          <div className="form">
             <input
               type="number"
               value={form.order_no}
@@ -109,7 +108,7 @@ function Warping() {
               required
             />
             <br />
-            <input type="submit" value="SUBMIT" class="submit" />
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>

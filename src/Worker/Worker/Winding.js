@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -152,7 +151,7 @@ function Winding() {
               required
             />
             <br />
-            <input type="submit" value="SUBMIT" class="submit" />
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>

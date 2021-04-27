@@ -1,7 +1,6 @@
 import React from "react";
 import Axios from "axios";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -25,9 +24,9 @@ function LoomperDay() {
 
   return (
     <div>
-      <div class="login">
+      <div className="login">
         <Appbar processName="LoomperDay Form" />
-        <div class="form">
+        <div className="form">
           <input
             type="Date"
             name=""
@@ -56,7 +55,7 @@ function LoomperDay() {
           <input
             type="submit"
             value="Sign In"
-            class="submit"
+            className="submit"
             onClick={submitLoomCharges}
           />
         </div>

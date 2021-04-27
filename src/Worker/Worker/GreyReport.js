@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -56,9 +55,9 @@ function GreyReport() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="login">
+        <div className="login">
           <Appbar processName="GreyReport Form" />
-          <div class="form">
+          <div className="form">
             <input
               type="date"
               value={form.date}
@@ -131,17 +130,17 @@ function GreyReport() {
               placeholder="Grade"
               required
             />
-            <input type="submit" value="SUBMIT" class="submit" />
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>
-      <div id="popup1" class="overlay">
-        <div class="popup">
+      <div id="popup1" className="overlay">
+        <div className="popup">
           <h2>Report Error</h2>
-          <a class="close" href="#">
+          <a className="close" href="#">
             &times;
           </a>
-          <div class="content">
+          <div className="content">
             <input type="text" placeholder="error" />
             <button className="MainButton">Submit</button>
           </div>
@@ -217,7 +216,7 @@ function GreyReport() {
             placeholder="Grade"
             required
           />
-          <input type="submit" value="SUBMIT" class="submit" />
+          <input type="submit" value="SUBMIT" className="submit" />
         </div>
       </div>
     </div>

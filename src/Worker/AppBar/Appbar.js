@@ -1,7 +1,5 @@
 import React from "react";
 import "./../AppBar/Appbar.css";
-import { NavLink } from "react-router-dom";
-import { BiArrowBack } from "react-icons/bi";
 import { BiCheck } from "react-icons/bi";
 import { RiErrorWarningFill } from "react-icons/ri";
 import "./../ErrorMessages/Error.css";
@@ -25,18 +23,18 @@ const Appbar = ({ processName }) => {
           />
         </div>
         <div className="firstIcon">
-          <a class="button" href="#popup1">
+          <a className="button" href="#popup1">
             <RiErrorWarningFill
               style={{ fontSize: "44px", color: "#ffff", fontStyle: "bold" }}
             />
           </a>
-          <div id="popup1" class="overlay">
-            <div class="popup">
+          <div id="popup1" className="overlay">
+            <div className="popup">
               <h2>Report Error</h2>
-              <a class="close" href="#">
+              <a className="close" href="#">
                 &times;
               </a>
-              <div class="content">
+              <div className="content">
                 <textarea type="text" placeholder="error" />
                 <button>Submit</button>
               </div>

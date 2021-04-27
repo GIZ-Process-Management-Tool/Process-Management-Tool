@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -47,9 +46,9 @@ function Repairing() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="login">
+        <div className="login">
           <Appbar processName="Repairing Form" />
-          <div class="form">
+          <div className="form">
             <input
               type="number"
               value={form.order_no}
@@ -83,7 +82,7 @@ function Repairing() {
               required
             />
 
-            <input type="submit" value="Sign In" class="submit" />
+            <input type="submit" value="Sign In" className="submit" />
           </div>
         </div>
       </form>

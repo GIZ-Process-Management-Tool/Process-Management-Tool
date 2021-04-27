@@ -9,13 +9,13 @@ const Error = () => {
         </a>
       </div> */}
 
-      <div id="popup1" class="overlay">
-        <div class="popup">
+      <div id="popup1" className="overlay">
+        <div className="popup">
           <h2>Report Error</h2>
-          <a class="close" href="#">
+          <a className="close" href="#">
             &times;
           </a>
-          <div class="content">
+          <div className="content">
             <textarea type="text" placeholder="error" />
             <button>Submit</button>
           </div>

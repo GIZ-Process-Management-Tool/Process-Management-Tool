@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./Admin.css";
 function Worker() {
   return (
-    <div class="login">
-      <div class="form">
+    <div className="login">
+      <div className="form">
         <NavLink to="/admin">
           <button>Back</button>
         </NavLink>
@@ -13,7 +13,7 @@ function Worker() {
         <input type="text" placeholder="Worker id" required />
         <input type="password" placeholder="enter password" required />
 
-        <input type="submit" value="log In" class="submit" />
+        <input type="submit" value="log In" className="submit" />
       </div>
     </div>
   );

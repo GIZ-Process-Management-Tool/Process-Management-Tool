@@ -1,7 +1,6 @@
 import React from "react";
 import Axios from "axios";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import "./InputFormStyle/formBGStyle.css";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
@@ -23,9 +22,9 @@ function Shift() {
 
   return (
     <div>
-      <div class="login">
+      <div className="login">
         <Appbar processName="Shift Form" />
-        <div class="form">
+        <div className="form">
           <input
             type="date"
             placeholder="Date"
@@ -54,7 +53,7 @@ function Shift() {
           <input
             type="submit"
             value="Sign In"
-            class="submit"
+            className="submit"
             onClick={submitShiftData}
           />
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -52,9 +51,9 @@ function DownTime() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <div class="login">
+          <div className="login">
             <Appbar processName="Downtime Form" />
-            <div class="form">
+            <div className="form">
               <input
                 type="date"
                 vlaue={form.date}
@@ -103,7 +102,7 @@ function DownTime() {
                 placeholder="Remark"
                 required
               />
-              <input type="submit" value="SUBMIT" class="submit" />
+              <input type="submit" value="SUBMIT" className="submit" />
             </div>
           </div>
         </form>

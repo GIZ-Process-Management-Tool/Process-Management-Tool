@@ -1,7 +1,6 @@
 /*Order Form in React js*/
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -60,9 +59,9 @@ function Order() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="login">
+        <div className="login">
           <Appbar processName="Order Form" />
-          <div class="form">
+          <div className="form">
             <input
               type="Number"
               value={form.order_no}
@@ -165,7 +164,7 @@ function Order() {
               <input type="checkbox" />
             </div>
 
-            <input type="submit" value="SUBMIT" class="submit" />
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>
