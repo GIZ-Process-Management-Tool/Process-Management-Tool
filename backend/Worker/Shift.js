@@ -1,3 +1,4 @@
+
 var express = require('express');
 var app = express();
 var con = require('../config/database.js');
@@ -17,14 +18,13 @@ app.post('/shiftInsert', (req, res) => {
 
     const params = req.body
     con.query('INSERT INTO shift SET ?', params, (err, rows) => {
-        // connection.release()
         if (!err) {
             res.send(`added.`)
         } else {
             console.log(err)
         }
 
-        console.log('The data from yarn table are: \n', rows)
+        console.log('The data from repair table are: \n', rows)
 
     })
 });

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./../ErrorMessages/Error.css";
+import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
 export default function Yarn() {
     const [form, setForm] = useState({
         order_no: "",
@@ -35,6 +37,10 @@ export default function Yarn() {
             .catch(err => {
                 console.log(err);
             });
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
 
     setForm((prv) => {
       return {

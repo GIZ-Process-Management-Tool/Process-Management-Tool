@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./../ErrorMessages/Error.css";
+import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
+
 function Repairing() {
   var date = new Date();
   var curDate = date.toISOString().slice(0, 10);
@@ -14,31 +17,27 @@ function Repairing() {
     date : curDate,
     machine: "",
     worker: "",
-
   });
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
-    axios.post("http://localhost:3006/repairing", form)
-      .then(res => {
+    axios
+      .post("http://localhost:3006/repairing", form)
+      .then((res) => {
         console.log(res);
         alert("successful insert");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
     setForm({
       order_no: "",
-      date: "",
+      date: curDate,
       machine: "",
       worker: "",
-
     });
-
-
   }
 
   useEffect((e) => {
@@ -53,14 +52,13 @@ function Repairing() {
   }, []);
 
   function handleChange(event) {
-
     const { name, value } = event.target;
 
     setForm((prv) => {
       return {
         ...prv,
-        [name]: value
-      }
+        [name]: value,
+      };
     });
   }
 
@@ -105,11 +103,11 @@ function Repairing() {
               required
             />
 
-          <input type="submit" value="Sign In" class="submit" />
+            <input type="submit" value="Sign In" class="submit" />
+          </div>
         </div>
-      </div>
       </form>
-      </div>
+    </div>
   );
 }
 export default Repairing;

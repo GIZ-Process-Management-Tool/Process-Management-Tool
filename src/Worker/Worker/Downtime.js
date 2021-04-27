@@ -1,69 +1,65 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./../ErrorMessages/Error.css";
+import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
+
 function DownTime() {
   var date = new Date();
   // date.getDate();
-  // var curDate = date.toISOString().slice(0, 10);
+  var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
-    // date: curDate,
-    ///Commented auto date : because use can fill previous days downtime on next day////
-    date: "",
+    date: curDate,
     loom: "",
     shift: "",
     weaver: "",
     downtime: "",
-    remark: ""
-
+    remark: "",
   });
 
   const [loom, setLoom] = useState();
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
-    axios.post("http://localhost:3006/downtime", form)
-      .then(res => {
+    axios
+      .post("http://localhost:3006/downtime", form)
+      .then((res) => {
         console.log(res);
         alert("successful insert");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
     setForm({
-      // date: curDate,
-      date: "",
+      date: curDate,
       loom: "",
       shift: "",
       weaver: "",
       downtime: "",
-      remark: ""
-
+      remark: "",
     });
-
-
   }
 
-  function handleChange(event) {
+  
+  const handleLoomNo = (e) => {
+    setLoom(e.target.value);
+  };
 
+  function handleChange(event) {
     const { name, value } = event.target;
 
     setForm((prv) => {
       return {
         ...prv,
-        [name]: value
-      }
+        [name]: value,
+      };
     });
   }
-
-  const handleLoomNo = (e) => {
-    setLoom(e.target.value);
-  };
-
   return (
+
       <div>
         <form onSubmit={handleSubmit}>
           <div class="login">

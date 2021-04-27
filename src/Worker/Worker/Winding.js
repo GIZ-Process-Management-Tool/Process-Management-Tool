@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { NavLink } from "react-router-dom";
-// import "./Demo2.css";
-export default function Winding() {
+import { NavLink } from "react-router-dom";
+import "./../ErrorMessages/Error.css";
+import "./InputFormStyle/formBGStyle.css";
+import Appbar from "./../AppBar/Appbar";
+
+function Winding() {
   var date = new Date();
   var curDate = date.toISOString().slice(0, 10);
-
-  const [data, setData] = useState([
-  ]);
-  
   const [form, setForm] = useState({
     yarn_received: "",
     no_of_cones: "",
@@ -22,6 +21,9 @@ export default function Winding() {
     package_defect: "",
   });
 
+  const [data, setData] = useState([
+  ]);
+
   useEffect((e) => {
     axios
       .get("http://localhost:3006/winding")
@@ -32,6 +34,18 @@ export default function Winding() {
         console.log(err);
       });
   }, []);
+
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setForm((prv) => {
+      return {
+        ...prv,
+        [name]: value,
+      };
+    });
+  }
 
     function handleSubmit(e) {
 
@@ -45,13 +59,6 @@ export default function Winding() {
             .catch(err => {
                 console.log(err);
             });
-
-    setForm((prv) => {
-      return {
-        ...prv,
-        [name]: value,
-      };
-    });
   }
 
   function createSelectItems() {
@@ -157,5 +164,6 @@ export default function Winding() {
         </div>
       </form>
     </div>
-  )
+  );
 }
+export default Winding;

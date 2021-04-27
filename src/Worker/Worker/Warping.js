@@ -1,10 +1,11 @@
 /*Order Form in React js*/
 import React, { useState, useEffect} from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
+import "./../ErrorMessages/Error.css";
+import Appbar from "./../AppBar/Appbar";
+import "./InputFormStyle/formBGStyle.css";
 
-// import React from "react";
-// import { NavLink } from "react-router-dom";
-// import "./Demo2.css";
 function Warping() {
   var date = new Date();
   var curDate = date.toISOString().slice(0, 10);
@@ -16,8 +17,7 @@ function Warping() {
     shift: "",
     weight_o_w_y: "",
     waste_weight: "",
-    package_defect: ""
-
+    package_defect: "",
   });
 
   useEffect((e) => {
@@ -33,40 +33,36 @@ function Warping() {
 
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
-    axios.post("http://localhost:3006/warping", form)
-      .then(res => {
+    axios
+      .post("http://localhost:3006/warping", form)
+      .then((res) => {
         console.log(res);
         alert("successful insert");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
     setForm({
       order_no: "",
-      date: "",
+      date: curDate,
       shift: "",
       weight_o_w_y: "",
       waste_weight: "",
-      package_defect: ""
-
+      package_defect: "",
     });
-
-
   }
 
   function handleChange(event) {
-
     const { name, value } = event.target;
 
     setForm((prv) => {
       return {
         ...prv,
-        [name]: value
-      }
+        [name]: value,
+      };
     });
   }
 

@@ -2,7 +2,9 @@ import React from "react";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "./Demo2.css";
+import "./InputFormStyle/formBGStyle.css";
+import "./../ErrorMessages/Error.css";
+import Appbar from "./../AppBar/Appbar";
 function Shift() {
     var date = new Date();
     // date.getDate();
@@ -20,17 +22,6 @@ function Shift() {
       total_picks : "",
       waste_weight: "",
     });
-  // const submitShiftData = () => {
-  //   let dt1 = date.toISOString().slice(0, 10);
-  //   curDate(dt1);
-  //   Axios.post("http://localhost:3006/shiftInsert", {
-  //     s_date: s_date,
-  //     total_picks: total_picks,
-  //     loom_no: loom_no
-  //   }).then(() => {
-  //     alert("successful insert");
-  //   });
-  // };
 
   const [loom, setLoom] = useState();
 

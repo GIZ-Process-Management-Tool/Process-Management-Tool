@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
 
 const con = mysql.createConnection({
 	host: "localhost",
@@ -8,11 +8,10 @@ const con = mysql.createConnection({
 });
 
 con.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to databse !!');
-
+	if (err) {
+		throw err;
+	}
+	console.log("Connected to databse !!");
 });
 
 module.exports = con;

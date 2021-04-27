@@ -34,17 +34,17 @@ function YarnStorage() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    function handleSubmit(e) {
+  //   function handleSubmit(e) {
 
-    setForm({
-      yarn_received: "",
-      weight: "",
-      quality: "",
-      order_no: "",
-      y_date: curDate,
-      shift: "",
-    });
-  }
+  //   setForm({
+  //     yarn_received: "",
+  //     weight: "",
+  //     quality: "",
+  //     order_no: "",
+  //     y_date: curDate,
+  //     shift: "",
+  //   });
+  // }
 
         axios.post("http://localhost:3006/yarn", form)
             .then(res => {
@@ -54,6 +54,10 @@ function YarnStorage() {
             .catch(err => {
                 console.log(err);
             });
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
 
     setForm((prv) => {
       return {
@@ -133,4 +137,5 @@ function YarnStorage() {
     </div>
   );
 }
+
 export default YarnStorage;
