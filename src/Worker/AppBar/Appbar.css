@@ -1,6 +1,7 @@
 .Appbar-main {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0%;
   left: 0%;
@@ -10,13 +11,32 @@
   padding: 0px;
   margin: auto auto;
 }
-.firstIcon {
+/* .firstIcon {
   display: flex;
   align-content: center;
   justify-content: center;
-  margin-top: 20px;
-}
+} */
 .firstIcon-button {
   height: 30px;
   width: 40px;
+}
+.brandIconStyle {
+  padding: 10px;
+  height: 46px;
+  width: 56px;
+  /* display: flex;
+  align-content: center;
+  justify-content: center; */
+}
+
+.ErrorIcon {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.ErrorIcon:hover {
+  background-color: red;
+  height: 40px;
+  border-radius: 4px;
 }

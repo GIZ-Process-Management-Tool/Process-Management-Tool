@@ -65,8 +65,7 @@ function Order() {
 			deadline: "",
 			target: "",
 		});
-		// const reset = process.map((eachProc) => (eachProc.status = false));
-		// setProcess(reset);
+
 		process.map((eachProc) => (eachProc.status = false));
 		setProcess([...process], process);
 	}

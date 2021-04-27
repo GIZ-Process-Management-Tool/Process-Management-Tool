@@ -13,6 +13,7 @@ export default function TimelineItem({ itemData }) {
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
+        <div className={itemData.done ? "done" : ""}></div>
         {isShown && <TimelineError />}
         <div className="timeline-content">{itemData.name}</div>
       </div>
