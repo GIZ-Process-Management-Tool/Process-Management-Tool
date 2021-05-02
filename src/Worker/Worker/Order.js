@@ -176,7 +176,7 @@ function Order() {
 								</>
 							);
 						})}
-						<input type="submit" value="SUBMIT" class="submit" />
+						<input type="submit" value="SUBMIT" className="submit" />
 					</div>
 				</div>
 			</form>

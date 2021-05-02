@@ -1,4 +1,6 @@
 .main {
   display: grid;
   grid-template-columns: 18% 82%;
+  min-height: 0; /* NEW */
+  min-width: 0;
 }

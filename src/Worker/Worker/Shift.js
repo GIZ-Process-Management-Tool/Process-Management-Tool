@@ -56,7 +56,7 @@ function Shift() {
 					<input
 						type="submit"
 						value="Sign In"
-						class="submit"
+						className="submit"
 						onClick={submitShiftData}
 					/>
 				</div>

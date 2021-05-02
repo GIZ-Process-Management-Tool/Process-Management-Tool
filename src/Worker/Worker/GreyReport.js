@@ -69,7 +69,7 @@ function GreyReport() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div class="login">
-					<Appbar processName="GreyReport Form" />
+					<Appbar processName="Grey Report" />
 					<div class="form">
 						<input
 							type="number"
