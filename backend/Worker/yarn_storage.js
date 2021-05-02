@@ -24,8 +24,8 @@ app.use(express.json());
 var mysql = require("mysql");
 
 app.post("/yarn", (req, res) => {
-	const params = req.body.form;
-	const yarn_received = req.body.received;
+	const params = req.body;
+	// const yarn_received = req.body.received; coming from Yarn_storage1 of mansi
 	con.query("INSERT INTO yarn_storage SET ?", params, (err, rows) => {
 		// connection.release()
 		if (!err) {
@@ -37,12 +37,11 @@ app.post("/yarn", (req, res) => {
 		console.log("The data from yarn table are: \n", rows);
 	});
 });
-app.put("/complete", (req, res) => {
-	const params = parseInt(req.body.orderNo);
-	console.log("Hello ", typeof params);
+app.put("/yarn", (req, res) => {
+	const order = parseInt(req.body.order_no);
 	con.query(
 		"UPDATE tracking1 SET status=? WHERE orderNo=? AND processId=?",
-		["true", params, 0],
+		["true", order, 0],
 		(err, rows) => {
 			// connection.release()
 			if (!err) {
@@ -50,7 +49,6 @@ app.put("/complete", (req, res) => {
 			} else {
 				console.log(err);
 			}
-
 			console.log("The data from yarn table are: \n", rows);
 		}
 	);

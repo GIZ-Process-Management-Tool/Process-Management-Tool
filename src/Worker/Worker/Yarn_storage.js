@@ -1,59 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
-import Appbar from "../AppBar/Appbar";
+import Appbar from "./../AppBar/Appbar";
 
 function YarnStorage() {
-	var y_date = new Date();
-	var curDate = y_date.toISOString().slice(0, 10);
-	const [data, setData] = useState([]);
-
-	const [received, setRecieved] = useState(0);
-	const toggleReceived = (e) => {
-		if (e.target.checked) setRecieved(1);
-		else setRecieved(0);
-		//Pass the received variable to backend wherever required
-	};
-	console.log(received);
+	var date = new Date();
+	var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
 		yarn_received: "",
 		weight: "",
 		quality: "",
 		order_no: "",
-		y_date: curDate,
+		date: curDate,
 		shift: "",
 	});
-
-	useEffect((e) => {
-		axios
-			.get("http://localhost:3006/yarn")
-			.then((res) => {
-				setData(res.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
 
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		//   function handleSubmit(e) {
-
-		//   setForm({
-		//     yarn_received: "",
-		//     weight: "",
-		//     quality: "",
-		//     order_no: "",
-		//     y_date: curDate,
-		//     shift: "",
-		//   });
-		// }
-
 		axios
-			.post("http://localhost:3006/yarn", { form: form, received: received })
+			.post("http://localhost:3006/yarn", form)
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
@@ -61,6 +28,24 @@ function YarnStorage() {
 			.catch((err) => {
 				console.log(err);
 			});
+		axios
+			.put("http://localhost:3006/yarn", form)
+			.then((res) => {
+				console.log(res);
+				alert("successful Update");
+			})
+
+			.catch((err) => {
+				console.log(err);
+			});
+		setForm({
+			yarn_received: "",
+			weight: "",
+			quality: "",
+			order_no: "",
+			date: curDate,
+			shift: "",
+		});
 	}
 
 	function handleChange(event) {
@@ -73,45 +58,21 @@ function YarnStorage() {
 			};
 		});
 	}
-
-	function createSelectItems() {
-		let items = [];
-		for (let i = 0; i < data.length; i++) {
-			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
-				</option>
-			);
-		}
-		return items;
-	}
-
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div class="login">
 					<Appbar processName="Yarn Storage Form" />
 					<div class="form">
-						<select
-							value={form.order_no}
-							name="order_no"
+						<input
+							type="number"
+							value={form.yarn_received}
 							onChange={handleChange}
-							placeholder="Order no."
-						>
-							{createSelectItems()}
-						</select>
+							name="yarn_received"
+							placeholder="Yarn Received"
+							required
+						/>
 						<br />
-
-						<div className="checkBox">
-							<h3>Yarn Received:</h3>
-							<input
-								type="checkbox"
-								checked={received}
-								onChange={toggleReceived}
-							/>
-						</div>
-						<br />
-
 						<input
 							type="number"
 							value={form.weight}
@@ -127,6 +88,15 @@ function YarnStorage() {
 							onChange={handleChange}
 							name="quality"
 							placeholder="Quality"
+							required
+						/>
+						<br />
+						<input
+							type="number"
+							value={form.order_no}
+							onChange={handleChange}
+							name="order_no"
+							placeholder="Order Number"
 							required
 						/>
 						<br />

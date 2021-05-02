@@ -23,6 +23,13 @@ function Shift() {
 		}).then(() => {
 			alert("successful insert");
 		});
+		Axios.put("http://localhost:3006/shiftInsert", {
+			s_date: s_date,
+			total_picks: total_picks,
+			loom_no: loom_no,
+		}).then(() => {
+			alert("successful Update");
+		});
 	};
 
 	return (
