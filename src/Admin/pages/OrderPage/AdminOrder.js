@@ -13,14 +13,46 @@ export default function Order() {
   useEffect((e) => {
 
     axios
-      .get("http://localhost:3006/cardValue")
+      .get("http://localhost:3006/recent")
       .then((res) => {
         setData(res.data);
-        // console.log(res.data)
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
-        
+
+      });
+
+  }, []);
+  const [data1, setData1] = useState([]);
+
+  useEffect((e) => {
+
+    axios
+      .get("http://localhost:3006/process")
+      .then((res) => {
+        setData1(res.data);
+        console.log(res.data1)
+      })
+      .catch((err) => {
+        console.log(err);
+
+      });
+
+  }, []);
+  const [data2, setData2] = useState([]);
+
+  useEffect((e) => {
+
+    axios
+      .get("http://localhost:3006/completed")
+      .then((res) => {
+        setData2(res.data);
+        console.log(res.data2)
+      })
+      .catch((err) => {
+        console.log(err);
+
       });
 
   }, []);
@@ -31,24 +63,21 @@ export default function Order() {
         <div className="all">
           <div className="recentorder">
             <h1 className="recentorders"> Recent Orders</h1>
-            {data.filter((element) => {
-              return element.status == 1;
+            {data.map((indexData, index) => {
+              return <OrderCard
+                key={index}
+
+                order_no={indexData.order_no}
+                status={indexData.status}
+                date={indexData.date}
+                ppc={indexData.ppc}
+                quality={indexData.quality}
+                rate={indexData.rate}
+                company={indexData.company}
+                gst={indexData.gst}
+              />
+
             })
-              .map((indexData, index) => {
-                return <OrderCard
-                  key={index}
-
-                  order_no={indexData.order_no}
-                  status={indexData.status}
-                  date={indexData.date}
-                  ppc={indexData.ppc}
-                  quality={indexData.quality}
-                  rate={indexData.rate}
-                  company={indexData.company}
-                  gst={indexData.gst}
-                />
-
-              })
             }
             {/* <OrderCard />
             <br />
@@ -58,24 +87,20 @@ export default function Order() {
           </div>
           <div className="inprocessing">
             <h1 className="recentorders"> In Processing </h1>
-            {data.filter((element) => {
-              return element.status == 2;
+            {data1.map((indexData, index) => {
+              return <OrderCard
+                key={index}
+                order_no={indexData.order_no}
+                status={indexData.status}
+                date={indexData.date}
+                ppc={indexData.ppc}
+                quality={indexData.quality}
+                rate={indexData.rate}
+                company={indexData.company}
+                gst={indexData.gst}
+              />
+
             })
-              .map((indexData, index) => {
-                return <OrderCard
-                  key={index}
-
-                  order_no={indexData.order_no}
-                  status={indexData.status}
-                  date={indexData.date}
-                  ppc={indexData.ppc}
-                  quality={indexData.quality}
-                  rate={indexData.rate}
-                  company={indexData.company}
-                  gst={indexData.gst}
-                />
-
-              })
             }
             {/* <div>
               <OrderCard />
@@ -86,24 +111,21 @@ export default function Order() {
 
           <div className="completed">
             <h1 className="recentorders"> Completed </h1>
-            {data.filter((element) => {
-              return element.status == 3;
+            {data2.map((indexData, index) => {
+              return <OrderCard
+                key={index}
+
+                order_no={indexData.order_no}
+                status={indexData.status}
+                date={indexData.date}
+                ppc={indexData.ppc}
+                quality={indexData.quality}
+                rate={indexData.rate}
+                company={indexData.company}
+                gst={indexData.gst}
+              />
+
             })
-              .map((indexData, index) => {
-                return <OrderCard
-                  key={index}
-
-                  order_no={indexData.order_no}
-                  status={indexData.status}
-                  date={indexData.date}
-                  ppc={indexData.ppc}
-                  quality={indexData.quality}
-                  rate={indexData.rate}
-                  company={indexData.company}
-                  gst={indexData.gst}
-                />
-
-              })
             }
             {/* <div>
               <OrderCard />

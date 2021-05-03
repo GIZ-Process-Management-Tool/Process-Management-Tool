@@ -1,9 +1,5 @@
 var express = require('express');
 var app = express();
-var cors = require('cors');
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
-var con = require('./config/database.js');
 var port = process.env.PORT || 3006;
 
 //This is to allow our api for cross-origin resource sharing.

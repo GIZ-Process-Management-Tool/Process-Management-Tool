@@ -5,7 +5,6 @@ import { FaCheckCircle } from "react-icons/fa";
 const OrderCard = (props) => {
     var dt = new Date(props.date)
     var date = dt.toLocaleDateString()
-    console.log(`quantity = ${props.quantity}`)
     return (
         <div>
             <div className="cardMain">
