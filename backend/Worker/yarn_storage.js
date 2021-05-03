@@ -36,7 +36,15 @@ app.post("/yarn", (req, res) => {
 		console.log("The data from yarn table are: \n", rows);
 	});
 });
-app.put("/complete", (req, res) => {
+app.get("/yarn", (req, res) => {
+
+	con.query("SELECT order_no, company FROM cust_order", function (err, data, fields) {
+		if (err) throw err;
+		res.send(data);
+	});
+
+});
+app.put("/yarn", (req, res) => {
 	const params = parseInt(req.body.orderNo);
 	console.log("Hello ", typeof params);
 	con.query(

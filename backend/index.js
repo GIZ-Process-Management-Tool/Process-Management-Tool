@@ -1,9 +1,5 @@
 var express = require('express');
 var app = express();
-var cors = require('cors');
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
-var con = require('./config/database.js');
 var port = process.env.PORT || 3006;
 
 //This is to allow our api for cross-origin resource sharing.
@@ -14,8 +10,11 @@ app.use(express.json());
 
 //This is to allow our api to receive data from a client app
 app.use(express.urlencoded({
-    extended : true
+    extended: true
 }));
+app.use('/', [require("./Admin/card.js")]);
+
+app.use('/', [require("./Admin/cardValue.js")]);
 
 app.use('/', [
     require('./Worker/Shift.js')

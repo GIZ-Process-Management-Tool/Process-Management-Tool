@@ -1,67 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
-import Appbar from "./../AppBar/Appbar";
+import Appbar from "../AppBar/Appbar";
+import { RiContactsBookLine } from "react-icons/ri";
 
 function YarnStorage() {
-  var date = new Date();
-  var curDate = date.toISOString().slice(0, 10);
+  var y_date = new Date();
+  var curDate = y_date.toISOString().slice(0, 10);
+  const [data, setData] = useState([
+  ]);
+
+  const [received, setRecieved] = useState(0);
+  const toggleReceived = (e) => {
+    if (e.target.checked) setRecieved(1);
+    else setRecieved(0);
+  };
+
+
+  const [complete, setComplete] = useState(false);
+  console.log(complete);
+  const toggleComplete = (e) => {
+    if (e.target.checked) setComplete(true);
+    else setComplete(false);
+  };
+
   const [form, setForm] = useState({
-    yarn_received: "",
     weight: "",
     quality: "",
     order_no: "",
-    date: curDate,
+    y_date: curDate,
     shift: "",
   });
-  // const complete = () => {
-  // 	axios
-  // 		.put("http://localhost:3006/complete", { orderNo: form.order_no })
-  // 		.then((res) => {
-  // 			console.log(res);
-  // 			alert("successful insert");
-  // 		})
 
-  // 		.catch((err) => {
-  // 			console.log(err);
-  // 		});
-  // };
-  // function handleSubmit(e) {
-  // 	e.preventDefault();
-  // 	var date = new Date();
-  // 	var curDate = date.toISOString().slice(0, 10);
-  // 	const [form, setForm] = useState({
-  // 		yarn_received: "",
-  // 		weight: "",
-  // 		quality: "",
-  // 		order_no: "",
-  // 		date: curDate,
-  // 		shift: "",
-  // 	});
-  // }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
+  useEffect((e) => {
     axios
-      .post("http://localhost:3006/yarn", form)
+      .get("http://localhost:3006/yarn")
       .then((res) => {
-        console.log(res);
-        alert("successful insert");
+        setData(res.data)
       })
       .catch((err) => {
         console.log(err);
       });
+  }, []);
 
-    setForm({
-      yarn_received: "",
-      weight: "",
-      quality: "",
-      order_no: "",
-      date: curDate,
-      shift: "",
-    });
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    axios.post("http://localhost:3006/yarn", { form: form, received: received })
+      .then(res => {
+        console.log(res);
+        alert("successful insert");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   function handleChange(event) {
@@ -74,21 +68,44 @@ function YarnStorage() {
       };
     });
   }
+
+  function createSelectItems() {
+    let items = [];
+    for (let i = 0; i < data.length; i++) {
+      items.push(
+        <option key={data[i].order_no} value={data[i].order_no}>
+          {data[i].order_no + " - " + data[i].company}
+        </option>);
+    }
+    return items;
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div class="login">
           <Appbar processName="Yarn Storage Form" />
           <div class="form">
-            <input
-              type="number"
-              vlaue={form.yarn_received}
+            <select
+              value={form.order_no}
+              name="order_no"
               onChange={handleChange}
-              name="yarn_received"
-              placeholder="Yarn Received"
-              required
-            />
+              placeholder="Order no.">
+              <option value="" disabled>Order no</option>
+              {createSelectItems()}
+            </select>
             <br />
+
+            <div className="checkBox">
+              <h3>Yarn Received:</h3>
+              <input
+                type="checkbox"
+                checked={received}
+                onChange={toggleReceived}
+              />
+            </div>
+            <br />
+
             <input
               type="number"
               value={form.weight}
@@ -109,15 +126,6 @@ function YarnStorage() {
             <br />
             <input
               type="number"
-              value={form.order_no}
-              onChange={handleChange}
-              name="order_no"
-              placeholder="Order Number"
-              required
-            />
-            <br />
-            <input
-              type="number"
               value={form.shift}
               onChange={handleChange}
               name="shift"
@@ -125,7 +133,17 @@ function YarnStorage() {
               required
             />
             <br />
-            <input type="submit" value="SUBMIT" className="submit" />
+
+            <div className="checkBox">
+              <h3>Done with all lots !</h3>
+              <input
+                type="checkbox"
+                checked={complete}
+                onChange={toggleComplete}
+              />
+            </div>
+
+            <input type="submit" value="SUBMIT" class="submit" />
           </div>
         </div>
       </form>
