@@ -14,8 +14,11 @@ app.use(express.json());
 
 //This is to allow our api to receive data from a client app
 app.use(express.urlencoded({
-    extended : true
+    extended: true
 }));
+app.use('/', [require("./Admin/card.js")]);
+
+app.use('/', [require("./Admin/cardValue.js")]);
 
 app.use('/', [
     require('./Worker/Shift.js')

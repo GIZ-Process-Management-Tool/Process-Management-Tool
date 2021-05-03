@@ -98,7 +98,7 @@ function GreyReport() {
               value={form.points}
               onChange={handleChange}
               name="points"
-              placeholder="points"
+              placeholder="Points"
               required
             />
             <input
