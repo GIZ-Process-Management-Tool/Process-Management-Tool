@@ -142,3 +142,147 @@
   
     color: #000000;
   }
+=======
+  width: 360px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  /* background: #4054b2;
+  border-radius: 8px 8px 0px 0px; */
+  border-radius: 8px;
+  border-top: 6px solid #4054b2;
+}
+
+.orderContent {
+  padding: 0 2rem;
+}
+
+.recentorder {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.maintop {
+  /* Color - Primary */
+  width: 100%;
+  background: #4054b2;
+  border-radius: 8px 8px 0px 0px;
+  height: 8px;
+}
+
+.main-2 {
+  width: 100%;
+  height: 76.04px;
+
+  border-bottom: 2px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.main-3 {
+  width: 76px;
+  height: 76px;
+
+  background-color: #ffffff;
+  float: left;
+}
+
+.main-4 {
+  height: 76.04px;
+
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  /* float: right; */
+}
+
+.main-5 {
+  background-color: #ffffff;
+  padding: 0rem 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.main-6 {
+  display: flex;
+  /* align-items: flex-end; */
+  justify-content: center;
+  padding: 0.2rem 0;
+  align-items: center;
+}
+
+.main-7 {
+  letter-spacing: 0px;
+  min-height: 24px;
+  width: 226px;
+  flex: 0 0 24px;
+}
+
+.line-11 {
+  width: 363px;
+  height: 0px;
+
+  /* Color - Grey 3 */
+
+  border: 1px solid #828282;
+}
+
+.line-12 {
+  width: 120.02px;
+  height: 0px;
+  top: 426px;
+
+  /* Color - Grey 5 */
+
+  border: 1px solid #828282;
+  transform: rotate(90deg);
+}
+
+.all {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.inprocessing {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Raymondshawls {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+
+  /* Color - Grey 2 */
+
+  color: #4f4f4f;
+}
+
+.Orderdate {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #4f4f4f;
+}
+
+.recentorders {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #000000;
+}

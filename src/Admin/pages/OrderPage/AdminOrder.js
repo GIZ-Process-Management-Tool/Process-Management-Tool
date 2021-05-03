@@ -1,5 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React from "react";
+
 import "../Dashboard/Dashboard.css";
 import "../../style/allPageCss.css";
 import MainNavBar from "../Dashboard/Components/AdminNavBar/MainNavBar";
@@ -63,6 +66,7 @@ export default function Order() {
         <div className="all">
           <div className="recentorder">
             <h1 className="recentorders"> Recent Orders</h1>
+
             {data.map((indexData, index) => {
               return <OrderCard
                 key={index}
@@ -107,6 +111,19 @@ export default function Order() {
               <br />
               <OrderCard />
             </div> */}
+            <OrderCard />
+            <br />
+            <OrderCard />
+            <br />
+            <OrderCard />
+          </div>
+          <div className="inprocessing">
+            <h1 className="recentorders"> In Processing </h1>
+            <div>
+              <OrderCard />
+              <br />
+              <OrderCard />
+            </div>
           </div>
 
           <div className="completed">
@@ -130,6 +147,10 @@ export default function Order() {
             {/* <div>
               <OrderCard />
             </div> */}
+
+            <div>
+              <OrderCard />
+            </div>
           </div>
         </div>
       </div>
