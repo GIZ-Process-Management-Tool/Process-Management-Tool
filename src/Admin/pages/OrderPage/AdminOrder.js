@@ -1,10 +1,11 @@
 import React from "react";
-import { FaRupeeSign } from "react-icons/fa";
+
 import "../Dashboard/Dashboard.css";
 import "../../style/allPageCss.css";
 import MainNavBar from "../Dashboard/Components/AdminNavBar/MainNavBar";
-import Card1 from "./Card1";
-import "./Newcard.css";
+
+import OrderCard from "./OrderCard.js";
+import "./OrderCard.css";
 
 export default function Order() {
   return (
@@ -14,25 +15,25 @@ export default function Order() {
         <div className="all">
           <div className="recentorder">
             <h1 className="recentorders"> Recent Orders</h1>
-            <Card1 />
+            <OrderCard />
             <br />
-            <Card1 />
+            <OrderCard />
             <br />
-            <Card1 />
+            <OrderCard />
           </div>
           <div className="inprocessing">
             <h1 className="recentorders"> In Processing </h1>
             <div>
-              <Card1 />
+              <OrderCard />
               <br />
-              <Card1 />
+              <OrderCard />
             </div>
           </div>
 
           <div className="completed">
             <h1 className="recentorders"> Completed </h1>
             <div>
-              <Card1 />
+              <OrderCard />
             </div>
           </div>
         </div>
