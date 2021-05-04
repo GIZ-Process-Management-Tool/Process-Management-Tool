@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -18,6 +17,20 @@ function GreyReport() {
 		order_no: "",
 	});
 
+	const [data, setData] = useState([]);
+	const [repairable, setRepairable] = useState(0);
+	const [loom_no, setLoom] = useState();
+	const [complete, setComplete] = useState(false);
+	const toggleComplete = (e) => {
+		if (e.target.checked) setComplete(true);
+		else setComplete(false);
+	};
+
+	const toggleRepairable = (e) => {
+		if (e.target.checked) setRepairable(1);
+		else setRepairable(0);
+	};
+
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -30,16 +43,17 @@ function GreyReport() {
 			.catch((err) => {
 				console.log(err);
 			});
-
-		axios
-			.put("http://localhost:3006/grey_report", form)
-			.then((res) => {
-				console.log(res);
-				alert("successful Update");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (complete) {
+			axios
+				.put("http://localhost:3006/grey_report", form)
+				.then((res) => {
+					console.log(res);
+					alert("successful Update");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 
 		setForm({
 			date: curDate,
@@ -54,6 +68,17 @@ function GreyReport() {
 		});
 	}
 
+	useEffect((e) => {
+		axios
+			.get("http://localhost:3006/grey_report")
+			.then((res) => {
+				setData(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	function handleChange(event) {
 		const { name, value } = event.target;
 
@@ -65,26 +90,78 @@ function GreyReport() {
 		});
 	}
 
+	const handleLoomNo = (e) => {
+		setLoom(e.target.value);
+	};
+
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < data.length; i++) {
+			items.push(
+				<option key={data[i].order_no} value={data[i].order_no}>
+					{data[i].order_no + " - " + data[i].company}
+				</option>
+			);
+		}
+		return items;
+	}
+
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<div class="login">
+				<div className="login">
 					<Appbar processName="Grey Report" />
-					<div class="form">
+					<div className="form">
+						<select
+							value={form.order_no}
+							name="order_no"
+							onChange={handleChange}
+							placeholder="Order no."
+						>
+							<option value="" disabled>
+								Order no
+							</option>
+							{createSelectItems()}
+						</select>
+						<br></br>
+						<select value={form.loom} onChange={handleChange} name="loom_no">
+							<option value="" disabled>
+								Select loom
+							</option>
+							<option value="1">Loom-1</option>
+							<option value="2">Loom-2</option>
+							<option value="3">Loom-3</option>
+							<option value="4">Loom-4</option>
+							<option value="5">Loom-5</option>
+							<option value="6">Loom-6</option>
+							<option value="7">Loom-7</option>
+							<option value="8">Loom-8</option>
+							<option value="9">Loom-9</option>
+							<option value="10">Loom-10</option>
+							{handleLoomNo}
+						</select>
+						<input
+							type="date"
+							value={form.date}
+							onChange={handleChange}
+							name="date"
+							placeholder="Date"
+							required
+						/>
+						<div className="checkBox">
+							<h3>Repairable:</h3>
+							<input
+								type="checkbox"
+								checked={repairable}
+								onChange={toggleRepairable}
+							/>
+						</div>
 						<input
 							type="number"
 							value={form.shift}
 							onChange={handleChange}
 							name="shift"
 							placeholder="Shift"
-							required
-						/>
-						<input
-							type="number"
-							value={form.loom_no}
-							onChange={handleChange}
-							name="loom_no"
-							placeholder="Loom"
 							required
 						/>
 						<input
@@ -113,39 +190,32 @@ function GreyReport() {
 						/>
 						<input
 							type="number"
-							value={form.order_no}
-							onChange={handleChange}
-							name="order_no"
-							placeholder="Order Number"
-							required
-						/>
-						<input
-							type="number"
-							value={form.repairable}
-							onChange={handleChange}
-							name="repairable"
-							placeholder="Repairable"
-							required
-						/>
-						<input
-							type="number"
 							value={form.grade}
 							onChange={handleChange}
 							name="grade"
 							placeholder="Grade"
 							required
 						/>
-						<input type="submit" value="SUBMIT" class="submit" />
+						<br></br>
+						<div className="checkBox">
+							<h3>Done with all lots !</h3>
+							<input
+								type="checkbox"
+								checked={complete}
+								onChange={toggleComplete}
+							/>
+						</div>
+						<input type="submit" value="SUBMIT" className="submit" />
 					</div>
 				</div>
 			</form>
-			<div id="popup1" class="overlay">
-				<div class="popup">
+			<div id="popup1" className="overlay">
+				<div className="popup">
 					<h2>Report Error</h2>
-					<a class="close" href="#">
+					<a className="close" href="#">
 						&times;
 					</a>
-					<div class="content">
+					<div className="content">
 						<input type="text" placeholder="error" />
 						<button className="MainButton">Submit</button>
 					</div>
