@@ -1,7 +1,5 @@
-/*Order Form in React js*/
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
@@ -17,7 +15,22 @@ function Warping() {
 		waste_weight: "",
 		package_defect: "",
 	});
-
+	const [complete, setComplete] = useState(false);
+	const toggleComplete = (e) => {
+		if (e.target.checked) setComplete(true);
+		else setComplete(false);
+	};
+	const [data, setData] = useState([]);
+	useEffect((e) => {
+		axios
+			.get("http://localhost:3006/warping")
+			.then((res) => {
+				setData(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -30,16 +43,17 @@ function Warping() {
 			.catch((err) => {
 				console.log(err);
 			});
-
-		axios
-			.put("http://localhost:3006/warping", form)
-			.then((res) => {
-				console.log(res);
-				alert("successful Update");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (complete) {
+			axios
+				.put("http://localhost:3006/warping", form)
+				.then((res) => {
+					console.log(res);
+					alert("successful Update");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 
 		setForm({
 			order_no: "",
@@ -61,20 +75,42 @@ function Warping() {
 			};
 		});
 	}
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < data.length; i++) {
+			items.push(
+				<option key={data[i].order_no} value={data[i].order_no}>
+					{data[i].order_no + " - " + data[i].company}
+				</option>
+			);
+		}
+		return items;
+	}
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<div class="login">
+				<div className="login">
 					<Appbar processName="Warping Form" />
-					<div class="form">
-						<input
+					<div className="form">
+						<select
+							value={form.order_no}
+							name="order_no"
+							onChange={handleChange}
+							placeholder="Order no."
+						>
+							<option value="" disabled>
+								Order no
+							</option>
+							{createSelectItems()}
+						</select>
+						{/* <input
 							type="number"
 							value={form.order_no}
 							onChange={handleChange}
 							name="order_no"
 							placeholder="Order NO"
 							required
-						/>
+						/> */}
 						<br />
 						<input
 							type="number"
@@ -112,6 +148,14 @@ function Warping() {
 							required
 						/>
 						<br />
+						<div className="checkBox">
+							<h3>Done with all lots !</h3>
+							<input
+								type="checkbox"
+								checked={complete}
+								onChange={toggleComplete}
+							/>
+						</div>
 						<input type="submit" value="SUBMIT" className="submit" />
 					</div>
 				</div>

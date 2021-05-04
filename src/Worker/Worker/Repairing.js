@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -14,7 +14,12 @@ function Repairing() {
 		machine: "",
 		worker: "",
 	});
-
+	const [data, setData] = useState([]);
+	const [complete, setComplete] = useState(false);
+	const toggleComplete = (e) => {
+		if (e.target.checked) setComplete(true);
+		else setComplete(false);
+	};
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -27,15 +32,17 @@ function Repairing() {
 			.catch((err) => {
 				console.log(err);
 			});
-		axios
-			.put("http://localhost:3006/repairing", form)
-			.then((res) => {
-				console.log(res);
-				alert("successful Update");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (complete) {
+			axios
+				.put("http://localhost:3006/repairing", form)
+				.then((res) => {
+					console.log(res);
+					alert("successful Update");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 
 		setForm({
 			order_no: "",
@@ -45,6 +52,16 @@ function Repairing() {
 		});
 	}
 
+	useEffect((e) => {
+		axios
+			.get("http://localhost:3006/repairing")
+			.then((res) => {
+				setData(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	function handleChange(event) {
 		const { name, value } = event.target;
 
@@ -55,18 +72,40 @@ function Repairing() {
 			};
 		});
 	}
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < data.length; i++) {
+			items.push(
+				<option key={data[i].order_no} value={data[i].order_no}>
+					{data[i].order_no + " - " + data[i].company}
+				</option>
+			);
+		}
+		return items;
+	}
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<div class="login">
+				<div className="login">
 					<Appbar processName="Repairing Form" />
-					<div class="form">
-						<input
-							type="number"
+					<div className="form">
+						<select
 							value={form.order_no}
-							onChange={handleChange}
 							name="order_no"
-							placeholder="Order Number"
+							onChange={handleChange}
+							placeholder="Order no."
+						>
+							<option value="" disabled>
+								Order no
+							</option>
+							{createSelectItems()}
+						</select>
+						<input
+							type="date"
+							value={form.date}
+							onChange={handleChange}
+							name="date"
+							placeholder="Date"
 							required
 						/>
 						<input
@@ -85,7 +124,14 @@ function Repairing() {
 							placeholder="Worker"
 							required
 						/>
-
+						<div className="checkBox">
+							<h3>Done with all lots !</h3>
+							<input
+								type="checkbox"
+								checked={complete}
+								onChange={toggleComplete}
+							/>
+						</div>
 						<input type="submit" value="Sign In" className="submit" />
 					</div>
 				</div>

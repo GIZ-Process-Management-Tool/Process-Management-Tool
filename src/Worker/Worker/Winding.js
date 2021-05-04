@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -21,6 +20,24 @@ function Winding() {
 		package_defect: "",
 	});
 
+	const [complete, setComplete] = useState(false);
+	const toggleComplete = (e) => {
+		if (e.target.checked) setComplete(true);
+		else setComplete(false);
+	};
+
+	const [data, setData] = useState([]);
+	useEffect((e) => {
+		axios
+			.get("http://localhost:3006/winding")
+			.then((res) => {
+				setData(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	function handleSubmit(e) {
 		e.preventDefault();
 
@@ -33,16 +50,17 @@ function Winding() {
 			.catch((err) => {
 				console.log(err);
 			});
-
-		axios
-			.put("http://localhost:3006/winding", form)
-			.then((res) => {
-				console.log(res);
-				alert("successful Update");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (complete) {
+			axios
+				.put("http://localhost:3006/winding", form)
+				.then((res) => {
+					console.log(res);
+					alert("successful Update");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 
 		setForm({
 			yarn_received: "",
@@ -68,12 +86,35 @@ function Winding() {
 			};
 		});
 	}
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < data.length; i++) {
+			items.push(
+				<option key={data[i].order_no} value={data[i].order_no}>
+					{data[i].order_no + " - " + data[i].company}
+				</option>
+			);
+		}
+		return items;
+	}
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div className="login">
 					<Appbar processName="Winding" />
 					<div className="form">
+						<select
+							value={form.order_no}
+							name="order_no"
+							onChange={handleChange}
+							placeholder="Order no."
+						>
+							<option value="" disabled>
+								Order no
+							</option>
+							{createSelectItems()}
+						</select>
+						<br />
 						<input
 							type="number"
 							vlaue={form.yarn_received}
@@ -128,14 +169,14 @@ function Winding() {
 							required
 						/>
 						<br />
-						<input
+						{/* <input
 							type="number"
 							value={form.order_no}
 							onChange={handleChange}
 							name="order_no"
 							placeholder="Order No"
 							required
-						/>
+						/> */}
 						<br />
 						<input
 							type="number"
@@ -155,6 +196,14 @@ function Winding() {
 							required
 						/>
 						<br />
+						<div className="checkBox">
+							<h3>Done with all lots !</h3>
+							<input
+								type="checkbox"
+								checked={complete}
+								onChange={toggleComplete}
+							/>
+						</div>
 						<input type="submit" value="SUBMIT" className="submit" />
 					</div>
 				</div>

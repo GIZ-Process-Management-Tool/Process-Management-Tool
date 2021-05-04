@@ -84,8 +84,8 @@ function Order() {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<div class="login">
-					<div class="form">
+				<div className="login">
+					<div className="form">
 						<Appbar processName="Order Form" />
 						<input
 							type="Number"

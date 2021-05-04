@@ -3,6 +3,16 @@ var app = express();
 var con = require("../config/database.js");
 app.use(express.json());
 
+app.get("/shiftInsert", (req, res) => {
+	con.query(
+		"SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2",
+		function (err, data, fields) {
+			if (err) throw err;
+			res.send(data);
+		}
+	);
+});
+
 app.post("/shiftInsert", (req, res) => {
 	const params = req.body;
 	con.query("INSERT INTO shift SET ?", params, (err, rows) => {
