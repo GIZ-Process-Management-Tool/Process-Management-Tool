@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 var con = require("../config/database.js");
 app.use(express.json());
-var mysql = require("mysql");
+// var mysql = require("mysql");
 
 app.post("/order", (req, res) => {
 	const allProcess = req.body.process;
