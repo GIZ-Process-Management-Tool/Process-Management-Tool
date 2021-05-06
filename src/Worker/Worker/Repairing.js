@@ -6,15 +6,18 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Repairing() {
-  var date = new Date();
-  var curDate = date.toISOString().slice(0, 10);
+  // -------------------Automatic date-----------------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
   const [data, setData] = useState([
   ]);
 
 
   const [form, setForm] = useState({
     order_no: "",
-    date : curDate,
+    date: "",
+    // -------------------Automatic date-----------------------
+    // date : curDate,
     machine: "",
     worker: "",
   });
@@ -34,7 +37,9 @@ function Repairing() {
 
     setForm({
       order_no: "",
-      date: curDate,
+      // -------------------Automatic date-----------------------
+      // date: curDate,
+      date: "",
       machine: "",
       worker: "",
     });
@@ -83,9 +88,19 @@ function Repairing() {
             value={form.order_no}
             name="order_no"
             onChange={handleChange}
-            placeholder="Order no.">
+            placeholder="Order no."
+            >
+              <option value="" disabled>Order no</option>
               {createSelectItems()}
             </select>
+            <input
+                type="date"
+                value={form.date}
+                onChange={handleChange}
+                name="date"
+                placeholder="Date"
+                required
+            />
             <input
               type="number"
               value={form.machine}

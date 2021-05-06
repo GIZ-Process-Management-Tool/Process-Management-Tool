@@ -6,7 +6,7 @@ var mysql = require('mysql');
 
 app.get("/repairing", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-1", function(err, data, fields) {
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
         if (err) throw err;
         res.send(data);
     });

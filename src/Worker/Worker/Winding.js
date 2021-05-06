@@ -6,52 +6,61 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Winding() {
-  var date = new Date();
-  var curDate = date.toISOString().slice(0, 10);
-  const [form, setForm] = useState({
-    yarn_received: "",
-    no_of_cones: "",
-    size_of_cones: "",
-    no_of_doffs: "",
-    weight_of_cones: "",
-    weight_of_waste: "",
-    order_no: "",
-    date: curDate,
-    shift: "",
-    package_defect: "",
-  });
-
-  const [data, setData] = useState([
-  ]);
-
-  useEffect((e) => {
-    axios
-      .get("http://localhost:3006/winding")
-      .then((res) => {
-        setData(res.data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-  function handleChange(event) {
-    const { name, value } = event.target;
-
-    setForm((prv) => {
-      return {
-        ...prv,
-        [name]: value,
-      };
+    // ------------------Automatic date-------------
+    // var date = new Date();
+    // var curDate = date.toISOString().slice(0, 10);
+    const [form, setForm] = useState({
+      yarn_received: "",
+      no_of_cones: "",
+      size_of_cones: "",
+      no_of_doffs: "",
+      weight_of_cones: "",
+      weight_of_waste: "",
+      order_no: "",
+      // ------------------Automatic date-------------
+      // date: curDate,
+      date: "",
+      // shift: "",
+      package_defect: "",
     });
-  }
+
+    const [received, setReceieved] = useState(0);
+      const toggleReceived = (e) => {
+        if (e.target.checked) setReceieved(1);
+        else setReceieved(0);
+      };
+
+    const [data, setData] = useState([
+    ]);
+
+    useEffect((e) => {
+      axios
+        .get("http://localhost:3006/winding")
+        .then((res) => {
+          setData(res.data)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
+
+
+    function handleChange(event) {
+      const { name, value } = event.target;
+
+      setForm((prv) => {
+        return {
+          ...prv,
+          [name]: value,
+        };
+      });
+    }
 
     function handleSubmit(e) {
 
         e.preventDefault();
 
-        axios.post("http://localhost:3006/winding", form)
+        axios.post("http://localhost:3006/winding", {form: form, received: received})
             .then(res => {
                 console.log(res);
                 alert("successful insert");
@@ -59,18 +68,34 @@ function Winding() {
             .catch(err => {
                 console.log(err);
             });
+
+
+            setForm({
+              yarn_received: "",
+              no_of_cones: "",
+              size_of_cones: "",
+              no_of_doffs: "",
+              weight_of_cones: "",
+              weight_of_waste: "",
+              order_no: "",
+              // ------------------Automatic date-------------
+              // date: curDate,
+              date:"",
+              // shift: "",
+              package_defect: "",
+            });
   }
 
-  function createSelectItems() {
-    let items = [];
-    for (let i = 0; i < data.length; i++) {
-      items.push(
-      <option key={data[i].order_no} value={data[i].order_no}>
-        {data[i].order_no+" - "+data[i].company}
-      </option>);
+    function createSelectItems() {
+      let items = [];
+      for (let i = 0; i < data.length; i++) {
+        items.push(
+        <option key={data[i].order_no} value={data[i].order_no}>
+          {data[i].order_no+" - "+data[i].company}
+        </option>);
+      }
+      return items;
     }
-    return items;
-  }
 
   return (
     <div>
@@ -85,14 +110,26 @@ function Winding() {
             onChange={handleChange}
             placeholder="Order no."
             >
+              <option value="" disabled>Order no</option>
               {createSelectItems()}
             </select>
             <br />
+            <input
+                type="date"
+                value={form.date}
+                onChange={handleChange}
+                name="date"
+                placeholder="Date"
+                required
+              />
+            <br/>
 
           <div className="checkBox">
             <h3>Yarn Received:</h3>
             <input
-              type="checkbox"
+               type="checkbox"
+               checked={received}
+               onChange={toggleReceived}
 						/>
             </div>
             <br />
@@ -141,7 +178,7 @@ function Winding() {
               required
             />
             <br />
-            <input
+            {/* <input
               type="number"
               value={form.shift}
               onChange={handleChange}
@@ -149,7 +186,7 @@ function Winding() {
               placeholder="Shift"
               required
             />
-            <br />
+            <br /> */}
             <input
               type="text"
               value={form.package_defect}

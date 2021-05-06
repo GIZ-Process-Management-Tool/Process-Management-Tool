@@ -15,7 +15,6 @@ function Order() {
     { id: 5, name: "Repairing", status: false },
   ]);
   const [form, setForm] = useState({
-    order_no: "",
     date: "",
     company: "",
     gst: "",
@@ -55,7 +54,6 @@ function Order() {
       });
 
     setForm({
-      order_no: "",
       date: "",
       company: "",
       gst: "",
@@ -84,14 +82,6 @@ function Order() {
         <div class="login">
           <Appbar processName="Order Form" />
           <div class="form">
-            <input
-              type="Number"
-              value={form.order_no}
-              onChange={handleChange}
-              name="order_no"
-              placeholder="Order NO"
-              required
-            />
             <input
               type="date"
               value={form.date}

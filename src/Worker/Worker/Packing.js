@@ -5,10 +5,18 @@ import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 export default function Yarn() {
+
+  // --------------Automatic date------------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
+
     const [form, setForm] = useState({
+        // --------------Automatic date------------------
+        // date: curDate,
         order_no: "",
-            length: "",
-            weight: ""
+        length: "",
+        weight: "",
+        date: ""
     });
 
   const [data, setData] = useState([
@@ -36,6 +44,15 @@ export default function Yarn() {
             })
             .catch(err => {
                 console.log(err);
+            });
+
+            setForm({
+              // --------------Automatic date------------------
+              // date: curDate,
+              order_no: "",
+              length: "",
+              weight: "",
+              date: ""
             });
   }
 
@@ -71,12 +88,19 @@ export default function Yarn() {
             value={form.order_no}
             name="order_no"
             onChange={handleChange}
-            placeholder="Order no.">
-
+            placeholder="Order no."
+            >
+              <option value="" disabled>Order no</option>
               {createSelectItems()}
-
             </select>
-            <br />
+            <input
+                type="date"
+                value={form.date}
+                onChange={handleChange}
+                name="date"
+                placeholder="Date"
+                required
+            />
             <input
               type="number"
               value={form.length}
@@ -85,7 +109,6 @@ export default function Yarn() {
               placeholder="Length"
               required
             />
-            <br />
             <input
               type="number"
               value={form.weight}
@@ -94,7 +117,6 @@ export default function Yarn() {
               placeholder="Weight"
               required
             />
-            <br />
             <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>

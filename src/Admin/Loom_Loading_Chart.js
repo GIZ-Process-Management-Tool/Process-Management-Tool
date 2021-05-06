@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "../Worker/Worker/InputFormStyle/formBGStyle.css";
+// import Appbar from "../Worker/AppBar/Appbar";
 
 function Looming() {
+	const [data, setData] = useState([
+    ]);
 	const [form, setForm] = useState({
 		id: "",
 		start_date: "",
@@ -11,6 +14,19 @@ function Looming() {
 		loom: "",
 		other_details: "",
 	});
+
+
+	useEffect((e) => {
+		axios
+		  .get("http://localhost:3006/loom_loading_chart")
+		  .then((res) => {
+			setData(res.data)
+		  })
+		  .catch((err) => {
+			console.log(err);
+		  });
+	  }, []);
+
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -43,6 +59,19 @@ function Looming() {
 			};
 		});
 	}
+
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < data.length; i++) {
+		  items.push(
+		  <option key={data[i].order_no} value={data[i].order_no}>
+			{data[i].order_no+" - "+data[i].company}
+		  </option>);
+		}
+		return items;
+	  }
+
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div class="login">
@@ -52,14 +81,15 @@ function Looming() {
 					</NavLink>
 					<h2>Loom Loading chart Form</h2>
 
-					<input
-						type="Number"
-						value={form.id}
-						onChange={handleChange}
+					<select 
+						value={form.order_no}
 						name="id"
-						placeholder="Order NO"
-						required
-					/>
+						onChange={handleChange}
+						placeholder="Order no."
+					>
+						<option value="" disabled>Order no</option>
+						{createSelectItems()}
+              		</select>
 					<input
 						type="date"
 						value={form.start_date}

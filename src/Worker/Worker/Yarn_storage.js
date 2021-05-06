@@ -7,8 +7,11 @@ import Appbar from "../AppBar/Appbar";
 import { RiContactsBookLine } from "react-icons/ri";
 
 function YarnStorage() {
-    var y_date = new Date();
-    var curDate = y_date.toISOString().slice(0, 10);
+
+    // ---------Automatic date-----------
+    // var y_date = new Date();
+    // var curDate = y_date.toISOString().slice(0, 10);
+
     const [data, setData] = useState([
     ]);
 
@@ -18,13 +21,22 @@ function YarnStorage() {
       else setRecieved(0);
     };
 
+
+    const [complete, setComplete] = useState(false);
+    console.log(complete);
+    const toggleComplete = (e) => {
+      if (e.target.checked) setComplete(true);
+      else setComplete(false);
+    };
+
     const [form, setForm] = useState({
-      // yarn_received: "",
       weight: "",
       quality: "",
       order_no: "",
-      y_date: curDate,
-      shift: "",
+      // ---------Automatic date-----------
+      // y_date: curDate,
+      y_date: "",
+      // shift: "",
     });
 
     useEffect((e) => {
@@ -48,6 +60,16 @@ function YarnStorage() {
               })
               .catch(err => {
                   console.log(err);
+              });
+
+              setForm({
+                weight: "",
+                quality: "",
+                order_no: "",
+                // ---------Automatic date-----------
+                // y_date: curDate,
+                y_date: "",
+                // shift: "",
               });
     }
 
@@ -84,11 +106,19 @@ function YarnStorage() {
               name="order_no"
               onChange={handleChange}
               placeholder="Order no.">
-
+                <option value="" disabled>Order no</option>
                 {createSelectItems()}
-
               </select>
               <br />
+              <input
+                type="date"
+                value={form.date}
+                onChange={handleChange}
+                name="y_date"
+                placeholder="Date"
+                required
+              />
+              <br/>
 
               <div className="checkBox">
               <h3>Yarn Received:</h3>
@@ -118,15 +148,25 @@ function YarnStorage() {
                 required
               />
               <br />
-              <input
+              {/* <input
                 type="number"
                 value={form.shift}
                 onChange={handleChange}
                 name="shift"
                 placeholder="Shift"
                 required
-              />
+              /> */}
               <br />
+
+              <div className="checkBox">
+              <h3>Done with all lots !</h3>
+              <input
+                type="checkbox"
+                checked={complete}
+                onChange={toggleComplete}
+              />
+              </div>
+
               <input type="submit" value="SUBMIT" class="submit" />
             </div>
           </div>

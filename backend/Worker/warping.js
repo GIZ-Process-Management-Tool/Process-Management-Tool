@@ -7,7 +7,7 @@ var mysql = require('mysql');
 
 app.get("/warping", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-1", function(err, data, fields) {
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
         if (err) throw err;
         res.send(data);
     });
@@ -16,17 +16,32 @@ app.get("/warping", (req, res) => {
 
 app.post('/warping', (req, res) => {
 
-    const params = req.body
-    con.query('INSERT INTO warping SET ?', params, (err, rows) => {
+    const params    = req.body;
+    order_no        = params.order_no;
+    date            = params.date;
+    weight_o_w_y    = params.weight_o_w_y;
+    waste_weight    = params.waste_weight;
+    package_defect  = params.package_defect;
+
+    sql = `INSERT INTO warping
+    VALUES(${order_no}, '${date}', ${weight_o_w_y}, ${waste_weight},
+    '${package_defect}')
+    ON DUPLICATE KEY UPDATE
+    weight_o_w_y    =   weight_o_w_y + ${weight_o_w_y},
+    waste_weight    =   waste_weight + ${waste_weight},
+    order_no        =   ${order_no},
+    date            =   '${date}',
+    package_defect  =   '${package_defect}';`
+
+    con.query(sql, (err, rows) => {
         // connection.release()
+        console.log(params);
         if (!err) {
             res.send(`added.`)
         } else {
             console.log(err)
         }
-
         console.log('The data from warping table are: \n', rows)
-
     })
 });
 

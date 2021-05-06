@@ -6,24 +6,33 @@ import "./InputFormStyle/formBGStyle.css";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
 function Shift() {
-    var date = new Date();
-    // date.getDate();
-    var curDate = date.toISOString().slice(0, 10);
+    // -------------------Automatic date---------------------------
+    // var date = new Date();
+    // var curDate = date.toISOString().slice(0, 10);
 
     const [data, setData] = useState([
     ]);
+
+    const [received, setReceieved] = useState(0);
+    console.log(received);
+    const toggleReceived = (e) => {
+      if (e.target.checked) setReceieved(1);
+      else setReceieved(0);
+    };
   
     const [form, setForm] = useState({
-      date: curDate,
+      // -------------------Automatic date---------------------------
+      // s_date: curDate,
+      s_date: "",
       warped_yarn_received: "",
       order_no: "",
-      loom: "",
+      loom_no: "",
       shift: "",
       total_picks : "",
       waste_weight: "",
     });
 
-  const [loom, setLoom] = useState();
+  const [loom_no, setLoom] = useState();
 
 
   useEffect((e) => {
@@ -41,7 +50,7 @@ function Shift() {
     e.preventDefault();
 
     Axios
-      .post("http://localhost:3006/shiftInsert", form)
+      .post("http://localhost:3006/shiftInsert", {form: form, received: received})
       .then((res) => {
         console.log(res);
         alert("successful insert");
@@ -51,10 +60,12 @@ function Shift() {
       });
 
     setForm({
-      date: curDate,
+      // -------------------Automatic date---------------------------
+      // s_date: curDate,
+      s_date: "",
       warped_yarn_received: "",
       order_no: "",
-      loom: "",
+      loom_no: "",
       shift: "",
       total_picks : "",
       waste_weight: "",
@@ -98,14 +109,15 @@ function Shift() {
             name="order_no"
             onChange={handleChange}
             placeholder="Order no.">
+              <option value="" disabled>Order no</option>
               {createSelectItems()}
         </select>
-        <br/>
         <select
-        value={form.loom}
+        value={form.loom_no}
         onChange={handleChange}
-        name="loom"
+        name="loom_no"
         >
+          <option value="" disabled>Select loom</option>
           <option value="1">Loom-1</option>
           <option value="2">Loom-2</option>
           <option value="3">Loom-3</option>
@@ -118,14 +130,22 @@ function Shift() {
           <option value="10">Loom-10</option>
           {handleLoomNo}
         </select>
-              <br />
-
-            <div className="checkBox">
+          <div className="checkBox">
             <h3>Warped Yarn Received:</h3>
             <input
               type="checkbox"
+              checked={received}
+              onChange={toggleReceived}
 						/>
-            </div>
+          </div>
+          <input
+                type="date"
+                value={form.s_date}
+                onChange={handleChange}
+                name="s_date"
+                placeholder="Date"
+                required
+              />
           <input
             type="number"
             placeholder="Shift"
@@ -139,7 +159,7 @@ function Shift() {
             placeholder="Total Picks"
             value={form.total_picks}
             onChange={handleChange}
-            name="shift"
+            name="total_picks"
             required
           />
           <input

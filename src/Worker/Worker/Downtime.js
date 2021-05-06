@@ -8,9 +8,11 @@ import Appbar from "./../AppBar/Appbar";
 function DownTime() {
   var date = new Date();
   // date.getDate();
-  var curDate = date.toISOString().slice(0, 10);
+  // var curDate = date.toISOString().slice(0, 10);
+  // Commented date because user can fill downtime of previous days also
   const [form, setForm] = useState({
-    date: curDate,
+    // date: curDate,
+    date: "",
     loom: "",
     shift: "",
     weaver: "",
@@ -34,7 +36,8 @@ function DownTime() {
       });
 
     setForm({
-      date: curDate,
+      // date: curDate,
+      date: "",
       loom: "",
       shift: "",
       weaver: "",
@@ -78,6 +81,7 @@ function DownTime() {
                 onChange={handleChange}
                 name="loom"
               >
+                <option value="" disabled>Select Loom</option>
                 <option value="1">Loom-1</option>
                 <option value="2">Loom-2</option>
                 <option value="3">Loom-3</option>
@@ -90,7 +94,6 @@ function DownTime() {
                 <option value="10">Loom-10</option>
                 {handleLoomNo}
               </select>
-              <br />
               <input
                 type="number"
                 value={form.shift}

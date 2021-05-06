@@ -4,27 +4,17 @@ import { useState, useEffect} from 'react';
 import Axios from 'axios';
 
 export default function GroupedBar() {
-  
-  // const [l_date, setDate] = useState(0);
-
-  // const submitDate = () => {
-  //   Axios.post("http://localhost:3006/date_for_loomwise", {
-  //     l_date: l_date,
-  //   }).then(() => {
-  //     console.log(l_date);
-  //   });
-  // };
-
-
   const [chartData, setChartData] = useState({});
+  const [Date, setDate] = useState();
 
   const chart = () => {
     let loom = [];
     let target = [];
     let rs_generated = [];
 
+
     Axios
-      .get("http://localhost:3006/loom_analysis")
+      .get(`http://localhost:3006/loom_analysis/${Date}`)
       .then(res => {
         // console.log(res);
         for (const dataObj of res.data) {
@@ -38,14 +28,14 @@ export default function GroupedBar() {
             {
               label: "Target",
               data: target,
-              backgroundColor: "#b4aee8",
-              hoverBackgroundColor: "#b4aee8"
+              // backgroundColor: "#08bdf7",
+              backgroundColor: "#A070FF"
             },
             {
               label: "Rs generated",
               data: rs_generated,
-              backgroundColor: "#ffd384",
-              hoverBackgroundColor: "#ffd384"
+              // backgroundColor: "#bd4ef9",
+              backgroundColor: "#26D6E3"
             },
           ],
         });
@@ -56,7 +46,6 @@ export default function GroupedBar() {
 
   };
 
-
   useEffect(() => {
     chart();
   }, []);
@@ -65,28 +54,30 @@ export default function GroupedBar() {
     <div>
     <div className='header'>
       <h2 className='title'>Target vs Rs generated per loom</h2>
-          {/* <input
+      <br/>
+          <input
               type="date"
               placeholder="date"
+              className="Calender"
               required
               onChange={(e) => {
                 setDate(e.target.value);
               }}
-            />
+            ></input>
           <input
             type="submit"
             value="Show"
-            onClick={submitDate}
-          /> */}
+            className="showButton"
+            onClick={chart}
+          />
+          <br/>
     </div>
     <Bar data={chartData}
     options={
       {scales: {
         yAxes: [
           {
-            ticks: {
-              beginAtZero: true,
-            },
+            ticks: {beginAtZero: true,},
           },
         ],
       }}

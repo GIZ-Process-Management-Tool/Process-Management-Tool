@@ -22,6 +22,10 @@ app.use('/', [
 ]);
 
 app.use('/', [
+    require('./Worker/target.js')
+]);
+
+app.use('/', [
     require('./Worker/loomperday.js')
 ]);
 
@@ -76,6 +80,11 @@ app.use('/', [
 app.use('/', [
     require('./Admin/loom_loading_chart.js')
 ]);
+
+app.use('/', [
+    require('./Admin/wtti.js')
+]);
+
 
 app.listen(port, () => {
     console.log(`Listening to the port ${port}`);

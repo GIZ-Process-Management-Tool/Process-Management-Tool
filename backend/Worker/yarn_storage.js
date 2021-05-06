@@ -7,7 +7,7 @@ var mysql = require("mysql");
 
 app.get("/yarn", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-1", function(err, data, fields) {
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
         if (err) throw err;
         res.send(data);
     });
@@ -16,10 +16,24 @@ app.get("/yarn", (req, res) => {
 
 app.post('/yarn', (req, res) => {
 
-    const params = req.body.form
+    const params = req.body.form;
 	params["yarn_received"] = req.body.received;
 	console.log(params);
-    con.query('INSERT INTO yarn_storage SET ?', params, (err, rows) => {
+	weight = params.weight;
+	quality = params.quality;
+	order_no = params.order_no;
+	y_date = params.y_date;
+	yarn_received = params.yarn_received;
+
+	mysql = `INSERT INTO yarn_storage
+	VALUES(${yarn_received}, ${weight}, '${quality}', ${order_no}, '${y_date}', 0)
+	ON DUPLICATE KEY UPDATE
+	yarn_received = ${yarn_received},
+	weight = weight + ${weight},
+	quality = '${quality}',
+	y_date = '${y_date}';`
+
+    con.query(mysql,(err, rows) => {
         // connection.release()
         if (!err) {
             res.send(`added.`)
@@ -32,19 +46,6 @@ app.post('/yarn', (req, res) => {
     });
 });
 
-// app.post("/yarn", (req, res) => {
-// 	const params = req.body;
-// 	con.query("INSERT INTO yarn_storage SET ?", params, (err, rows) => {
-// 		// connection.release()
-// 		if (!err) {
-// 			res.send(`added.`);
-// 		} else {
-// 			console.log(err);
-// 		}
-
-// 		console.log("The data from yarn table are: \n", rows);
-// 	});
-// });
 app.put("/complete", (req, res) => {
 	const params = parseInt(req.body.orderNo);
 	console.log("Hello ", typeof params);

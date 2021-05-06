@@ -7,7 +7,7 @@ var mysql = require('mysql');
 
 app.get("/winding", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-1", function(err, data, fields) {
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
         if (err) throw err;
         res.send(data);
     });
@@ -16,9 +16,34 @@ app.get("/winding", (req, res) => {
 
 app.post('/winding', (req, res) => {
 
-        const params = req.body
-        con.query('INSERT INTO winding SET ?', params, (err, rows) => {
-            // connection.release()
+        const params            = req.body.form
+        params["yarn_received"] = req.body.received;
+        yarn_received           = params.yarn_received;
+        no_of_cones             = params.no_of_cones;
+        size_of_cones           = params.size_of_cones;
+        no_of_doffs             = params.no_of_doffs;
+        weight_of_cones         = params.weight_of_cones;
+        weight_of_waste         = params.weight_of_waste;
+        order_no                = params.order_no;
+        date                    = params.date;
+        package_defect          = params.package_defect;
+
+        sql = `INSERT INTO winding
+        VALUES(${yarn_received}, ${no_of_cones}, ${size_of_cones}, ${no_of_doffs},
+        ${weight_of_cones}, ${weight_of_waste}, ${order_no}, '${date}', '${package_defect}')
+        ON DUPLICATE KEY UPDATE
+        yarn_received   =   ${yarn_received},
+        no_of_cones     =   no_of_cones         +   ${no_of_cones},
+        size_of_cones   =   size_of_cones       +   ${size_of_cones},
+        no_of_doffs     =   no_of_doffs         +   ${no_of_doffs},
+        weight_of_cones =   weight_of_cones     +   ${weight_of_cones},
+        weight_of_waste =   weight_of_waste     +   ${weight_of_waste},
+        order_no        =   ${order_no},
+        date            =   '${date}',
+        package_defect  =   '${package_defect}';`
+
+
+        con.query(sql,(err, rows) => {
             if (!err) {
                 res.send(`added.`)
             } else {

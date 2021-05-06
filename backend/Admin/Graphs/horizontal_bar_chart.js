@@ -6,11 +6,16 @@ var mysql = require('mysql');
 
 app.get("/horizontalBchart", (req, res) => {
 
-    const Date = "2021-03-06";
-    const Shift = 1;
-    console.log(Date, Shift)
+  sql = `select 
+  s_date, 
+  coalesce(sum(case when shift = 1 then total_picks end), 0) as tp1,
+  coalesce(sum(case when shift = 2 then total_picks end), 0) as tp2 
+  from shift_analysis 
+  group by s_date 
+  order by s_date 
+  DESC limit 8;`
 
-    con.query("SELECT loom_no, meter FROM shift where s_date = ? AND shift = ?", [Date, Shift], (err, result) => {
+    con.query(sql, (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -20,4 +25,4 @@ app.get("/horizontalBchart", (req, res) => {
   });
 
 
-module.exports = app
+module.exports = app;

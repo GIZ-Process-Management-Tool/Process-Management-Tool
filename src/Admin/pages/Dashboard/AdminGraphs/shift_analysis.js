@@ -20,8 +20,8 @@ export default function LineChart(){
           var dt = new Date(d1);
           var options = {month : "short", day: "numeric", year: "numeric"};
           s_date.push(dt.toLocaleDateString("en-US", options));
-          if (dataObj.shift === 1){balance1.push(parseInt(dataObj.balance));}
-          if (dataObj.shift === 2){balance2.push(parseInt(dataObj.balance));}
+          balance1.push(parseInt(dataObj.b1));
+          balance2.push(parseInt(dataObj.b2));
         }
         setChartData({
           labels: s_date,
@@ -46,9 +46,6 @@ export default function LineChart(){
       .catch(err => {
         console.log(err);
       });
-
-      console.log(balance1, balance2);
-
   };
 
 
@@ -61,6 +58,7 @@ export default function LineChart(){
     <div>
       <div className='header'>
         <h2 className='title'>Shift wise balance for the week</h2>
+        <br/>
       </div>
       <Line data={chartData}
       options={
