@@ -3,21 +3,21 @@ import { HorizontalBar } from "react-chartjs-2";
 import { useState, useEffect} from 'react';
 import Axios from 'axios'; //import Horizontal Bar module from react-chart-js-2
 
-const mydata = {
-  labels: ["Date1", "Date2", "Date3", "Date4", "Date5", "Date6", "Date7"],
-  datasets: [
-    {
-      label: "shift1",
-      data: [200, 150, 100, 204, 305],
-      backgroundColor: "#BB8FCE"
-    },
-    {
-      label: "shift2",
-      data: [194, 30, 104, 210, 100],
-      backgroundColor: "#FFCE56"
-    },
-  ],
-};
+// const mydata = {
+//   labels: ["Date1", "Date2", "Date3", "Date4", "Date5", "Date6", "Date7"],
+//   datasets: [
+//     {
+//       label: "shift1",
+//       data: [200, 150, 100, 204, 305],
+//       backgroundColor: "#BB8FCE"
+//     },
+//     {
+//       label: "shift2",
+//       data: [194, 30, 104, 210, 100],
+//       backgroundColor: "#FFCE56"
+//     },
+//   ],
+// };
 
 const options = {
   scales: {

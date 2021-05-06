@@ -38,6 +38,17 @@ export default function PieChartModel() {
               "#66c2ff",
               "#ade8f4",
               "#caf0f8"
+
+              // "#ff6666",
+              // "#ffcc66",
+              // "#ccff66",
+              // "#66ff66",
+              // "#00ffcc",
+              // "#33ccff",
+              // "#cc99ff",
+              // "#ff00ff",
+              // "#cc99ff",
+              // "#00cc66",
             ]
             }
           ]

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TimelineError from "./ErrorComponent";
 import "./timeline";
+import "./timeline.css";
 
 export default function TimelineItem({ process }) {
 	// const [isShown, setIsShown] = useState(false);
