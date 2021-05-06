@@ -5,8 +5,9 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Winding() {
-	var date = new Date();
-	var curDate = date.toISOString().slice(0, 10);
+    // ------------------Automatic date-------------
+    // var date = new Date();
+    // var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
 		yarn_received: "",
 		no_of_cones: "",
@@ -15,10 +16,18 @@ function Winding() {
 		weight_of_cones: "",
 		weight_of_waste: "",
 		order_no: "",
-		date: curDate,
-		shift: "",
+      	// ------------------Automatic date-------------
+      	// date: curDate,
+      	date: "",
+      	// shift: "",
 		package_defect: "",
 	});
+
+	const [received, setReceieved] = useState(0);
+	const toggleReceived = (e) => {
+	  if (e.target.checked) setReceieved(1);
+	  else setReceieved(0);
+	};
 
 	const [complete, setComplete] = useState(false);
 	const toggleComplete = (e) => {
@@ -42,7 +51,7 @@ function Winding() {
 		e.preventDefault();
 
 		axios
-			.post("http://localhost:3006/winding", form)
+			.post("http://localhost:3006/winding", {form: form, received: received})
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
@@ -70,8 +79,10 @@ function Winding() {
 			weight_of_cones: "",
 			weight_of_waste: "",
 			order_no: "",
-			date: curDate,
-			shift: "",
+            // ------------------Automatic date-------------
+            // date: curDate,
+            date:"",
+            // shift: "",
 			package_defect: "",
 		});
 	}
@@ -116,13 +127,21 @@ function Winding() {
 						</select>
 						<br />
 						<input
-							type="number"
-							vlaue={form.yarn_received}
+							type="date"
+							value={form.y_date}
 							onChange={handleChange}
-							name="yarn_received"
-							placeholder="Yarn Received"
+							name="date"
+							placeholder="date"
 							required
 						/>
+					<div className="checkBox">
+            			<h3>Yarn Received:</h3>
+            			<input
+               				type="checkbox"
+               				checked={received}
+               				onChange={toggleReceived}
+						/>
+            		</div>
 						<br />
 						<input
 							type="number"
@@ -171,21 +190,12 @@ function Winding() {
 						<br />
 						{/* <input
 							type="number"
-							value={form.order_no}
-							onChange={handleChange}
-							name="order_no"
-							placeholder="Order No"
-							required
-						/> */}
-						<br />
-						<input
-							type="number"
 							value={form.shift}
 							onChange={handleChange}
 							name="shift"
 							placeholder="Shift"
 							required
-						/>
+						/> */}
 						<br />
 						<input
 							type="text"

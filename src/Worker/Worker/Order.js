@@ -23,7 +23,7 @@ function Order() {
 		ppc: "",
 		rate: "",
 		deadline: "",
-		target: "",
+		// target: "",
 	});
 
 	const toggleCheck = (e) => {
@@ -63,7 +63,7 @@ function Order() {
 			ppc: "",
 			rate: "",
 			deadline: "",
-			target: "",
+			// target: "",
 		});
 
 		process.map((eachProc) => (eachProc.status = false));
@@ -151,14 +151,14 @@ function Order() {
 							placeholder="Deadline"
 							required
 						/>
-						<input
+						{/* <input
 							type="number"
 							name="target"
 							value={form.target}
 							onChange={handleChange}
 							placeholder="Target"
 							required
-						/>
+						/> */}
 						{/* process checkBoxes */}
 						{process.map((eachProc) => {
 							const { id, name, status } = eachProc;

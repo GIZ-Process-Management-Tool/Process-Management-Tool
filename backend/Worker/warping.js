@@ -1,31 +1,48 @@
-var express = require("express");
+var express = require('express');
 var app = express();
 var con = require("../config/database.js");
 app.use(express.json());
-// var mysql = require("mysql");
+var mysql = require('mysql');
+
 
 app.get("/warping", (req, res) => {
-	con.query(
-		"SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2",
-		function (err, data, fields) {
-			if (err) throw err;
-			res.send(data);
-		}
-	);
+
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
+        if (err) throw err;
+        res.send(data);
+    });
+
 });
 
-app.post("/warping", (req, res) => {
-	const params = req.body;
-	con.query("INSERT INTO warping SET ?", params, (err, rows) => {
-		// connection.release()
-		if (!err) {
-			res.send(`added.`);
-		} else {
-			console.log(err);
-		}
+app.post('/warping', (req, res) => {
 
-		// console.log("The data from warping table are: \n", rows);
-	});
+    const params    = req.body;
+    var order_no        = params.order_no;
+    var date            = params.date;
+    var weight_o_w_y    = params.weight_o_w_y;
+    var waste_weight    = params.waste_weight;
+    var package_defect  = params.package_defect;
+
+    sql = `INSERT INTO warping
+    VALUES(${order_no}, '${date}', ${weight_o_w_y}, ${waste_weight},
+    '${package_defect}')
+    ON DUPLICATE KEY UPDATE
+    weight_o_w_y    =   weight_o_w_y + ${weight_o_w_y},
+    waste_weight    =   waste_weight + ${waste_weight},
+    order_no        =   ${order_no},
+    date            =   '${date}',
+    package_defect  =   '${package_defect}';`
+
+    con.query(sql, (err, rows) => {
+        // connection.release()
+        console.log(params);
+        if (!err) {
+            res.send(`added.`)
+        } else {
+            console.log(err)
+        }
+        console.log('The data from warping table are: \n', rows)
+    })
 });
 app.put("/warping", (req, res) => {
 	const order = parseInt(req.body.order_no);

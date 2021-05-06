@@ -5,10 +5,13 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function GreyReport() {
-	var date = new Date();
-	var curDate = date.toISOString().slice(0, 10);
+  // --------------Automatic date------------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
-		date: curDate,
+    // --------------Automatic date------------------
+    // date: curDate,
+    date: "",
 		shift: "",
 		loom_no: "",
 		worker: "",
@@ -17,8 +20,13 @@ function GreyReport() {
 		order_no: "",
 	});
 
+  const [repairable, setRepairable] = useState(0);
+  const toggleRepairable = (e) => {
+    if (e.target.checked) setRepairable(1);
+    else setRepairable(0);
+  };
+
 	const [data, setData] = useState([]);
-	const [repairable, setRepairable] = useState(0);
 	const [loom_no, setLoom] = useState();
 	const [complete, setComplete] = useState(false);
 	const toggleComplete = (e) => {
@@ -26,16 +34,12 @@ function GreyReport() {
 		else setComplete(false);
 	};
 
-	const toggleRepairable = (e) => {
-		if (e.target.checked) setRepairable(1);
-		else setRepairable(0);
-	};
 
 	function handleSubmit(e) {
 		e.preventDefault();
 
 		axios
-			.post("http://localhost:3006/grey_report", form)
+			.post("http://localhost:3006/grey_report", {form: form, repairable: repairable})
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
@@ -56,8 +60,9 @@ function GreyReport() {
 		}
 
 		setForm({
-			date: curDate,
-			shift: "",
+      // --------------Automatic date------------------
+      // date: curDate,
+      date: "",
 			loom_no: "",
 			worker: "",
 			meters: "",
@@ -189,7 +194,7 @@ function GreyReport() {
 							required
 						/>
 						<input
-							type="number"
+							type="text"
 							value={form.grade}
 							onChange={handleChange}
 							name="grade"
@@ -219,79 +224,6 @@ function GreyReport() {
 						<input type="text" placeholder="error" />
 						<button className="MainButton">Submit</button>
 					</div>
-					<input
-						type="date"
-						value={form.date}
-						onChange={handleChange}
-						name="date"
-						placeholder="Date"
-						required
-					/>
-					<input
-						type="number"
-						value={form.shift}
-						onChange={handleChange}
-						name="shift"
-						placeholder="Shift"
-						required
-					/>
-					<input
-						type="number"
-						value={form.loom_no}
-						onChange={handleChange}
-						name="loom_no"
-						placeholder="Loom"
-						required
-					/>
-					<input
-						type="text"
-						value={form.worker}
-						onChange={handleChange}
-						name="worker"
-						placeholder="Worker"
-						required
-					/>
-					<input
-						type="number"
-						value={form.meters}
-						onChange={handleChange}
-						name="meters"
-						placeholder="Meters"
-						required
-					/>
-					<input
-						type="number"
-						value={form.points}
-						onChange={handleChange}
-						name="points"
-						placeholder="points"
-						required
-					/>
-					<input
-						type="number"
-						value={form.order_no}
-						onChange={handleChange}
-						name="order_no"
-						placeholder="Order Number"
-						required
-					/>
-					<input
-						type="number"
-						value={form.repairable}
-						onChange={handleChange}
-						name="repairable"
-						placeholder="Repairable"
-						required
-					/>
-					<input
-						type="number"
-						value={form.grade}
-						onChange={handleChange}
-						name="grade"
-						placeholder="Grade"
-						required
-					/>
-					<input type="submit" value="SUBMIT" className="submit" />
 				</div>
 			</div>
 		</div>

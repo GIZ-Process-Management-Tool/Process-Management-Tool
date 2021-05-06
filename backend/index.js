@@ -22,15 +22,32 @@ app.use(
 
 app.use("/", [require("./Admin/cardValue.js")]);
 
-app.use("/", [require("./Worker/Shift.js")]);
+app.use('/', [
+    require('./Worker/target.js')
+]);
 
-app.use("/", [require("./Worker/loomperday.js")]);
+app.use('/', [
+    require('./Worker/loomperday.js')
+]);
+app.use("/", [require("./Worker/Shift.js")]);
 
 app.use("/", [require("./Worker/warping.js")]);
 
 app.use("/", [require("./Admin/Graphs/piechart.js")]);
 
 app.use("/", [require("./Admin/Graphs/horizontal_bar_chart.js")]);
+
+app.use('/', [
+    require('./Admin/Graphs/shift_analysis.js')
+]);
+
+app.use('/', [
+    require('./Admin/Graphs/loom_analysis.js')
+]);
+
+app.use('/', [
+    require('./Worker/downtime.js')
+]);
 
 app.use("/", [require("./Worker/downtime.js")]);
 
@@ -49,6 +66,11 @@ app.use("/", [require("./Worker/yarn_storage.js")]);
 app.use("/", [require("./Admin/loom_loading_chart.js")]);
 
 app.use("/", [require("./Admin/Tracking/Timeline")]);
+
+app.use('/', [
+    require('./Admin/wtti.js')
+]);
+
 
 app.listen(port, () => {
 	console.log(`Listening to the port ${port}`);

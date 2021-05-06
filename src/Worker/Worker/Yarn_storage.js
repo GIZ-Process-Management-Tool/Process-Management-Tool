@@ -7,8 +7,9 @@ import Appbar from "../AppBar/Appbar";
 // import { RiContactsBookLine } from "react-icons/ri";
 
 function YarnStorage() {
-	var y_date = new Date();
-	var curDate = y_date.toISOString().slice(0, 10);
+	  // ---------Automatic date-----------
+    // var y_date = new Date();
+    // var curDate = y_date.toISOString().slice(0, 10);
 	const [data, setData] = useState([]);
 
 	const [received, setRecieved] = useState(0);
@@ -27,8 +28,10 @@ function YarnStorage() {
 		weight: "",
 		quality: "",
 		order_no: "",
-		date: curDate,
-		shift: "",
+    // ---------Automatic date-----------
+    // y_date: curDate,
+    y_date: "",
+    // shift: "",
 	});
 
 	useEffect((e) => {
@@ -58,15 +61,20 @@ function YarnStorage() {
 			axios.put("http://localhost:3006/yarn", form).then((res) => {
 				console.log(res);
 				alert("successful Update");
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 		}
-		console.log(form.order_no);
+		// console.log(form.order_no);
 		setForm({
 			weight: "",
 			quality: "",
 			order_no: "",
-			y_date: curDate,
-			shift: "",
+      		// ---------Automatic date-----------
+      		// y_date: curDate,
+    		y_date: "",
+      		// shift: "",
 		});
 	};
 
@@ -110,8 +118,14 @@ function YarnStorage() {
 							</option>
 							{createSelectItems()}
 						</select>
-						<br />
-
+						<input
+							type="date"
+							value={form.y_date}
+							onChange={handleChange}
+							name="y_date"
+							placeholder="y_date"
+							required
+						/>
 						<div className="checkBox">
 							<h3>Yarn Received:</h3>
 							<input
@@ -140,14 +154,14 @@ function YarnStorage() {
 							required
 						/>
 						<br />
-						<input
+						{/* <input
 							type="number"
 							value={form.shift}
 							onChange={handleChange}
 							name="shift"
 							placeholder="Shift"
 							required
-						/>
+						/> */}
 						<br />
 
 						<div className="checkBox">
@@ -167,4 +181,4 @@ function YarnStorage() {
 	);
 }
 
-export default YarnStorage;
+  export default YarnStorage;

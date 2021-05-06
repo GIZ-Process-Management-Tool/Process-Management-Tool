@@ -5,12 +5,14 @@ import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
 
 function Warping() {
-	var date = new Date();
-	var curDate = date.toISOString().slice(0, 10);
+  // ------------------Automatic date-------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
+		// ------------------Automatic date-------------
+    	// date: curDate,
 		order_no: "",
-		date: curDate,
-		shift: "",
+		// shift: "",
 		weight_o_w_y: "",
 		waste_weight: "",
 		package_defect: "",
@@ -57,8 +59,9 @@ function Warping() {
 
 		setForm({
 			order_no: "",
-			date: curDate,
-			shift: "",
+			// date: curDate,
+			date: "",
+			// shift: "",
 			weight_o_w_y: "",
 			waste_weight: "",
 			package_defect: "",
@@ -103,21 +106,13 @@ function Warping() {
 							</option>
 							{createSelectItems()}
 						</select>
-						{/* <input
-							type="number"
-							value={form.order_no}
-							onChange={handleChange}
-							name="order_no"
-							placeholder="Order NO"
-							required
-						/> */}
-						<br />
+						<br/>
 						<input
-							type="number"
-							name="shift"
-							value={form.shift}
+							type="date"
+							value={form.date}
 							onChange={handleChange}
-							placeholder="Shift"
+							name="date"
+							placeholder="date"
 							required
 						/>
 						<br />
@@ -126,7 +121,7 @@ function Warping() {
 							name="weight_o_w_y"
 							value={form.weight_o_w_y}
 							onChange={handleChange}
-							placeholder="Weight of Waste Yarn"
+							placeholder="Weight of Warped Yarn"
 							required
 						/>
 						<br />

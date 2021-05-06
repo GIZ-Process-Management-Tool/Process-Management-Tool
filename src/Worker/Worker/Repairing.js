@@ -6,21 +6,28 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Repairing() {
-	var date = new Date();
-	var curDate = date.toISOString().slice(0, 10);
-	const [form, setForm] = useState({
-		order_no: "",
-		date: curDate,
-		machine: "",
-		worker: "",
-	});
-	const [data, setData] = useState([]);
-	const [complete, setComplete] = useState(false);
+  // -------------------Automatic date-----------------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
+  const [data, setData] = useState([
+  ]);
+
+  const [complete, setComplete] = useState(false);
 	const toggleComplete = (e) => {
 		if (e.target.checked) setComplete(true);
 		else setComplete(false);
 	};
-	function handleSubmit(e) {
+
+  const [form, setForm] = useState({
+    order_no: "",
+    date: "",
+    // -------------------Automatic date-----------------------
+    // date : curDate,
+    machine: "",
+    worker: "",
+  });
+
+  function handleSubmit(e) {
 		e.preventDefault();
 
 		axios
@@ -46,7 +53,9 @@ function Repairing() {
 
 		setForm({
 			order_no: "",
-			date: curDate,
+      // -------------------Automatic date-----------------------
+      // date: curDate,
+      date: "",
 			machine: "",
 			worker: "",
 		});
