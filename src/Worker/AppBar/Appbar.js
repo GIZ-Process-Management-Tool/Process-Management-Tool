@@ -7,46 +7,46 @@ import { RiErrorWarningFill } from "react-icons/ri";
 import "./../ErrorMessages/Error.css";
 import brandLogo from "./../../Admin/pages/Sidebar/brandIcon.png";
 const Appbar = ({ processName }) => {
-  return (
-    <>
-      <div className="Appbar-main">
-        <div className="appBarHeader">
-          <img
-            className="brandIconStyle"
-            src={brandLogo}
-            alt="Vatan Textiles"
-          />
+	return (
+		<>
+			<div className="Appbar-main">
+				<div className="appBarHeader">
+					<img
+						className="brandIconStyle"
+						src={brandLogo}
+						alt="Vatan Textiles"
+					/>
 
-          <h4 style={{ fontSize: "20px", color: "#ffff", fontStyle: "bold" }}>
-            {processName}
-          </h4>
-        </div>
-        <div className="firstIcon">
-          <BiCheck
-            style={{ fontSize: "44px", color: "#ffff", fontStyle: "bold" }}
-          />
-        </div>
-        <div className="ErrorIcon">
-          <a class="button" href="#popup1">
-            <RiErrorWarningFill
-              style={{ fontSize: "32px", color: "#ffff", fontStyle: "bold" }}
-            />
-          </a>
-          <div id="popup1" class="overlay">
-            <div class="popup">
-              <h2>Report Error</h2>
-              <a class="close" href="#">
-                &times;
-              </a>
-              <div class="content">
-                <textarea type="text" placeholder="error" />
-                <button>Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+					<h4 style={{ fontSize: "20px", color: "#ffff", fontStyle: "bold" }}>
+						{processName}
+					</h4>
+				</div>
+				<div className="firstIcon">
+					<BiCheck
+						style={{ fontSize: "44px", color: "#ffff", fontStyle: "bold" }}
+					/>
+				</div>
+				<div className="ErrorIcon">
+					<a class="button" href="#popup1">
+						<RiErrorWarningFill
+							style={{ fontSize: "32px", color: "#ffff", fontStyle: "bold" }}
+						/>
+					</a>
+					<div id="popup1" class="overlay">
+						<div class="popup">
+							<h2>Report Error</h2>
+							<a class="close" href="#">
+								&times;
+							</a>
+							<div class="content">
+								<textarea type="text" placeholder="error" />
+								<button>Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 export default Appbar;

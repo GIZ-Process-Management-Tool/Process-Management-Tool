@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var con = require('../config/database.js');
+var con = require("../config/database.js");
 app.use(express.json());
 var mysql = require('mysql');
 
@@ -17,11 +17,11 @@ app.get("/warping", (req, res) => {
 app.post('/warping', (req, res) => {
 
     const params    = req.body;
-    order_no        = params.order_no;
-    date            = params.date;
-    weight_o_w_y    = params.weight_o_w_y;
-    waste_weight    = params.waste_weight;
-    package_defect  = params.package_defect;
+    var order_no        = params.order_no;
+    var date            = params.date;
+    var weight_o_w_y    = params.weight_o_w_y;
+    var waste_weight    = params.waste_weight;
+    var package_defect  = params.package_defect;
 
     sql = `INSERT INTO warping
     VALUES(${order_no}, '${date}', ${weight_o_w_y}, ${waste_weight},
@@ -44,5 +44,21 @@ app.post('/warping', (req, res) => {
         console.log('The data from warping table are: \n', rows)
     })
 });
+app.put("/warping", (req, res) => {
+	const order = parseInt(req.body.order_no);
+	con.query(
+		"UPDATE tracking1 SET status=? WHERE orderNo=? AND processId=?",
+		["true", order, 2],
+		(err, rows) => {
+			// connection.release()
+			if (!err) {
+				res.send(`added.`);
+			} else {
+				console.log(err);
+			}
 
+			// console.log("The data from yarn table are: \n", rows);
+		}
+	);
+});
 module.exports = app;

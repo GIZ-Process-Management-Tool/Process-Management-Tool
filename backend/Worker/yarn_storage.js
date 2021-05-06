@@ -19,11 +19,11 @@ app.post('/yarn', (req, res) => {
     const params = req.body.form;
 	params["yarn_received"] = req.body.received;
 	console.log(params);
-	weight = params.weight;
-	quality = params.quality;
-	order_no = params.order_no;
-	y_date = params.y_date;
-	yarn_received = params.yarn_received;
+	var weight = params.weight;
+	var quality = params.quality;
+	var order_no = params.order_no;
+	var y_date = params.y_date;
+	var yarn_received = params.yarn_received;
 
 	mysql = `INSERT INTO yarn_storage
 	VALUES(${yarn_received}, ${weight}, '${quality}', ${order_no}, '${y_date}', 0)
@@ -46,12 +46,12 @@ app.post('/yarn', (req, res) => {
     });
 });
 
-app.put("/complete", (req, res) => {
-	const params = parseInt(req.body.orderNo);
+app.put("/yarn", (req, res) => {
+	const order = parseInt(req.body.order_no);
 	console.log("Hello ", typeof params);
 	con.query(
 		"UPDATE tracking1 SET status=? WHERE orderNo=? AND processId=?",
-		["true", params, 0],
+		["true", order, 0],
 		(err, rows) => {
 			// connection.release()
 			if (!err) {
@@ -59,7 +59,6 @@ app.put("/complete", (req, res) => {
 			} else {
 				console.log(err);
 			}
-
 			console.log("The data from yarn table are: \n", rows);
 		}
 	);

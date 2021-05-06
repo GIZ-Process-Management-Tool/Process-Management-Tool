@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -25,15 +25,15 @@ function DownTime() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:3006/downtime", form)
-      .then((res) => {
-        console.log(res);
-        alert("successful insert");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+		axios
+			.post("http://localhost:3006/downtime", form)
+			.then((res) => {
+				console.log(res);
+				alert("successful insert");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 
     setForm({
       // date: curDate,

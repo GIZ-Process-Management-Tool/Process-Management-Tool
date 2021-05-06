@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "./InputFormStyle/formBGStyle.css";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
@@ -18,6 +18,12 @@ function Shift() {
     const toggleReceived = (e) => {
       if (e.target.checked) setReceieved(1);
       else setReceieved(0);
+    };
+
+    const [complete, setComplete] = useState(false);
+    const toggleComplete = (e) => {
+      if (e.target.checked) setComplete(true);
+      else setComplete(false);
     };
   
     const [form, setForm] = useState({
@@ -58,6 +64,12 @@ function Shift() {
       .catch((err) => {
         console.log(err);
       });
+
+      if (complete) {
+        Axios.put("http://localhost:3006/shiftInsert", form).then(() => {
+          alert("successful Update");
+        });
+      }
 
     setForm({
       // -------------------Automatic date---------------------------
@@ -170,7 +182,14 @@ function Shift() {
             name="waste_weight"
             required
           />
-          <br/>
+          <div className="checkBox">
+						<h3>Done with all lots !</h3>
+						<input
+							type="checkbox"
+							checked={complete}
+							onChange={toggleComplete}
+						/>
+					</div>
         <input type="submit" value="SUBMIT" class="submit" />
         </div>
       </div>

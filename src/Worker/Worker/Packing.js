@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -18,6 +18,12 @@ export default function Yarn() {
         weight: "",
         date: ""
     });
+
+    const [complete, setComplete] = useState(false);
+    const toggleComplete = (e) => {
+      if (e.target.checked) setComplete(true);
+      else setComplete(false);
+    };
 
   const [data, setData] = useState([
   ]);
@@ -56,9 +62,9 @@ export default function Yarn() {
             });
   }
 
-  function handleChange(event) {
-    const { name, value } = event.target;
 
+  function handleChange(event) {
+		const { name, value } = event.target;
     setForm((prv) => {
       return {
         ...prv,
@@ -117,6 +123,14 @@ export default function Yarn() {
               placeholder="Weight"
               required
             />
+            <div className="checkBox">
+							<h3>Done with all lots !</h3>
+							<input
+								type="checkbox"
+								checked={complete}
+								onChange={toggleComplete}
+							/>
+						</div>
             <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>

@@ -1,6 +1,6 @@
-var express = require('express');
+var express = require("express");
 var app = express();
-var con = require('../config/database.js');
+var con = require("../config/database.js");
 app.use(express.json());
 var mysql = require('mysql');
 app.post('/downtime', (req, res) => {

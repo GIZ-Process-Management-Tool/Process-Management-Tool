@@ -1,31 +1,54 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "./HeaderProgressTrack.css";
+import Timeline from "./timeline";
 
 const HeaderProgressTrack = () => {
-  const [orderValue, setOrder] = useState();
-  console.log(orderValue);
+	const [orderValue, setOrder] = useState([]);
+	const [selectedOrder, setSelectedOrder] = useState(1);
 
-  const handleOrderChange = (e) => {
-    setOrder(e.target.value);
-  };
-  return (
-    <div className="PTHead">
-      <div className="PTTitle">Progress So Far</div>
+	useEffect((e) => {
+		axios
+			.get("http://localhost:3006/processBarOrders")
+			.then((res) => {
+				setOrder(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+	function handleChange(event) {
+		setSelectedOrder(event.target.value);
+	}
 
-      <select
-        className="PTOrderDD"
-        value={orderValue}
-        onChange={handleOrderChange}
-        name="carlist"
-      >
-        <option value="Ray">Raymond Shawl - A2676282</option>
-        <option value="Black">Blackberry - A7534873</option>
-        <option value="Kirti">Kirti Shawl - B2676282</option>
-        <option value="Shawl">Raymond Shawl - A2376282</option>
-      </select>
-      <button className="PTDetailButton">Details</button>
-    </div>
-  );
+	function createSelectItems() {
+		let items = [];
+		for (let i = 0; i < orderValue.length; i++) {
+			items.push(
+				<option key={orderValue[i].order_no} value={orderValue[i].order_no}>
+					{orderValue[i].order_no + " - " + orderValue[i].company}
+				</option>
+			);
+		}
+		return items;
+	}
+	return (
+		<>
+			<div className="PTHead">
+				<div className="PTTitle">Progress So Far</div>
+				<select
+					value={selectedOrder}
+					name="order_no"
+					onChange={handleChange}
+					placeholder="Order no."
+				>
+					{createSelectItems()}
+				</select>
+				<button className="PTDetailButton">Details</button>
+			</div>
+			<Timeline orderNo={parseInt(selectedOrder)} />
+		</>
+	);
 };
 
 export default HeaderProgressTrack;

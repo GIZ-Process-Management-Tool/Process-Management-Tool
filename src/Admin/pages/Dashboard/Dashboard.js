@@ -6,7 +6,7 @@ import "./Dashboard.css";
 // import BarChartModel from "./BarChart";
 import PieChartModel from "./AdminGraphs/PieChart";
 import GroupedBar from "./AdminGraphs/Loom_analysis";
-import LineChart from "./AdminGraphs/shift_analysis";
+import LineChart from "./AdminGraphs/Shift_analysis";
 import LineGraphModel from "./AdminGraphs/LineGraph";
 // import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
 import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
@@ -17,6 +17,7 @@ import MainNavBar from "./Components/AdminNavBar/MainNavBar";
 export default function Dashboard() {
 
   const [wttiList, setWttiList] = useState([]);
+  const [covertedDate, convertDate] = useState();
 
 
   useEffect((e) => {
@@ -27,8 +28,8 @@ export default function Dashboard() {
       var d1 = response.data[0].w_date;
       var dt = new Date(d1);
       var options = {month : "short", day: "numeric", year: "numeric"};
-      wttiList.w_date = dt.toLocaleDateString("en-US", options);
-      console.log("This is ...." + wttiList.w_date);
+       convertDate(dt.toLocaleDateString("en-US", options));
+      // console.log("This is ...." + wttiList.w_date);
     })
     .catch((err) => {
       console.log(err);
@@ -50,47 +51,48 @@ export default function Dashboard() {
             </div>
           </div> */}
           <div className="QRContainer">
-            <div className="HeaderContainer">
-            {wttiList.map((val, key) =>{
+           {wttiList.map((val, key) =>{
                 return (
+                  <div className="HeaderContainer">
                   <div className="QRHeading">
                     {val.target_asDate}
                   </div>
-                );
-              })}
-              <div className="QRSubHeading"> Target on date </div>
-            </div>
+                  <div className="QRSubHeading"> Target on - {covertedDate} </div>
+                   </div>
+                      );
+            })}
             <div className="QRtrailingIcon">
               <FaRupeeSign />
             </div>
           </div>
           <div className="QRContainer">
-            <div className="HeaderContainer"> 
-              {wttiList.map((val, key) =>{
+          {wttiList.map((val, key) =>{
                 return (
+                <div className="HeaderContainer"> 
                   <div className="QRHeading">
                     {val.achieved_asDate}
                   </div>
-                );
-              })}
-              <div className="QRSubHeading"> Total picks achieved on date </div>
-            </div>
+                <div className="QRSubHeading"> Total picks achieved on - {covertedDate} </div>
+                </div>
+                    );
+            })}
             <div className="QRtrailingIcon">
               <FaRupeeSign />
             </div>
           </div>
 
           <div className="QRContainer">
-            <div className="HeaderContainer">
-            {wttiList.map((val, key) =>{
+
+              {wttiList.map((val, key) =>{
                 return (
+                <div className="HeaderContainer">
                   <div className="QRHeading">
                     {val.balance_asDate}
                   </div>
-                );
-              })}
-              <div className="QRSubHeading"> Balance on date </div>
+                <div className="QRSubHeading"> Balance on - {covertedDate} </div>
             </div>
+             );
+             })}
             <div className="QRtrailingIcon">
               <FaRupeeSign />
             </div>
@@ -100,7 +102,7 @@ export default function Dashboard() {
         <div className="MainGraphsRow_3">
           <div className="chartContainer progressBar">
             <HeaderProgressTrack />
-            <Timeline />
+            {/* <Timeline /> */}
           </div>
           <div className="chartContainer">
           <GroupedBar />

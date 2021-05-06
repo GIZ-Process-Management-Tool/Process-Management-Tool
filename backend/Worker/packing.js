@@ -1,9 +1,8 @@
 var express = require('express');
 var app = express();
-var con = require('../config/database.js');
+var con = require("../config/database.js");
 app.use(express.json());
-var mysql = require('mysql');
-
+// var mysql = require("mysql");
 
 
 app.get("/packing", (req, res) => {
@@ -37,9 +36,8 @@ app.post('/packing', (req, res) => {
             } else {
                 console.log(err)
             }
+        });
 
-            console.log('The data from yarn table are: \n', rows)
+    });
 
-        })
-});
-module.exports = app;
+module.exports = app
