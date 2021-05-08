@@ -5,9 +5,9 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Winding() {
-    // ------------------Automatic date-------------
-    // var date = new Date();
-    // var curDate = date.toISOString().slice(0, 10);
+	// ------------------Automatic date-------------
+	// var date = new Date();
+	// var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
 		yarn_received: "",
 		no_of_cones: "",
@@ -16,17 +16,17 @@ function Winding() {
 		weight_of_cones: "",
 		weight_of_waste: "",
 		order_no: "",
-      	// ------------------Automatic date-------------
-      	// date: curDate,
-      	date: "",
-      	// shift: "",
+		// ------------------Automatic date-------------
+		// date: curDate,
+		date: "",
+		// shift: "",
 		package_defect: "",
 	});
 
 	const [received, setReceieved] = useState(0);
 	const toggleReceived = (e) => {
-	  if (e.target.checked) setReceieved(1);
-	  else setReceieved(0);
+		if (e.target.checked) setReceieved(1);
+		else setReceieved(0);
 	};
 
 	const [complete, setComplete] = useState(false);
@@ -51,11 +51,17 @@ function Winding() {
 		e.preventDefault();
 
 		axios
-			.post("http://localhost:3006/winding", {form: form, received: received})
+			.post("http://localhost:3006/winding", { form: form, received: received })
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
 			})
+			.catch((err) => {
+				console.log(err);
+			});
+		axios.patch("http://localhost:3006/status", form).then((res) => {
+			console.log(res);
+		})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -79,10 +85,10 @@ function Winding() {
 			weight_of_cones: "",
 			weight_of_waste: "",
 			order_no: "",
-            // ------------------Automatic date-------------
-            // date: curDate,
-            date:"",
-            // shift: "",
+			// ------------------Automatic date-------------
+			// date: curDate,
+			date: "",
+			// shift: "",
 			package_defect: "",
 		});
 	}
@@ -101,8 +107,8 @@ function Winding() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
 			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
 				</option>
 			);
 		}
@@ -134,14 +140,14 @@ function Winding() {
 							placeholder="date"
 							required
 						/>
-					<div className="checkBox">
-            			<h3>Yarn Received:</h3>
-            			<input
-               				type="checkbox"
-               				checked={received}
-               				onChange={toggleReceived}
-						/>
-            		</div>
+						<div className="checkBox">
+							<h3>Yarn Received:</h3>
+							<input
+								type="checkbox"
+								checked={received}
+								onChange={toggleReceived}
+							/>
+						</div>
 						<br />
 						<input
 							type="number"

@@ -55,7 +55,7 @@ function LoomperDay() {
 
 					<input
 						type="submit"
-						value="Sign In"
+						value="SUBMIT"
 						className="submit"
 						onClick={submitLoomCharges}
 					/>

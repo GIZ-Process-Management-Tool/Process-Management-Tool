@@ -26,10 +26,10 @@ function Target() {
       });
 
     setForm({
-     s_date: "",
-     shift: "",
-     target: "",
-     supervisor: "",
+      s_date: "",
+      shift: "",
+      target: "",
+      supervisor: "",
     });
   }
 
@@ -45,52 +45,52 @@ function Target() {
   }
   return (
 
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div class="login">
-            <Appbar processName="Target" />
-            <div class="form">
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div class="login">
+          <Appbar processName="Target" />
+          <div class="form">
             <input
-                type="date"
-                value={form.s_date}
-                onChange={handleChange}
-                name="s_date"
-                placeholder="Date"
-                required
+              type="date"
+              value={form.s_date}
+              onChange={handleChange}
+              name="s_date"
+              placeholder="Date"
+              required
             />
             <input
-                type="number"
-                value={form.shift}
-                onChange={handleChange}
-                name="shift"
-                placeholder="Shift"
-                required
+              type="number"
+              value={form.shift}
+              onChange={handleChange}
+              name="shift"
+              placeholder="Shift"
+              required
             />
             <input
-                type="number"
-                value={form.target}
-                onChange={handleChange}
-                name="target"
-                placeholder="Target for all looms"
-                required
-              />
-              <input
-                type="text"
-                value={form.supervisor}
-                onChange={handleChange}
-                name="supervisor"
-                placeholder="Supervisor"
-                required
-              />
-              <input type="submit" value="Submit" className="submit"/>
-                <br/>
-              {/* <input type="submit" value="Calculate Loom analysis" className="submit"/>
+              type="number"
+              value={form.target}
+              onChange={handleChange}
+              name="target"
+              placeholder="Target for all looms"
+              required
+            />
+            <input
+              type="text"
+              value={form.supervisor}
+              onChange={handleChange}
+              name="supervisor"
+              placeholder="Supervisor"
+              required
+            />
+            <input type="submit" value="SUBMIT" className="submit" />
+            <br />
+            {/* <input type="submit" value="Calculate Loom analysis" className="submit"/>
                 <br/>
               <input type="submit" value="Calculate WTTI" className="submit"/> */}
-            </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   );
 }
 export default Target;

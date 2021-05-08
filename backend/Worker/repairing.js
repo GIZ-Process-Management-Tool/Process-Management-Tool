@@ -6,12 +6,12 @@ app.use(express.json());
 
 app.get("/repairing", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
-        if (err) throw err;
-        res.send(data);
-    });
+	con.query("SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=5", function (err, data, fields) {
+		if (err) throw err;
+		res.send(data);
+	});
 
-});
+});	
 
 app.post("/repairing", (req, res) => {
 	const params = req.body;
@@ -25,6 +25,23 @@ app.post("/repairing", (req, res) => {
 
 		console.log("The data from repair table are: \n", rows);
 	});
+});
+app.patch('/status', (req, res) => {
+	const order = parseInt(req.body.order_no);
+	console.log(`order = ${order}`)
+	con.query(
+		"UPDATE cust_order SET status=? WHERE order_no=?",
+		[2, order],
+		(err, rows) => {
+			// connection.release()
+			if (!err) {
+				res.send(`added.`);
+			} else {
+				console.log(err);
+			}
+			console.log("The data from yarn table are: \n", rows);
+		}
+	);
 });
 app.put("/repairing", (req, res) => {
 	const order = parseInt(req.body.order_no);

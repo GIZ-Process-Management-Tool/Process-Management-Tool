@@ -5,12 +5,12 @@ import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
 
 function Warping() {
-  // ------------------Automatic date-------------
-  // var date = new Date();
-  // var curDate = date.toISOString().slice(0, 10);
+	// ------------------Automatic date-------------
+	// var date = new Date();
+	// var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
 		// ------------------Automatic date-------------
-    	// date: curDate,
+		// date: curDate,
 		order_no: "",
 		// shift: "",
 		weight_o_w_y: "",
@@ -42,6 +42,12 @@ function Warping() {
 				console.log(res);
 				alert("successful insert");
 			})
+			.catch((err) => {
+				console.log(err);
+			});
+		axios.patch("http://localhost:3006/status", form).then((res) => {
+			console.log(res);
+		})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -82,8 +88,8 @@ function Warping() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
 			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
 				</option>
 			);
 		}
@@ -106,7 +112,7 @@ function Warping() {
 							</option>
 							{createSelectItems()}
 						</select>
-						<br/>
+						<br />
 						<input
 							type="date"
 							value={form.date}

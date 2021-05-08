@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get("/packing", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
+    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function (err, data, fields) {
         if (err) throw err;
         res.send(data);
     });
@@ -15,13 +15,13 @@ app.get("/packing", (req, res) => {
 });
 
 app.post('/packing', (req, res) => {
-        const params   = req.body;
-        order_no       = params.order_no;
-        length         = params.length;
-        weight         = params.weight;
-        date           = params.date;
+    const params = req.body;
+    order_no = params.order_no;
+    length = params.length;
+    weight = params.weight;
+    date = params.date;
 
-        sql = `INSERT INTO packing
+    sql = `INSERT INTO packing
         VALUES(${order_no}, ${length}, ${weight}, '${date}')
         ON DUPLICATE KEY UPDATE
         order_no        =  ${order_no},
@@ -29,15 +29,31 @@ app.post('/packing', (req, res) => {
         weight          =  weight         +   ${weight},
         date            =  '${date}';`
 
-        con.query(sql,(err, rows) => {
-            // connection.release()
-            if (!err) {
-                res.send(`added.`)
-            } else {
-                console.log(err)
-            }
-        });
-
+    con.query(sql, (err, rows) => {
+        // connection.release()
+        if (!err) {
+            res.send(`added.`)
+        } else {
+            console.log(err)
+        }
     });
 
+});
+app.patch('/status3', (req, res) => {
+    const order = parseInt(req.body.order_no);
+    console.log(`order = ${order}`)
+    con.query(
+        "UPDATE cust_order SET status=? WHERE order_no=?",
+        [3, order],
+        (err, rows) => {
+            // connection.release()
+            if (!err) {
+                res.send(`added.`);
+            } else {
+                console.log(err);
+            }
+            console.log("The data from packing table are: \n", rows);
+        }
+    );
+});
 module.exports = app
