@@ -23,7 +23,7 @@ function Order() {
 		ppc: "",
 		rate: "",
 		deadline: "",
-		// target: "",
+		status: 1,
 	});
 
 	const toggleCheck = (e) => {
@@ -63,7 +63,7 @@ function Order() {
 			ppc: "",
 			rate: "",
 			deadline: "",
-			// target: "",
+			status: 1,
 		});
 
 		process.map((eachProc) => (eachProc.status = false));

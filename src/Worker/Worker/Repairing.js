@@ -6,28 +6,28 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Repairing() {
-  // -------------------Automatic date-----------------------
-  // var date = new Date();
-  // var curDate = date.toISOString().slice(0, 10);
-  const [data, setData] = useState([
-  ]);
+	// -------------------Automatic date-----------------------
+	// var date = new Date();
+	// var curDate = date.toISOString().slice(0, 10);
+	const [data, setData] = useState([
+	]);
 
-  const [complete, setComplete] = useState(false);
+	const [complete, setComplete] = useState(false);
 	const toggleComplete = (e) => {
 		if (e.target.checked) setComplete(true);
 		else setComplete(false);
 	};
 
-  const [form, setForm] = useState({
-    order_no: "",
-    date: "",
-    // -------------------Automatic date-----------------------
-    // date : curDate,
-    machine: "",
-    worker: "",
-  });
+	const [form, setForm] = useState({
+		order_no: "",
+		date: "",
+		// -------------------Automatic date-----------------------
+		// date : curDate,
+		machine: "",
+		worker: "",
+	});
 
-  function handleSubmit(e) {
+	function handleSubmit(e) {
 		e.preventDefault();
 
 		axios
@@ -36,6 +36,12 @@ function Repairing() {
 				console.log(res);
 				alert("successful insert");
 			})
+			.catch((err) => {
+				console.log(err);
+			});
+		axios.patch("http://localhost:3006/status", form).then((res) => {
+			console.log(res);
+		})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -53,9 +59,9 @@ function Repairing() {
 
 		setForm({
 			order_no: "",
-      // -------------------Automatic date-----------------------
-      // date: curDate,
-      date: "",
+			// -------------------Automatic date-----------------------
+			// date: curDate,
+			date: "",
 			machine: "",
 			worker: "",
 		});
@@ -85,8 +91,8 @@ function Repairing() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
 			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
 				</option>
 			);
 		}
@@ -141,7 +147,7 @@ function Repairing() {
 								onChange={toggleComplete}
 							/>
 						</div>
-						<input type="submit" value="Sign In" className="submit" />
+						<input type="submit" value="SUBMIT" className="submit" />
 					</div>
 				</div>
 			</form>

@@ -7,16 +7,16 @@ var mysql = require("mysql");
 
 app.get("/yarn", (req, res) => {
 
-    con.query("SELECT order_no, company FROM cust_order where  MONTH(date) >= MONTH(now())-2", function(err, data, fields) {
-        if (err) throw err;
-        res.send(data);
-    });
+	con.query("SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=0;", function (err, data, fields) {
+		if (err) throw err;
+		res.send(data);
+	});
 
 });
 
 app.post('/yarn', (req, res) => {
 
-    const params = req.body.form;
+	const params = req.body.form;
 	params["yarn_received"] = req.body.received;
 	console.log(params);
 	var weight = params.weight;
@@ -33,17 +33,35 @@ app.post('/yarn', (req, res) => {
 	quality = '${quality}',
 	y_date = '${y_date}';`
 
-    con.query(mysql,(err, rows) => {
-        // connection.release()
-        if (!err) {
-            res.send(`added.`)
-        } else {
-            console.log(err)
-        }
+	con.query(mysql, (err, rows) => {
+		// connection.release()
+		if (!err) {
+			res.send(`added.`)
+		} else {
+			console.log(err)
+		}
 
-        console.log('The data from yarn table are: \n', rows)
+		console.log('The data from yarn table are: \n', rows)
 
-    });
+	});
+});
+
+app.patch('/status', (req, res) => {
+	const order = parseInt(req.body.order_no);
+	console.log(`order = ${order}`)
+	con.query(
+		"UPDATE cust_order SET status=? WHERE order_no=?",
+		[2, order],
+		(err, rows) => {
+			// connection.release()
+			if (!err) {
+				res.send(`added.`);
+			} else {
+				console.log(err);
+			}
+			console.log("The data from yarn table are: \n", rows);
+		}
+	);
 });
 
 app.put("/yarn", (req, res) => {

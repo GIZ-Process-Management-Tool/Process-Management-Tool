@@ -14,9 +14,9 @@ app.use(express.json());
 
 //This is to allow our api to receive data from a client app
 app.use(
-	express.urlencoded({
-		extended: true,
-	})
+    express.urlencoded({
+        extended: true,
+    })
 );
 // app.use("/", [require("./Admin/card.js")]);
 
@@ -29,7 +29,7 @@ app.use('/', [
 app.use('/', [
     require('./Worker/loomperday.js')
 ]);
-app.use("/", [require("./Worker/Shift.js")]);
+app.use("/", [require("./Worker/shift.js")]);
 
 app.use("/", [require("./Worker/warping.js")]);
 
@@ -73,5 +73,5 @@ app.use('/', [
 
 
 app.listen(port, () => {
-	console.log(`Listening to the port ${port}`);
+    console.log(`Listening to the port ${port}`);
 });

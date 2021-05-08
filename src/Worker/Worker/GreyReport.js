@@ -5,13 +5,13 @@ import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function GreyReport() {
-  // --------------Automatic date------------------
-  // var date = new Date();
-  // var curDate = date.toISOString().slice(0, 10);
+	// --------------Automatic date------------------
+	// var date = new Date();
+	// var curDate = date.toISOString().slice(0, 10);
 	const [form, setForm] = useState({
-    // --------------Automatic date------------------
-    // date: curDate,
-    date: "",
+		// --------------Automatic date------------------
+		// date: curDate,
+		date: "",
 		shift: "",
 		loom_no: "",
 		worker: "",
@@ -20,11 +20,11 @@ function GreyReport() {
 		order_no: "",
 	});
 
-  const [repairable, setRepairable] = useState(0);
-  const toggleRepairable = (e) => {
-    if (e.target.checked) setRepairable(1);
-    else setRepairable(0);
-  };
+	const [repairable, setRepairable] = useState(0);
+	const toggleRepairable = (e) => {
+		if (e.target.checked) setRepairable(1);
+		else setRepairable(0);
+	};
 
 	const [data, setData] = useState([]);
 	const [loom_no, setLoom] = useState();
@@ -39,11 +39,17 @@ function GreyReport() {
 		e.preventDefault();
 
 		axios
-			.post("http://localhost:3006/grey_report", {form: form, repairable: repairable})
+			.post("http://localhost:3006/grey_report", { form: form, repairable: repairable })
 			.then((res) => {
 				console.log(res);
 				alert("successful insert");
 			})
+			.catch((err) => {
+				console.log(err);
+			});
+		axios.patch("http://localhost:3006/status", form).then((res) => {
+			console.log(res);
+		})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -60,9 +66,9 @@ function GreyReport() {
 		}
 
 		setForm({
-      // --------------Automatic date------------------
-      // date: curDate,
-      date: "",
+			// --------------Automatic date------------------
+			// date: curDate,
+			date: "",
 			loom_no: "",
 			worker: "",
 			meters: "",
@@ -103,8 +109,8 @@ function GreyReport() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
 			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
 				</option>
 			);
 		}
@@ -190,7 +196,7 @@ function GreyReport() {
 							value={form.points}
 							onChange={handleChange}
 							name="points"
-							placeholder="points"
+							placeholder="Points"
 							required
 						/>
 						<input
