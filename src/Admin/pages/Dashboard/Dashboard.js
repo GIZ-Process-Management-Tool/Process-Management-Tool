@@ -6,7 +6,7 @@ import "./Dashboard.css";
 // import BarChartModel from "./BarChart";
 import PieChartModel from "./AdminGraphs/PieChart";
 import GroupedBar from "./AdminGraphs/Loom_analysis";
-import LineChart from "./AdminGraphs/Shift_analysis";
+import LineChart from "./AdminGraphs/shift_analysis";
 import LineGraphModel from "./AdminGraphs/LineGraph";
 // import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
 import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
