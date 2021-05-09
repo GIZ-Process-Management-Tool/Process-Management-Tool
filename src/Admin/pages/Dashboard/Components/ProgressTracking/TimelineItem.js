@@ -4,7 +4,7 @@ import "./timeline";
 import "./timeline.css";
 
 export default function TimelineItem({ process }) {
-	// const [isShown, setIsShown] = useState(false);
+	const [isShown, setIsShown] = useState(false);
 	let status = false;
 	if (process.status === "true") status = true;
 	else status = false;
@@ -14,11 +14,11 @@ export default function TimelineItem({ process }) {
 			<div
 				key={process.processId}
 				className={"timeline-item" + (process.active ? " active" : " ")}
-				// onMouseEnter={() => setIsShown(true)}
-				// onMouseLeave={() => setIsShown(false)}
+				onMouseEnter={() => setIsShown(true)}
+				onMouseLeave={() => setIsShown(false)}
 			>
 				<div className={status ? "done" : " "}></div>
-				{/* {isShown && <TimelineError />} */}
+				{isShown && <TimelineError process={process} />}
 				<div className="timeline-content">{process.name}</div>
 			</div>
 		</>

@@ -59,9 +59,11 @@ function Winding() {
 			.catch((err) => {
 				console.log(err);
 			});
-		axios.patch("http://localhost:3006/status", form).then((res) => {
-			console.log(res);
-		})
+		axios
+			.patch("http://localhost:3006/status", form)
+			.then((res) => {
+				console.log(res);
+			})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -118,7 +120,7 @@ function Winding() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div className="login">
-					<Appbar processName="Winding" />
+					<Appbar processName="Winding" processId="1" procOrders={data} />
 					<div className="form">
 						<select
 							value={form.order_no}
