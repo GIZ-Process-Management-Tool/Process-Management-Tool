@@ -5,7 +5,7 @@ app.use(express.json());
 
 app.get("/shiftInsert", (req, res) => {
 	con.query(
-		"SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=3",
+		"SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=3 AND MONTH(cust_order.date) >= MONTH(NOW())-2",
 		function (err, data, fields) {
 			if (err) throw err;
 			res.send(data);
