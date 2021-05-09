@@ -41,3 +41,12 @@
   height: 40px;
   border-radius: 4px;
 }
+.error-btn {
+  background-color: #4054b2;
+  border-radius: 5px;
+}
+.error-btn:hover {
+  background-color: red;
+  height: 40px;
+  border-radius: 4px;
+}

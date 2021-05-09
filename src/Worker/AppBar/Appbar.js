@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./../AppBar/Appbar.css";
 import { BiCheck } from "react-icons/bi";
 import { RiErrorWarningFill } from "react-icons/ri";
 import "./../ErrorMessages/Error.css";
 import brandLogo from "./../../Admin/pages/Sidebar/brandIcon.png";
+import Error from "./../ErrorMessages/Error";
 const Appbar = ({ processName }) => {
+  const [IsOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="Appbar-main">
@@ -25,23 +27,21 @@ const Appbar = ({ processName }) => {
           />
         </div>
         <div className="ErrorIcon">
-          <a class="button" href="#popup1">
+          <button className="error-btn" onClick={() => setIsOpen(true)}>
             <RiErrorWarningFill
               style={{ fontSize: "32px", color: "#ffff", fontStyle: "bold" }}
             />
-          </a>
-          <div id="popup1" className="overlay">
-            <div className="popup">
-              <h2>Report Error</h2>
-              <a className="close" href="#">
-                &times;
-              </a>
-              <div className="content">
-                <textarea type="text" placeholder="error" />
-                <button>Submit</button>
-              </div>
-            </div>
-          </div>
+          </button>
+          <Error
+            style={{
+              position: "relative",
+              alignItems: "center",
+              marginTop: "30px",
+              marginRight: "30px",
+            }}
+            open={IsOpen}
+            onClose={() => setIsOpen(false)}
+          />
         </div>
       </div>
     </>
