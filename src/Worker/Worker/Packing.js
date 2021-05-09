@@ -49,15 +49,16 @@ export default function Yarn() {
       .catch((err) => {
         console.log(err);
       });
-    axios
-      .patch("http://localhost:3006/status3", form)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
     if (complete) {
+      axios
+        .patch("http://localhost:3006/status3", form)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     setForm({
       // --------------Automatic date------------------

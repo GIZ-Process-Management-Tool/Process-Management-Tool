@@ -57,18 +57,18 @@ function Repairing() {
           console.log(err);
         });
     }
-
-    useEffect((e) => {
-      axios
-        .get("http://localhost:3006/repairing")
-        .then((res) => {
-          setData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, []);
   }
+  useEffect((e) => {
+    axios
+      .get("http://localhost:3006/repairing")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   function handleChange(event) {
     const { name, value } = event.target;
 
