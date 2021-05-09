@@ -74,12 +74,11 @@
 
 .checkBox {
   font-size: 16px;
-  /* color: black; */
+  color: black;
   display: flex;
   justify-content: space-between;
 }
 .checkBox input {
-  border: none;
   height: 30px;
   width: 30px;
 }
@@ -103,6 +102,16 @@ label {
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.main-error {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0%;
+  right: 0;
+  margin-top: 50%;
+}
+
 @media screen and (max-width: 600px) {
   .login {
     width: 100%;

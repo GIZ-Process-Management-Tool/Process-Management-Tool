@@ -6,7 +6,7 @@ import "../Worker/Worker/InputFormStyle/formBGStyle.css";
 
 function Looming() {
 	const [data, setData] = useState([
-    ]);
+	]);
 	const [form, setForm] = useState({
 		id: "",
 		start_date: "",
@@ -18,14 +18,14 @@ function Looming() {
 
 	useEffect((e) => {
 		axios
-		  .get("http://localhost:3006/loom_loading_chart")
-		  .then((res) => {
-			setData(res.data)
-		  })
-		  .catch((err) => {
-			console.log(err);
-		  });
-	  }, []);
+			.get("http://localhost:3006/loom_loading_chart")
+			.then((res) => {
+				setData(res.data)
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
 
 	function handleSubmit(e) {
@@ -63,13 +63,13 @@ function Looming() {
 	function createSelectItems() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
-		  items.push(
-		  <option key={data[i].order_no} value={data[i].order_no}>
-			{data[i].order_no+" - "+data[i].company}
-		  </option>);
+			items.push(
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
+				</option>);
 		}
 		return items;
-	  }
+	}
 
 
 	return (
@@ -81,7 +81,7 @@ function Looming() {
 					</NavLink>
 					<h2>Loom Loading chart Form</h2>
 
-					<select 
+					<select
 						value={form.order_no}
 						name="id"
 						onChange={handleChange}
@@ -89,7 +89,7 @@ function Looming() {
 					>
 						<option value="" disabled>Order no</option>
 						{createSelectItems()}
-              		</select>
+					</select>
 					<input
 						type="date"
 						value={form.start_date}

@@ -7,9 +7,9 @@ import Appbar from "../AppBar/Appbar";
 // import { RiContactsBookLine } from "react-icons/ri";
 
 function YarnStorage() {
-	  // ---------Automatic date-----------
-    // var y_date = new Date();
-    // var curDate = y_date.toISOString().slice(0, 10);
+	// ---------Automatic date-----------
+	// var y_date = new Date();
+	// var curDate = y_date.toISOString().slice(0, 10);
 	const [data, setData] = useState([]);
 
 	const [received, setRecieved] = useState(0);
@@ -28,10 +28,10 @@ function YarnStorage() {
 		weight: "",
 		quality: "",
 		order_no: "",
-    // ---------Automatic date-----------
-    // y_date: curDate,
-    y_date: "",
-    // shift: "",
+		// ---------Automatic date-----------
+		// y_date: curDate,
+		y_date: "",
+		// shift: "",
 	});
 
 	useEffect((e) => {
@@ -57,24 +57,32 @@ function YarnStorage() {
 			.catch((err) => {
 				console.log(err);
 			});
-		if (complete) {
-			axios.put("http://localhost:3006/yarn", form).then((res) => {
-				console.log(res);
-				alert("successful Update");
-			})
+		axios.patch("http://localhost:3006/status", form).then((res) => {
+			console.log(res);
+		})
 			.catch((err) => {
 				console.log(err);
 			});
+		if (complete) {
+			axios.put("http://localhost:3006/yarn", form).then((res) => {
+				console.log(res);
+				alert("Successful Update");
+			})
+				.catch((err) => {
+					console.log(err);
+				});
+
+
 		}
 		// console.log(form.order_no);
 		setForm({
 			weight: "",
 			quality: "",
 			order_no: "",
-      		// ---------Automatic date-----------
-      		// y_date: curDate,
-    		y_date: "",
-      		// shift: "",
+			// ---------Automatic date-----------
+			// y_date: curDate,
+			y_date: "",
+			// shift: "",
 		});
 	};
 
@@ -93,8 +101,8 @@ function YarnStorage() {
 		let items = [];
 		for (let i = 0; i < data.length; i++) {
 			items.push(
-				<option key={data[i].order_no} value={data[i].order_no}>
-					{data[i].order_no + " - " + data[i].company}
+				<option key={data[i].orderNo} value={data[i].orderNo}>
+					{data[i].orderNo + " - " + data[i].company}
 				</option>
 			);
 		}
@@ -181,4 +189,4 @@ function YarnStorage() {
 	);
 }
 
-  export default YarnStorage;
+export default YarnStorage;
