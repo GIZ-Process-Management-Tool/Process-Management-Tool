@@ -10,8 +10,7 @@ function Shift() {
   // var date = new Date();
   // var curDate = date.toISOString().slice(0, 10);
 
-  const [data, setData] = useState([
-  ]);
+  const [data, setData] = useState([]);
 
   const [received, setReceieved] = useState(0);
   console.log(received);
@@ -40,12 +39,10 @@ function Shift() {
 
   const [loom_no, setLoom] = useState();
 
-
   useEffect((e) => {
-    Axios
-      .get("http://localhost:3006/shiftInsert")
+    Axios.get("http://localhost:3006/shiftInsert")
       .then((res) => {
-        setData(res.data)
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -55,8 +52,10 @@ function Shift() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    Axios
-      .post("http://localhost:3006/shiftInsert", { form: form, received: received })
+    Axios.post("http://localhost:3006/shiftInsert", {
+      form: form,
+      received: received,
+    })
       .then((res) => {
         console.log(res);
         alert("successful insert");
@@ -64,9 +63,10 @@ function Shift() {
       .catch((err) => {
         console.log(err);
       });
-    Axios.patch("http://localhost:3006/status", form).then((res) => {
-      console.log(res);
-    })
+    Axios.patch("http://localhost:3006/status", form)
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -105,13 +105,14 @@ function Shift() {
   };
 
   function createSelectItems() {
-    console.log(data)
+    console.log(data);
     let items = [];
     for (let i = 0; i < data.length; i++) {
       items.push(
         <option key={data[i].orderNo} value={data[i].orderNo}>
           {data[i].orderNo + " - " + data[i].company}
-        </option>);
+        </option>
+      );
     }
     return items;
   }
@@ -126,16 +127,17 @@ function Shift() {
               value={form.order_no}
               name="order_no"
               onChange={handleChange}
-              placeholder="Order no.">
-              <option value="" disabled>Order no</option>
+              placeholder="Order no."
+            >
+              <option value="" disabled>
+                Order no
+              </option>
               {createSelectItems()}
             </select>
-            <select
-              value={form.loom_no}
-              onChange={handleChange}
-              name="loom_no"
-            >
-              <option value="" disabled>Select loom</option>
+            <select value={form.loom_no} onChange={handleChange} name="loom_no">
+              <option value="" disabled>
+                Select loom
+              </option>
               <option value="1">Loom-1</option>
               <option value="2">Loom-2</option>
               <option value="3">Loom-3</option>

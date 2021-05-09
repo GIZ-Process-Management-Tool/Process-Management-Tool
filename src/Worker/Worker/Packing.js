@@ -5,7 +5,6 @@ import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 export default function Yarn() {
-
   // --------------Automatic date------------------
   // var date = new Date();
   // var curDate = date.toISOString().slice(0, 10);
@@ -16,7 +15,7 @@ export default function Yarn() {
     order_no: "",
     length: "",
     weight: "",
-    date: ""
+    date: "",
   });
 
   const [complete, setComplete] = useState(false);
@@ -25,14 +24,13 @@ export default function Yarn() {
     else setComplete(false);
   };
 
-  const [data, setData] = useState([
-  ]);
+  const [data, setData] = useState([]);
 
   useEffect((e) => {
     axios
       .get("http://localhost:3006/packing")
       .then((res) => {
-        setData(res.data)
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -40,25 +38,26 @@ export default function Yarn() {
   }, []);
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
-    axios.post("http://localhost:3006/packing", form)
-      .then(res => {
+    axios
+      .post("http://localhost:3006/packing", form)
+      .then((res) => {
         console.log(res);
         alert("successful insert");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
-    axios.patch("http://localhost:3006/status3", form).then((res) => {
-      console.log(res);
-    })
+    axios
+      .patch("http://localhost:3006/status3", form)
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
     if (complete) {
-
     }
     setForm({
       // --------------Automatic date------------------
@@ -66,10 +65,9 @@ export default function Yarn() {
       order_no: "",
       length: "",
       weight: "",
-      date: ""
+      date: "",
     });
   }
-
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -87,7 +85,8 @@ export default function Yarn() {
       items.push(
         <option key={data[i].order_no} value={data[i].order_no}>
           {data[i].order_no + " - " + data[i].company}
-        </option>);
+        </option>
+      );
     }
     return items;
   }
@@ -95,7 +94,7 @@ export default function Yarn() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="login">
+        <div className="login">
           <Appbar processName="Packing Form" />
           <div class="form">
             <select
@@ -104,7 +103,9 @@ export default function Yarn() {
               onChange={handleChange}
               placeholder="Order no."
             >
-              <option value="" disabled>Order no</option>
+              <option value="" disabled>
+                Order no
+              </option>
               {createSelectItems()}
             </select>
             <input
@@ -144,5 +145,5 @@ export default function Yarn() {
         </div>
       </form>
     </div>
-  )
+  );
 }
