@@ -1,0 +1,26 @@
+.Calender{
+    height: 20px;
+    margin: 10px 0px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    font-family: Inter;
+    border: none;
+    border-left: 3px solid #4054b2;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 2px #bdbdbd;
+}
+
+.showButton{
+    margin-left: 5px;
+    background-color: #4054b2;
+    font-size: 12px;
+    color: #f4f6ff;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    box-shadow: 1px 1px 2px #bdbdbd;
+}

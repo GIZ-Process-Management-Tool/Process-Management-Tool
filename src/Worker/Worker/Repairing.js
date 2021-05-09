@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Repairing() {
-  var date = new Date();
-  var curDate = date.toISOString().slice(0, 10);
+  // -------------------Automatic date-----------------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
+  const [data, setData] = useState([]);
+
+  const [complete, setComplete] = useState(false);
+  const toggleComplete = (e) => {
+    if (e.target.checked) setComplete(true);
+    else setComplete(false);
+  };
+
   const [form, setForm] = useState({
     order_no: "",
-    date: curDate,
+    date: "",
+    // -------------------Automatic date-----------------------
+    // date : curDate,
     machine: "",
     worker: "",
   });
@@ -26,15 +38,37 @@ function Repairing() {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .patch("http://localhost:3006/status", form)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    if (complete) {
+      axios
+        .put("http://localhost:3006/repairing", form)
+        .then((res) => {
+          console.log(res);
+          alert("successful Update");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
-    setForm({
-      order_no: "",
-      date: curDate,
-      machine: "",
-      worker: "",
-    });
+    useEffect((e) => {
+      axios
+        .get("http://localhost:3006/repairing")
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
   }
-
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -45,18 +79,40 @@ function Repairing() {
       };
     });
   }
+  function createSelectItems() {
+    let items = [];
+    for (let i = 0; i < data.length; i++) {
+      items.push(
+        <option key={data[i].orderNo} value={data[i].orderNo}>
+          {data[i].orderNo + " - " + data[i].company}
+        </option>
+      );
+    }
+    return items;
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="login">
           <Appbar processName="Repairing Form" />
           <div className="form">
-            <input
-              type="number"
+            <select
               value={form.order_no}
-              onChange={handleChange}
               name="order_no"
-              placeholder="Order Number"
+              onChange={handleChange}
+              placeholder="Order no."
+            >
+              <option value="" disabled>
+                Order no
+              </option>
+              {createSelectItems()}
+            </select>
+            <input
+              type="date"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              placeholder="Date"
               required
             />
             <input
@@ -75,8 +131,15 @@ function Repairing() {
               placeholder="Worker"
               required
             />
-
-            <input type="submit" value="Sign In" className="submit" />
+            <div className="checkBox">
+              <h3>Done with all lots !</h3>
+              <input
+                type="checkbox"
+                checked={complete}
+                onChange={toggleComplete}
+              />
+            </div>
+            <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>
       </form>

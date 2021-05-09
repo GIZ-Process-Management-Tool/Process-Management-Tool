@@ -1,22 +1,38 @@
-/*Order Form in React js*/
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./../ErrorMessages/Error.css";
 import Appbar from "./../AppBar/Appbar";
 import "./InputFormStyle/formBGStyle.css";
 
 function Warping() {
-  var date = new Date();
-  var curDate = date.toISOString().slice(0, 10);
+  // ------------------Automatic date-------------
+  // var date = new Date();
+  // var curDate = date.toISOString().slice(0, 10);
   const [form, setForm] = useState({
+    // ------------------Automatic date-------------
+    // date: curDate,
     order_no: "",
-    date: curDate,
-    shift: "",
+    // shift: "",
     weight_o_w_y: "",
     waste_weight: "",
     package_defect: "",
   });
-
+  const [complete, setComplete] = useState(false);
+  const toggleComplete = (e) => {
+    if (e.target.checked) setComplete(true);
+    else setComplete(false);
+  };
+  const [data, setData] = useState([]);
+  useEffect((e) => {
+    axios
+      .get("http://localhost:3006/warping")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -29,11 +45,31 @@ function Warping() {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .patch("http://localhost:3006/status", form)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    if (complete) {
+      axios
+        .put("http://localhost:3006/warping", form)
+        .then((res) => {
+          console.log(res);
+          alert("successful Update");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
     setForm({
       order_no: "",
-      date: curDate,
-      shift: "",
+      // date: curDate,
+      date: "",
+      // shift: "",
       weight_o_w_y: "",
       waste_weight: "",
       package_defect: "",
@@ -50,27 +86,41 @@ function Warping() {
       };
     });
   }
+  function createSelectItems() {
+    let items = [];
+    for (let i = 0; i < data.length; i++) {
+      items.push(
+        <option key={data[i].orderNo} value={data[i].orderNo}>
+          {data[i].orderNo + " - " + data[i].company}
+        </option>
+      );
+    }
+    return items;
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="login">
           <Appbar processName="Warping Form" />
           <div className="form">
-            <input
-              type="number"
+            <select
               value={form.order_no}
-              onChange={handleChange}
               name="order_no"
-              placeholder="Order NO"
-              required
-            />
+              onChange={handleChange}
+              placeholder="Order no."
+            >
+              <option value="" disabled>
+                Order no
+              </option>
+              {createSelectItems()}
+            </select>
             <br />
             <input
-              type="number"
-              name="shift"
-              value={form.shift}
+              type="date"
+              value={form.date}
               onChange={handleChange}
-              placeholder="Shift"
+              name="date"
+              placeholder="date"
               required
             />
             <br />
@@ -79,7 +129,7 @@ function Warping() {
               name="weight_o_w_y"
               value={form.weight_o_w_y}
               onChange={handleChange}
-              placeholder="Weight of Waste Yarn"
+              placeholder="Weight of Warped Yarn"
               required
             />
             <br />
@@ -101,6 +151,14 @@ function Warping() {
               required
             />
             <br />
+            <div className="checkBox">
+              <h3>Done with all lots !</h3>
+              <input
+                type="checkbox"
+                checked={complete}
+                onChange={toggleComplete}
+              />
+            </div>
             <input type="submit" value="SUBMIT" className="submit" />
           </div>
         </div>

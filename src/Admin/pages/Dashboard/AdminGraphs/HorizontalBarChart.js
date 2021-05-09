@@ -1,63 +1,57 @@
 import React from "react";
-import { HorizontalBar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { useState, useEffect} from 'react';
 import Axios from 'axios';
 
 
 const options = {
+  // responsive: true,
+  // type: "bar",
+  // indexAxis : 'y',
+
   scales: {
     yAxes: [
       {
-        ticks: {
-          beginAtZero: true,
-        },
+        ticks: {beginAtZero: true},
       },
     ],
-  },
+  }
 };
 
   export default function HorizontalBarChart() {
   const [chartData, setChartData] = useState({});
-  // const [LoomNo, setLoomNo] = useState([]);
-  // const [TotalPicks, setTotalPicks] = useState([]);
 
   const chart = () => {
-    let loom = [];
-    let meter = [];
+    let date = [];
+    let totalpicks1 = [];
+    let totalpicks2 = [];
 
     Axios
       .get("http://localhost:3006/horizontalBchart")
       .then(res => {
         console.log(res);
         for (const dataObj of res.data) {
-          loom.push("loom " + dataObj.loom_no);
-          meter.push(parseInt(dataObj.meter));
+          console.log(res.data);
+          var d1 = dataObj.s_date
+          var dt = new Date(d1);
+          var options = {month : "short", day: "numeric", year: "numeric"};
+          date.push(dt.toLocaleDateString("en-US", options));
+          totalpicks1.push(parseInt(dataObj.tp1));
+          totalpicks2.push(parseInt(dataObj.tp2));
         }
+        console.log("date" + date, "tp1" + totalpicks1, "tp2" + totalpicks2);
         setChartData({
-          labels: loom,
+          labels: date,
           datasets: [
             {
-              label: "Looming",
-              data: meter,
-              backgroundColor: [
-              "#BB8FCE",
-              "#A9CCE3",
-              "#665191",
-              "#F9E79F",
-              "#CCD1D1"
-            ],
-              hoverBackgroundColor: [
-                // "#A569BD",
-                // "#2b4775",
-                // "#624e8c",
-                // "#ffbb33",
-                // "#9999ff",
-                "#BB8FCE",
-                "#A9CCE3",
-                "#665191",
-                "#F9E79F",
-                "#CCD1D1"
-              ]
+              label: "Shift 1",
+              data: totalpicks1,
+              backgroundColor: "#BB8FCE"
+            },
+            {
+              label: "Shift 2",
+              data: totalpicks2,
+              backgroundColor: "#665191"
             }
           ]
         });
@@ -76,10 +70,10 @@ const options = {
   return (
   <div>
     <div className="header">
-      <h1 className="title"> Meters produced at each loom </h1>
-      <div className="links"> </div>
+      <h2 className="title"> Meters produced at each loom </h2>
+      <br/>
     </div>
-    <HorizontalBar data={chartData} options={options} />
+    <Bar data={chartData} options={options} />
   </div> );
 
   };

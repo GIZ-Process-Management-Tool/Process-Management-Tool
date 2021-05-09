@@ -46,10 +46,10 @@ const Service2 = () => {
 							src="https://images.unsplash.com/photo-1563837738662-c86ef2ba99f8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHRleHRpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 							alt=""
 						/>
-						<h1>Downtime</h1>
+						<h1>Target</h1>
 						{/* <h2>Process-7</h2> */}
-						<NavLink to="/downtime">
-							<button>Downtime</button>
+						<NavLink to="/target">
+							<button>Enter</button>
 						</NavLink>
 					</div>
 				</div>
@@ -63,6 +63,19 @@ const Service2 = () => {
 						{/* <h2>Process-4</h2> */}
 						<NavLink to="/shift">
 							<button>Shift</button>
+						</NavLink>
+					</div>
+				</div>
+				<div className="serviceBox p7">
+					<div className="member">
+						<img
+							src="https://images.unsplash.com/photo-1563837738662-c86ef2ba99f8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHRleHRpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+							alt=""
+						/>
+						<h1>Downtime</h1>
+						{/* <h2>Process-7</h2> */}
+						<NavLink to="/downtime">
+							<button>Downtime</button>
 						</NavLink>
 					</div>
 				</div>

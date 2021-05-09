@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { useState } from "react";
+// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
@@ -54,7 +55,7 @@ function LoomperDay() {
 
           <input
             type="submit"
-            value="Sign In"
+            value="SUBMIT"
             className="submit"
             onClick={submitLoomCharges}
           />

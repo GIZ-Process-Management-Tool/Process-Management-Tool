@@ -56,6 +56,22 @@
   color: black;
 }
 
+.login .form select{
+  height: 56px;
+  margin: 10px 0px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  font-family: Inter;
+  border: none;
+  border-left: 3px solid #4054b2;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px #bdbdbd;
+}
+
+
 .checkBox {
   font-size: 16px;
   color: black;

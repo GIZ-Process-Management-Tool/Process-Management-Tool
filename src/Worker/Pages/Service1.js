@@ -39,21 +39,6 @@ const Service1 = () => {
             </NavLink>
           </div>
         </div>
-        <div className="serviceBox p5">
-          <div className="member">
-            <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <h1>Warping </h1>
-            <h2>Process-2</h2>
-            <NavLink to="/warping">
-              <button>
-                <i className="fas fa-video"></i> Warping
-              </button>
-            </NavLink>
-          </div>
-        </div>
         <div className="serviceBox p4">
           <div className="member">
             <img
@@ -61,9 +46,22 @@ const Service1 = () => {
               alt=""
             />
             <h1>Winding </h1>
-            <h2>Process-3</h2>
+            <h2>Process-2</h2>
             <NavLink to="/winding">
               <button>Winding</button>
+            </NavLink>
+          </div>
+        </div>
+        <div className="serviceBox p5">
+          <div className="member">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              alt=""
+            />
+            <h1>Warping </h1>
+            <h2>Process-3</h2>
+            <NavLink to="/warping">
+              <button>Warping</button>
             </NavLink>
           </div>
         </div>
@@ -84,26 +82,26 @@ const Service1 = () => {
         <div className="serviceBox p6">
           <div className="member">
             <img
-              src="https://images.unsplash.com/photo-1476683874822-744764a2438f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGV4dGlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
-            <h1>Repairing</h1>
+            <h1>Checking Report </h1>
             <h2>Process-5</h2>
-            <NavLink to="/repairing">
-              <button>Repairing</button>
+            <NavLink to="/service3">
+              <button>Checking</button>
             </NavLink>
           </div>
         </div>
         <div className="serviceBox p6">
           <div className="member">
             <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              src="https://images.unsplash.com/photo-1476683874822-744764a2438f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGV4dGlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
-            <h1>Checking Report </h1>
+            <h1>Repairing</h1>
             <h2>Process-6</h2>
-            <NavLink to="/service3">
-              <button>Checking</button>
+            <NavLink to="/repairing">
+              <button>Repairing</button>
             </NavLink>
           </div>
         </div>
