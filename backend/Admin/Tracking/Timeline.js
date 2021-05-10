@@ -16,7 +16,7 @@ app.get("/processBarOrders", (req, res) => {
 app.get("/processBar/:orderNo", (req, res) => {
 	const order = req.params.orderNo;
 	con.query(
-		"SELECT processId,status FROM tracking1 where orderNo=?",
+		"SELECT * FROM tracking1 where orderNo=?",
 		order,
 		function (err, data, fields) {
 			if (err) throw err;

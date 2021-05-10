@@ -14,6 +14,7 @@ function Order() {
 		{ id: 4, name: "Checking", status: false },
 		{ id: 5, name: "Repairing", status: false },
 	]);
+	// dispatch process remaining
 	const [form, setForm] = useState({
 		order_no: "",
 		date: "",
@@ -180,7 +181,7 @@ function Order() {
 					</div>
 				</div>
 			</form>
-			<div id="popup1" className="overlay">
+			{/* <div id="popup1" className="overlay">
 				<div className="popup">
 					<h2>Report Error</h2>
 					<a className="close" href="#">
@@ -191,7 +192,7 @@ function Order() {
 						<button className="button">Submit</button>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }
