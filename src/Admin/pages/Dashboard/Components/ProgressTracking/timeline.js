@@ -104,7 +104,6 @@ export default function Timeline({ orderNo }) {
 		"Winding",
 		"Warping",
 		"Looming",
-		"Weaving",
 		"Checking",
 		"Repairing",
 		"Packing",

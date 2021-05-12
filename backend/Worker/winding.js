@@ -5,8 +5,13 @@ app.use(express.json());
 // var mysql = require("mysql");
 
 app.get("/winding", (req, res) => {
+	sql=`SELECT tracking1.orderNo, tracking1.processId, cust_order.company 
+	FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no 
+	where tracking1.processId=1 
+	AND MONTH(cust_order.date) >= MONTH(NOW())-2
+	AND tracking1.status = 'false'`;
 	con.query(
-		"SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=1 AND MONTH(cust_order.date) >= MONTH(NOW())-2",
+		sql,
 		function (err, data, fields) {
 			if (err) throw err;
 			res.send(data);
@@ -43,7 +48,7 @@ app.post("/winding", (req, res) => {
 	const date = params.date;
 	const package_defect = params.package_defect;
 
-	const sql = `INSERT INTO winding
+	const mysql = `INSERT INTO winding
         VALUES(${yarn_received}, ${no_of_cones}, ${size_of_cones}, ${no_of_doffs},
         ${weight_of_cones}, ${weight_of_waste}, ${order_no}, '${date}', '${package_defect}')
         ON DUPLICATE KEY UPDATE
@@ -57,7 +62,7 @@ app.post("/winding", (req, res) => {
         date            =   '${date}',
         package_defect  =   '${package_defect}';`;
 
-	con.query(sql, (err, rows) => {
+	con.query(mysql, (err, rows) => {
 		if (!err) {
 			res.send(`added.`);
 		} else {

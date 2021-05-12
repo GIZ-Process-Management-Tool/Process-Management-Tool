@@ -4,6 +4,18 @@ var con = require('../../config/database.js');
 app.use(express.json());
 var mysql = require('mysql');
 
+
+
+app.get("/loom_analysis", (req, res) => {
+  con.query("SELECT l_date FROM loom_analysis order by l_date DESC limit 1", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.get("/loom_analysis/:Date", (req, res) => {
     var selectedDate = req.params.Date;
     if(selectedDate === 'undefined') {

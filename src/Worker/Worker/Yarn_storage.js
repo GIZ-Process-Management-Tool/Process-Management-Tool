@@ -74,6 +74,7 @@ function YarnStorage() {
 				.catch((err) => {
 					console.log(err);
 				});
+
 		}
 		// console.log(form.order_no);
 		setForm({
@@ -139,6 +140,7 @@ function YarnStorage() {
 							placeholder="y_date"
 							required
 						/>
+						{/* <br/> */}
 						<div className="checkBox">
 							<h3>Yarn Received:</h3>
 							<input
@@ -147,8 +149,7 @@ function YarnStorage() {
 								onChange={toggleReceived}
 							/>
 						</div>
-						<br />
-
+						{/* <br /> */}
 						<input
 							type="number"
 							value={form.weight}
@@ -157,7 +158,7 @@ function YarnStorage() {
 							placeholder="Weight"
 							required
 						/>
-						<br />
+						{/* <br /> */}
 						<input
 							type="text"
 							value={form.quality}
@@ -166,7 +167,7 @@ function YarnStorage() {
 							placeholder="Quality"
 							required
 						/>
-						<br />
+						{/* <br /> */}
 						{/* <input
 							type="number"
 							value={form.shift}
@@ -175,8 +176,6 @@ function YarnStorage() {
 							placeholder="Shift"
 							required
 						/> */}
-						<br />
-
 						<div className="checkBox">
 							<h3>Done with all lots !</h3>
 							<input

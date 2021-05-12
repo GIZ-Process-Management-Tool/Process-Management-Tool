@@ -5,8 +5,16 @@ app.use(express.json());
 var mysql = require("mysql");
 
 app.get("/yarn", (req, res) => {
+	sql = `SELECT tracking1.orderNo, tracking1.processId, cust_order.company 
+		   FROM tracking1 INNER JOIN cust_order 
+		   ON tracking1.orderNo=cust_order.order_no 
+		   where 
+		   tracking1.processId=0 
+		   AND 
+		   MONTH(cust_order.date) >= MONTH(NOW())-2
+		   AND tracking1.status = 'false'`;
 	con.query(
-		"SELECT tracking1.orderNo, tracking1.processId, cust_order.company FROM tracking1 INNER JOIN cust_order ON tracking1.orderNo=cust_order.order_no where tracking1.processId=0 AND MONTH(cust_order.date) >= MONTH(NOW())-2",
+		sql,
 		function (err, data, fields) {
 			if (err) throw err;
 			res.send(data);
@@ -25,7 +33,7 @@ app.post("/yarn", (req, res) => {
 	var yarn_received = params.yarn_received;
 
 	mysql = `INSERT INTO yarn_storage
-	VALUES(${yarn_received}, ${weight}, '${quality}', ${order_no}, '${y_date}', 0)
+	VALUES(${yarn_received}, ${weight}, '${quality}', ${order_no}, '${y_date}')
 	ON DUPLICATE KEY UPDATE
 	yarn_received = ${yarn_received},
 	weight = weight + ${weight},

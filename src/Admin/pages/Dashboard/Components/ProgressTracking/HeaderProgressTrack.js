@@ -41,6 +41,7 @@ const HeaderProgressTrack = () => {
 					name="order_no"
 					onChange={handleChange}
 					placeholder="Order no."
+					className="dropDown"
 				>
 					{createSelectItems()}
 				</select>
