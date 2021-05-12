@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "../AppBar/Appbar";
-// import { RiContactsBookLine } from "react-icons/ri";
 
 function YarnStorage() {
 	// ---------Automatic date-----------
@@ -30,7 +28,8 @@ function YarnStorage() {
 		order_no: "",
 		// ---------Automatic date-----------
 		// y_date: curDate,
-		y_date: "",
+		date: "",
+		// comment out date with respect to database column name
 		// shift: "",
 	});
 
@@ -57,21 +56,24 @@ function YarnStorage() {
 			.catch((err) => {
 				console.log(err);
 			});
-		axios.patch("http://localhost:3006/status", form).then((res) => {
-			console.log(res);
-		})
+		axios
+			.patch("http://localhost:3006/status", form)
+			.then((res) => {
+				console.log(res);
+			})
 			.catch((err) => {
 				console.log(err);
 			});
 		if (complete) {
-			axios.put("http://localhost:3006/yarn", form).then((res) => {
-				console.log(res);
-				alert("Successful Update");
-			})
+			axios
+				.put("http://localhost:3006/yarn", form)
+				.then((res) => {
+					console.log(res);
+					alert("Successful Update");
+				})
 				.catch((err) => {
 					console.log(err);
 				});
-
 
 		}
 		// console.log(form.order_no);
@@ -113,7 +115,11 @@ function YarnStorage() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div className="login">
-					<Appbar processName="Yarn Storage Form" />
+					<Appbar
+						processName="Yarn Storage Form"
+						processId="0"
+						procOrders={data}
+					/>
 					<div className="form">
 						<select
 							value={form.order_no}
@@ -134,6 +140,7 @@ function YarnStorage() {
 							placeholder="y_date"
 							required
 						/>
+						{/* <br/> */}
 						<div className="checkBox">
 							<h3>Yarn Received:</h3>
 							<input
@@ -142,8 +149,7 @@ function YarnStorage() {
 								onChange={toggleReceived}
 							/>
 						</div>
-						<br />
-
+						{/* <br /> */}
 						<input
 							type="number"
 							value={form.weight}
@@ -152,7 +158,7 @@ function YarnStorage() {
 							placeholder="Weight"
 							required
 						/>
-						<br />
+						{/* <br /> */}
 						<input
 							type="text"
 							value={form.quality}
@@ -161,7 +167,7 @@ function YarnStorage() {
 							placeholder="Quality"
 							required
 						/>
-						<br />
+						{/* <br /> */}
 						{/* <input
 							type="number"
 							value={form.shift}
@@ -170,8 +176,6 @@ function YarnStorage() {
 							placeholder="Shift"
 							required
 						/> */}
-						<br />
-
 						<div className="checkBox">
 							<h3>Done with all lots !</h3>
 							<input

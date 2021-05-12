@@ -14,21 +14,17 @@ app.use(express.json());
 
 //This is to allow our api to receive data from a client app
 app.use(
-    express.urlencoded({
-        extended: true,
-    })
+	express.urlencoded({
+		extended: true,
+	})
 );
 // app.use("/", [require("./Admin/card.js")]);
 
 app.use("/", [require("./Admin/cardValue.js")]);
 
-app.use('/', [
-    require('./Worker/target.js')
-]);
+app.use("/", [require("./Worker/target.js")]);
 
-app.use('/', [
-    require('./Worker/loomperday.js')
-]);
+app.use("/", [require("./Worker/loomperday.js")]);
 app.use("/", [require("./Worker/shift.js")]);
 
 app.use("/", [require("./Worker/warping.js")]);
@@ -37,17 +33,13 @@ app.use("/", [require("./Admin/Graphs/piechart.js")]);
 
 app.use("/", [require("./Admin/Graphs/horizontal_bar_chart.js")]);
 
-app.use('/', [
-    require('./Admin/Graphs/shift_analysis.js')
-]);
+app.use("/", [require("./Admin/Graphs/shift_analysis.js")]);
 
-app.use('/', [
-    require('./Admin/Graphs/loom_analysis.js')
-]);
+app.use("/", [require("./Admin/Graphs/loom_analysis.js")]);
 
-app.use('/', [
-    require('./Worker/downtime.js')
-]);
+app.use("/", [require("./Worker/downtime.js")]);
+
+app.use("/", [require("./Worker/error.js")]);
 
 app.use("/", [require("./Worker/downtime.js")]);
 
@@ -67,11 +59,8 @@ app.use("/", [require("./Admin/loom_loading_chart.js")]);
 
 app.use("/", [require("./Admin/Tracking/Timeline")]);
 
-app.use('/', [
-    require('./Admin/wtti.js')
-]);
-
+app.use("/", [require("./Admin/wtti.js")]);
 
 app.listen(port, () => {
-    console.log(`Listening to the port ${port}`);
+	console.log(`Listening to the port ${port}`);
 });

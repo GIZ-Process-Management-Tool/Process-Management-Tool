@@ -4,8 +4,25 @@ import { useState, useEffect} from 'react';
 import Axios from 'axios';
 
 export default function GroupedBar() {
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if(dd<10) 
+  {
+      dd='0'+dd;
+  } 
+
+  if(mm<10) 
+  {
+      mm='0'+mm;
+  } 
+
+  var defaultDate = yyyy + '-' + mm + '-' + dd;
+  const [loading, setLoading] = useState(false);
   const [chartData, setChartData] = useState({});
-  const [Date, setDate] = useState();
+  const [date, setDate] = useState(`${defaultDate}`);
 
   const chart = () => {
     let loom = [];
@@ -14,7 +31,7 @@ export default function GroupedBar() {
 
 
     Axios
-      .get(`http://localhost:3006/loom_analysis/${Date}`)
+      .get(`http://localhost:3006/loom_analysis/${date}`)
       .then(res => {
         // console.log(res);
         for (const dataObj of res.data) {
@@ -46,9 +63,35 @@ export default function GroupedBar() {
 
   };
 
+  // useEffect(() => {
+  //   chart();
+  // }, []);
+
   useEffect(() => {
-    chart();
+    Axios.get(`http://localhost:3006/loom_analysis`).then((res) => {
+      console.log("res data....");
+      console.log(res.data);
+      var d1 = res.data[0].l_date;
+      console.log("res data[0] ldate");
+      console.log(res.data[0].l_date);
+      var dt = new Date(d1);
+      // var options = {month : "short", day: "numeric", year: "numeric"};
+      dt = dt.toLocaleDateString("fr-CA");
+      setDate(dt);
+      // return date;
+      // setDate(res.data[0].l_date);
+      console.log("dt...");
+      console.log(dt);
+      console.log("Date in useffect......");
+      console.log("date here....." + date);
+    });
+    setLoading(true);
+    if (date) {
+      chart();
+    };
   }, []);
+
+
 
   return (
     <div>
@@ -72,6 +115,8 @@ export default function GroupedBar() {
           />
           <br/>
     </div>
+
+    {loading ? (
     <Bar data={chartData}
     options={
       {scales: {
@@ -81,7 +126,7 @@ export default function GroupedBar() {
           },
         ],
       }}
-    } />
+    } /> ) : (<h1>Loading.....</h1>)}
     </div>
   )
 };

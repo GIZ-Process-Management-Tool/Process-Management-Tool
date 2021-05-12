@@ -1,33 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { NavLink } from "react-router-dom";
 import "./../ErrorMessages/Error.css";
 import "./InputFormStyle/formBGStyle.css";
 import Appbar from "./../AppBar/Appbar";
 
 function Repairing() {
-  // -------------------Automatic date-----------------------
-  // var date = new Date();
-  // var curDate = date.toISOString().slice(0, 10);
-  const [data, setData] = useState([]);
+	// -------------------Automatic date-----------------------
+	// var date = new Date();
+	// var curDate = date.toISOString().slice(0, 10);
+	const [data, setData] = useState([]);
 
-  const [complete, setComplete] = useState(false);
-  const toggleComplete = (e) => {
-    if (e.target.checked) setComplete(true);
-    else setComplete(false);
-  };
+	const [complete, setComplete] = useState(false);
+	const toggleComplete = (e) => {
+		if (e.target.checked) setComplete(true);
+		else setComplete(false);
+	};
 
-  const [form, setForm] = useState({
-    order_no: "",
-    date: "",
-    // -------------------Automatic date-----------------------
-    // date : curDate,
-    machine: "",
-    worker: "",
-  });
+	const [form, setForm] = useState({
+		order_no: "",
+		date: "",
+		// -------------------Automatic date-----------------------
+		// date : curDate,
+		machine: "",
+		worker: "",
+	});
 
-  function handleSubmit(e) {
-    e.preventDefault();
+	function handleSubmit(e) {
+		e.preventDefault();
 
     axios
       .post("http://localhost:3006/repairing", form)
@@ -56,7 +55,7 @@ function Repairing() {
         .catch((err) => {
           console.log(err);
         });
-    }
+    } }
 
     useEffect((e) => {
       axios
@@ -68,7 +67,9 @@ function Repairing() {
           console.log(err);
         });
     }, []);
-  }
+
+
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -79,6 +80,8 @@ function Repairing() {
       };
     });
   }
+
+
   function createSelectItems() {
     let items = [];
     for (let i = 0; i < data.length; i++) {
@@ -90,6 +93,7 @@ function Repairing() {
     }
     return items;
   }
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
