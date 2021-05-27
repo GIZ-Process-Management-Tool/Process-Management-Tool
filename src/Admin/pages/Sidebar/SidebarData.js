@@ -37,6 +37,7 @@ export const SidebarData = [
     path: "/messages",
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: "nav-text",
+    pathAd: "/admin/reports",
   },
   {
     title: "Calendar",

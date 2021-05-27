@@ -10,6 +10,8 @@
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "cors": "^2.8.5",
+    "jspdf": "^2.3.1",
+    "jspdf-autotable": "^3.5.14",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",
     "react-dom": "^17.0.1",

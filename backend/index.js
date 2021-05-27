@@ -61,6 +61,8 @@ app.use("/", [require("./Admin/Tracking/Timeline")]);
 
 app.use("/", [require("./Admin/wtti.js")]);
 
+app.use("/", [require("./Admin/Report/report.js")]);
+
 app.listen(port, () => {
 	console.log(`Listening to the port ${port}`);
 });
