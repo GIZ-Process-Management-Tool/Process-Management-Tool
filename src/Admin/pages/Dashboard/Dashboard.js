@@ -2,15 +2,15 @@ import React from "react";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { FaRupeeSign } from "react-icons/fa";
+import { BiTargetLock } from "react-icons/bi";
+import {GiYarn} from "react-icons/gi";
 import "./Dashboard.css";
 // import BarChartModel from "./BarChart";
 import PieChartModel from "./AdminGraphs/PieChart";
 import GroupedBar from "./AdminGraphs/Loom_analysis";
 import LineChart from "./AdminGraphs/shift_analysis";
-import LineGraphModel from "./AdminGraphs/LineGraph";
 // import HorizontalBarChart from "./AdminGraphs/HorizontalBarChart";
 import HorizontalBar1 from "./AdminGraphs/HorizontalBar";
-import Timeline from "./Components/ProgressTracking/timeline";
 import HeaderProgressTrack from "./Components/ProgressTracking/HeaderProgressTrack";
 import MainNavBar from "./Components/AdminNavBar/MainNavBar";
 
@@ -62,7 +62,7 @@ export default function Dashboard() {
                       );
             })}
             <div className="QRtrailingIcon">
-              <FaRupeeSign />
+              <BiTargetLock />
             </div>
           </div>
           <div className="QRContainer">
@@ -77,7 +77,7 @@ export default function Dashboard() {
                     );
             })}
             <div className="QRtrailingIcon">
-              <FaRupeeSign />
+              <GiYarn />
             </div>
           </div>
 

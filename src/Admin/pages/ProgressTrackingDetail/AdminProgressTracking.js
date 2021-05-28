@@ -1,5 +1,4 @@
 import React from "react";
-import { FaRupeeSign } from "react-icons/fa";
 import "../Dashboard/Dashboard.css";
 import MainNavBar from "../Dashboard/Components/AdminNavBar/MainNavBar";
 import "../../style/allPageCss.css";

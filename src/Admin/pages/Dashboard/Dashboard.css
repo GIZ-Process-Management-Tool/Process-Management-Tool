@@ -101,6 +101,7 @@
   font-size: 1.5rem;
 }
 
+
 .MainGraphsRow_3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

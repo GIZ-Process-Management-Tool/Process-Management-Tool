@@ -21,6 +21,7 @@ const Appbar = ({ processName, processId, procOrders }) => {
 						{processName}
 					</h4>
 				</div>
+				{processId ?  
 				<div className="ErrorIcon">
 					<button className="error-btn" onClick={() => setIsOpen(true)}>
 						<RiErrorWarningFill
@@ -40,7 +41,7 @@ const Appbar = ({ processName, processId, procOrders }) => {
 						procOrders={procOrders}
 						onClose={() => setIsOpen(false)}
 					/>
-				</div>
+				</div> : <div/>}
 			</div>
 		</>
 	);

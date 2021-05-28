@@ -22,7 +22,6 @@ import YarnStorage from "./Worker/Worker/Yarn_storage.js";
 import Target from "./Worker/Worker/Target.js";
 import LoomingMain from "./Worker/Worker/LoomingMain";
 import Packing from "./Worker/Worker/Packing";
-import Dashboard from "./Admin/pages/Dashboard/Dashboard";
 
 function MainRoute() {
   return (
