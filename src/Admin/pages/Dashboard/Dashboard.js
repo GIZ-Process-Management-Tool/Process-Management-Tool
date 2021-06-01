@@ -72,7 +72,7 @@ export default function Dashboard() {
                   <div className="QRHeading">
                     {val.achieved_asDate}
                   </div>
-                <div className="QRSubHeading"> Total picks achieved on - {covertedDate} </div>
+                <div className="QRSubHeading"> Total picks on - {covertedDate} </div>
                 </div>
                     );
             })}

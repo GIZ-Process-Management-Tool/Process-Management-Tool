@@ -9,7 +9,7 @@ import "./../Navbar/Nav.css";
 const Service1 = () => {
   return (
     <>
-      <Nav processName={"Looming process"} />
+      {/* <Nav processName={"Looming process"} /> */}
       <div className="container">
         <div className="serviceBox p1">
           <div className="member">
@@ -72,10 +72,10 @@ const Service1 = () => {
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
-            <h1>Looming </h1>
+            <h1>Weaving </h1>
             <h2>Process-4</h2>
             <NavLink to="/service2">
-              <button>Looming</button>
+              <button>Weaving</button>
             </NavLink>
           </div>
         </div>

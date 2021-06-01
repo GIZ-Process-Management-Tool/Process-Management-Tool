@@ -25,7 +25,7 @@ const Adminlogin = () => {
           </NavLink>
           <NavLink exact to="/worker1">
             <button type="submit" className="login__signInButton">
-              Worker
+              Staff
             </button>
           </NavLink>
           {/* 

@@ -6,7 +6,7 @@ import "./../Navbar/Nav.css";
 const Service3 = () => {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <NavLink to="/worker1">
         <button>Back</button>
       </NavLink>
